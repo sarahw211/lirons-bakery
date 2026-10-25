@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>לירונ'ס · ה3 במקסימום</title>
+<style>
+/* =========================================================
+   לירונ'ס · ה3 במקסימום
+   תמונה ענקית של כל המאפים מאחור. מעליה נייר שמנת, והשם Liron's Bakery חתוך ממנו כמו חלונות:
+   דרך האותיות התמונה בצבע מלא, ובענן רך סביבן היא נראית דהויה ונקייה.
+   טעינה: מסננת עוברת משמאל לימין ופותחת את החלונות.
+   גלילה: הנייר נפתח, התמונה ממלאת את המסך, ושלושת השירותים עולים עליה אחד אחרי השני.
+   בלי תנועה עם העכבר (שרה: יותר מדי דברים זזים).
+   למעלה: בחירת פונט, עובי, עוצמת התמונה ברקע, ותמונה.
+   ========================================================= */
+@font-face{font-family:"BlackDelights";src:url("fonts/latin/L-Black-Delights-Regular.ttf") format("truetype")}
+@font-face{font-family:"SilverGarden";src:url("fonts/latin/L-Silver-Garden-Bold.otf") format("opentype")}
+@font-face{font-family:"Laviossa";src:url("fonts/latin/L-Laviossa-Medium-Regular.otf") format("opentype")}
+@font-face{font-family:"Porsha";src:url("fonts/latin/L-Porsha-Richela-Regular.ttf") format("truetype")}
+@font-face{font-family:"Aglafe";src:url("fonts/latin/L-Aglafe-Regular.otf") format("opentype")}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Extra-light-Regular.woff2") format("woff2");font-weight:200}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Light-Regular.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Bold.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Light.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Regular.woff2") format("woff2");font-weight:400}
+:root{--ink:#3A2A22;--muted:#7A6A60;--acc:#8E3F35;--cream:#FBF8F3;--line:rgb(58 42 34 / .14);--paper:none}
+*{box-sizing:border-box}
+body{margin:0;background:#E9E5DF;color:var(--ink);font-family:"Plinko",system-ui,sans-serif;font-weight:300;font-size:16px;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:none}
+a{color:inherit;text-decoration:none}
+.doc{max-width:1200px;margin:0 auto;padding:44px max(20px,4vw) 18px;display:grid;gap:10px}
+.doc h1{font-weight:400;font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0}
+.doc p{margin:0;max-width:82ch;color:#5d544e}
+.tools{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:6px}
+.tools span{color:#6b625c;font-size:15px}
+.seg{display:inline-flex;flex-wrap:wrap;background:#fff;border-radius:22px;padding:3px;box-shadow:inset 0 0 0 1px var(--line)}
+.seg button{font:inherit;font-size:14px;border:0;background:none;border-radius:99px;padding:6px 14px;cursor:pointer;color:var(--ink)}
+.seg button.on{background:var(--acc);color:#fff}
+.tools .go{font:inherit;font-size:14px;border:0;border-radius:99px;padding:7px 16px;background:var(--ink);color:#fff;cursor:pointer}
+
+/* כפתורי "תווית": פינות חתוכות כמו המדבקה המרובעת של לירון, ומסגרת פנימית שנכנסת במעבר עכבר */
+.btn{--cut:9px;will-change:transform;transform:translateZ(0);position:relative;display:inline-flex;align-items:center;padding:15px 32px;font-family:"Nostela",sans-serif;font-size:17px;white-space:nowrap;cursor:pointer;
+  clip-path:polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut));transition:background .35s}
+.btn::after{content:"";position:absolute;inset:4px;border:.8px solid currentColor;opacity:.5;clip-path:inherit;transition:inset .35s,opacity .35s}
+.btn:hover::after{inset:6px;opacity:.75}
+.btn.p{background:var(--acc);color:#fff}.btn.p:hover{background:#7A342B}
+.btn.s{background:var(--cream);color:var(--acc);box-shadow:inset 0 0 0 1px rgb(142 63 53 / .5)}.btn.s:hover{background:#fff}
+/* קישור טקסט: קו כפול שמתמלא */
+.dl{display:inline-grid;gap:5px;color:var(--acc);font-family:"Nostela",sans-serif;font-weight:700;font-size:16px;justify-self:start}
+.dl i{display:block;height:4px;border-top:1px solid currentColor;border-bottom:1px solid currentColor;transform:scaleX(.35);transform-origin:right;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.svc:hover .dl i,.dl:hover i{transform:scaleX(1)}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.nav{position:absolute;z-index:30;inset:0 0 auto 0;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px clamp(20px,4vw,56px)}
+.nav .links{display:flex;gap:30px;font-size:15px}
+.nav .logo{width:56px;height:56px;border-radius:50%;object-fit:contain;background:#fff}
+.nav .cart{font-size:14px;padding:9px 18px;border-radius:99px;background:rgb(255 255 255 / .75)}
+.burger{display:none;width:40px;height:40px;border:0;background:none;padding:8px;color:inherit}
+.burger span{display:block;height:1.5px;background:currentColor;margin:6px 0}
+.h2t{font-family:"Nostela",sans-serif;line-height:1.02;margin:0;max-width:100%}
+.h2t b{display:block;font-weight:700;color:var(--ink)}
+.h2t i{display:block;font-style:normal;font-weight:200;color:var(--acc);font-size:.62em;margin-top:.18em}
+.mini{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.7}
+
+/* ---------- הפתיחה ---------- */
+.x3{position:relative;height:470vh;max-width:1440px;margin:0 auto}
+.pin{position:sticky;top:0;height:100vh;min-height:640px;overflow:hidden;background:#EFE6DA}
+.photo{position:absolute;inset:0;background:center/cover no-repeat;will-change:transform}
+.paper{position:absolute;inset:0;z-index:2;background:var(--paper),radial-gradient(80% 70% at 70% 30%,#FBF6EE 0%,#F3EADD 60%,#ECE0CF 100%);background-size:360px 360px,auto;
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;will-change:transform,opacity}
+.cover{position:absolute;inset:0;z-index:3;background:var(--paper),radial-gradient(80% 70% at 70% 30%,#FBF6EE 0%,#F3EADD 60%,#ECE0CF 100%);background-size:360px 360px,auto;
+  --w:-20%;-webkit-mask:linear-gradient(90deg,transparent var(--w),#000 calc(var(--w) + 10%));mask:linear-gradient(90deg,transparent var(--w),#000 calc(var(--w) + 10%));pointer-events:none}
+.sieve{position:absolute;inset:0;z-index:4;pointer-events:none;width:100%;height:100%}
+.front{position:absolute;inset:0;z-index:6;pointer-events:none}
+.front .copy{position:absolute;left:0;right:0;bottom:clamp(28px,5vh,60px);display:grid;justify-items:center;text-align:center;gap:14px;pointer-events:auto}
+.front .copy .h2t{font-size:clamp(28px,2.8vw,46px)}
+.front .copy .h2t b,.front .copy .h2t i{display:inline;margin:0}
+.front .copy .h2t i{font-size:.8em;margin-right:.3em}
+/* שורת השירותים: כמו תפריט ישן, בין שני קווים כפולים. כל שירות הוא קישור */
+.svcrow{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0;padding:9px 6px;margin:-2px 0 4px;position:relative;
+  border-top:3px double rgb(142 63 53 / .45);border-bottom:3px double rgb(142 63 53 / .45)}
+.svcrow a{position:relative;padding:0 clamp(12px,1.4vw,22px);font-family:"Nostela",sans-serif;font-weight:300;font-size:clamp(15px,1.25vw,19px);color:var(--ink);cursor:pointer;transition:color .3s}
+.svcrow a+a::before{content:"";position:absolute;right:-2.5px;top:50%;width:5px;height:5px;border:1px solid var(--acc);border-radius:50%;transform:translateY(-50%)}
+.svcrow a:hover{color:var(--acc)}
+/* חותמת מסתובבת במקום התוויות בצדדים; יושבת בפינה הפנויה ליד Liron's */
+/* החותמת של לירון: עיגול הדיו ואיור העוגה מהלוגו שלה, צבועים בבורדו. מוטה, לא מסתובבת */
+/* (מצויר פעם אחת לתמונה בקנבס, כדי שלא יכביד על האנימציה) */
+.stamp{position:absolute;width:clamp(120px,11vw,165px);aspect-ratio:1;left:var(--sx,70%);top:var(--sy,18%);transform:rotate(-7deg);opacity:.9}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* הסוף: שלושת השירותים על התמונה, אחד אחרי השני */
+.veil{position:absolute;inset:0;z-index:4;background:linear-gradient(rgb(40 26 18 / .05),rgb(40 26 18 / .35));opacity:0;pointer-events:none}
+.services{position:absolute;z-index:8;left:0;right:0;bottom:clamp(28px,7vh,80px);display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));align-items:stretch;gap:clamp(12px,1.6vw,24px);padding:0 clamp(16px,5vw,80px);pointer-events:none}
+/* ארבעת השירותים: תוויות זכוכית שקופות למחצה, עם פינות חתוכות ומסגרת פנימית דקה, כמו הכפתורים והמדבקה של לירון */
+.svc{--cut:14px;position:relative;display:grid;gap:8px;align-content:start;padding:clamp(22px,2.4vw,34px) clamp(20px,2.2vw,30px) clamp(20px,2.2vw,28px);
+  background:rgb(251 248 243 / .6);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);color:var(--ink);
+  clip-path:polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut));
+  opacity:0;will-change:transform,opacity,filter}
+.svc::before{content:"";position:absolute;inset:7px;border:.8px solid rgb(142 63 53 / .45);clip-path:inherit;pointer-events:none}
+.svc.on{pointer-events:auto}
+.svc .en{white-space:nowrap;overflow:hidden;font-family:"BlackDelights",serif;direction:ltr;text-align:right;font-size:clamp(34px,3vw,52px);line-height:.85;color:rgb(142 63 53 / .42);margin-bottom:-.3em}
+.svc h3{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(24px,2.1vw,34px);line-height:1.05;margin:0}
+.svc .rule{width:44px;height:4px;border-top:1px solid currentColor;border-bottom:1px solid currentColor;opacity:.45;margin:2px 0 2px}
+.svc p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.5}
+.svc{display:flex;flex-direction:column}
+.svc .dl{margin-top:auto;padding-top:8px;align-self:flex-start}
+/* האירועים: התווית הגדולה, בבורדו שקוף למחצה */
+.svc.big{background:rgb(142 63 53 / .78);color:#fff}
+.svc.big::before{border-color:rgb(251 248 243 / .55)}
+.svc.big .en{color:rgb(251 248 243 / .38);font-size:clamp(54px,5.2vw,90px)}
+.svc.big h3{font-size:clamp(28px,2.6vw,44px)}
+.svc.big p{color:rgb(251 248 243 / .88)}
+.svc.big .dl{color:#fff}
+.flour{position:absolute;inset:0;z-index:7;pointer-events:none;width:100%;height:100%;will-change:transform}
+.hint{position:absolute;z-index:9;left:clamp(20px,4vw,64px);bottom:22px;font-size:13px;color:var(--muted);letter-spacing:.1em}
+.after{max-width:1440px;margin:0 auto;padding:80px max(20px,6vw);background:var(--cream);text-align:center;color:var(--muted)}
+
+@media (max-width:900px){
+  .nav .links,.nav .cart{display:none}.burger{display:block}
+  .front .side,.front .side2{display:none}
+  .front .copy .h2t b,.front .copy .h2t i{display:block}
+  .services{grid-template-columns:1fr 1fr;gap:8px;bottom:16px;padding:0 12px}
+  .svc.big{grid-column:1/-1}
+  .svc:not(.big) p{display:none}
+  .svc.big .en{font-size:44px}.svc.big h3{font-size:26px}
+  .svcrow{border-width:3px 0;padding:6px 0}.svcrow a{font-size:14px;padding:2px 10px}
+  .svc{padding:16px 18px;gap:4px;border-radius:20px}
+  .svc .en{font-size:40px}.svc h3{font-size:24px}.svc p{font-size:14.5px}
+  .svc .go{margin-top:2px;font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){.flour,.sieve{display:none}}
+</style>
+<style>.doc{display:none!important}.label span,.label button{display:none!important}.label{margin-top:28px!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style></head>
+<body><a class="back" href="./">← כל האפשרויות</a>
+
+<header class="doc">
+  <h1>ה3 במקסימום</h1>
+  <p>השם חתוך מנייר השמנת כמו חלונות לתמונה של כל המאפים. בתוך האותיות התמונה בצבע מלא, ובענן רך סביבן היא דהויה ונקייה. כשגוללים, הנייר נפתח, התמונה ממלאת את המסך, ושלושת השירותים עולים עליה אחד אחרי השני. בלי תנועה עם העכבר.</p>
+  <div class="tools">
+    <span>פונט:</span>
+    <div class="seg" id="font"><button data-f="SilverGarden">Silver Garden</button><button data-f="Laviossa" class="on">Laviossa</button><button data-f="Porsha">Porsha Richela</button><button data-f="Aglafe">Aglafe</button><button data-f="BlackDelights">Black Delights</button></div>
+    <span>עובי:</span>
+    <div class="seg" id="thick"><button data-t="0">כמו הפונט</button><button data-t=".02" class="on">מעובה</button></div>
+    <span>התמונה ברקע:</span>
+    <div class="seg" id="cloud"><button data-c=".28">עדינה</button><button data-c=".42">בינונית</button><button data-c=".6" class="on">חזקה</button></div>
+    <span>תמונה:</span>
+    <div class="seg" id="pic"><button data-src="img/cutouts/art-table-real.png" class="on">שולחן (חדש)</button><button data-src="img/cutouts/art-table.png">שולחן (קודם)</button><button data-src="img/cutouts/art-stand-real.png" data-flip="1">מעמד (הפוך, לימין)</button><button data-src="img/cutouts/hero-spread.png">כל המאפים</button></div>
+    <span>כיתוב למטה:</span>
+    <div class="seg" id="line"><button data-b="עוגות, עוגיות ומגשי אירוח" data-i="בעבודת יד" class="on">1</button><button data-b="מגשי אירוח, עוגות ועוגיות" data-i="לאירוע ולשולחן של שבת">2</button><button data-b="המאפים של לירון" data-i="לאירוע שלכם, בעבודת יד">3</button></div>
+    <button class="go" id="replay">לנפות שוב</button>
+  </div>
+</header>
+
+<section class="x3" id="x3">
+  <div class="pin">
+    <div class="photo" id="photo"></div>
+    <div class="veil" id="veil"></div>
+    <div class="paper" id="paper"></div>
+    <div class="cover" id="cover"></div>
+    <canvas class="sieve" id="sieve"></canvas>
+    <div class="front" id="front">
+      <nav class="nav"><img class="logo" src="img/old-site/logo.png" alt="לירונ'ס"><div class="links"><a>אירוח ומגשים</a><a>מארזים</a><a>סדנאות</a><a>התפריט</a><a>הסיפור שלי</a></div><a class="cart">ההזמנה שלי · 0</a><button class="burger" aria-label="תפריט"><span></span><span></span><span></span></button></nav>
+      <img class="stamp" id="stamp" alt="" aria-hidden="true">
+      <div class="copy">
+        <h1 class="h2t" id="headline"><b>עוגות, עוגיות ומגשי אירוח</b> <i>בעבודת יד</i></h1>
+        <nav class="svcrow" aria-label="השירותים"><a>קייטרינג לאירועים</a><a>מגשי אירוח</a><a>מארזי חג ומתנה</a><a>סדנאות אפייה</a><a>עוגות ועוגיות</a></nav>
+        <div class="ctas"><a class="btn p">לתפריט ולהזמנה</a><a class="btn s">אירועים וקייטרינג</a></div>
+      </div>
+    </div>
+    <div class="services" id="services">
+      <a class="svc big"><div class="en">events</div><h3>קייטרינג ומגשי אירוח</h3><span class="rule"></span><p>שולחן קינוחים ומגשי אירוח חלביים ופרווה לברית, לבר מצווה, לשבע ברכות ולקידוש. ספרו לי כמה אורחים מגיעים, ואני ארכיב לכם את השולחן.</p><span class="dl">לתכנון אירוע<i></i></span></a>
+      <a class="svc"><div class="en">gifts</div><h3>מארזי חג ומתנה</h3><span class="rule"></span><p>מארזים בעבודת יד לחגים, למשפחה ולעסקים, או מארז שמרכיבים בעצמכם.</p><span class="dl">למארזים<i></i></span></a>
+      <a class="svc"><div class="en">workshops</div><h3>סדנאות אפייה</h3><span class="rule"></span><p>בקבוצות קטנות, סדנה פרטית לקבוצה וקייטנת קיץ. כרגע ברשימת המתנה.</p><span class="dl">לרשימת ההמתנה<i></i></span></a>
+      <a class="svc"><div class="en">bakes</div><h3>עוגות ועוגיות</h3><span class="rule"></span><p>עוגות בחושות, עוגיות ומאפים לשבת ולבית. חלבי ופרווה, גם ללא גלוטן.</p><span class="dl">לתפריט<i></i></span></a>
+    </div>
+    <canvas class="flour" id="flour"></canvas>
+    <div class="hint mini" id="hint">scroll ↓</div>
+  </div>
+</section>
+<div class="after">כאן מתחיל האזור הבא</div>
+
+<script>
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const ease=t=>1-Math.pow(1-t,3),clamp=(v,a,b)=>Math.min(Math.max(v,a),b);
+const $=id=>document.getElementById(id);
+let thick=.02,cloudStrength=.6,family='Laviossa',flip=1,nameBox={x:0,y:0,w:0,h:0},maskURL=null;
+
+// נייר עבודת יד
+(function(){
+  const S=360,c=document.createElement('canvas');c.width=c.height=S;const x=c.getContext('2d');
+  const d=x.createImageData(S,S);
+  for(let i=0;i<d.data.length;i+=4){d.data[i]=90;d.data[i+1]=64;d.data[i+2]=44;d.data[i+3]=Math.random()<.5?Math.random()*16:0}
+  x.putImageData(d,0,0);
+  for(let i=0;i<70;i++){const r=Math.random()<.85?.4+Math.random()*.9:1.2+Math.random()*1.4;
+    x.beginPath();x.ellipse(Math.random()*S,Math.random()*S,r,r*(.5+Math.random()*.6),Math.random()*3,0,6.3);
+    x.fillStyle=`rgba(${110+Math.random()*40|0},${78+Math.random()*30|0},${55+Math.random()*20|0},${.18+Math.random()*.32})`;x.fill()}
+  document.documentElement.style.setProperty('--paper',`url(${c.toDataURL()})`);
+})();
+
+// המסכה: השם נמחק מהנייר (חלונות מלאים), וסביבו ענן רך שבו הנייר שקוף בחלקו. בלי גרגרים, כדי שהתמונה תיראה נקייה
+function buildMask(){
+  const pin=document.querySelector('.pin'),W=pin.clientWidth,H=pin.clientHeight,dpr=Math.min(devicePixelRatio||1,2);
+  const c=document.createElement('canvas');c.width=W*dpr;c.height=H*dpr;const x=c.getContext('2d');x.scale(dpr,dpr);
+  x.fillStyle='#000';x.fillRect(0,0,W,H);
+  x.globalCompositeOperation='destination-out';
+  const mob=W<700,lines=["Liron's","Bakery"];
+  const cloud=document.createElement('canvas');cloud.width=W;cloud.height=H;const cx=cloud.getContext('2d');
+  const CX=W/2,CY=H*(mob?.36:.42),RX=W*(mob?.6:.44),RY=H*(mob?.3:.38);
+  // ענן מעיגולים רכים גדולים: קצה רך ולא אחיד, אבל בלי נקודות קטנות
+  for(let i=0;i<140;i++){
+    const a=Math.random()*6.283,d=Math.pow(Math.random(),.8);
+    const px=CX+Math.cos(a)*RX*d,py=CY+Math.sin(a)*RY*d,r=(1-d*.5)*Math.min(W,H)*(.14+Math.random()*.16);
+    const g=cx.createRadialGradient(px,py,0,px,py,r);g.addColorStop(0,'rgba(0,0,0,.22)');g.addColorStop(1,'rgba(0,0,0,0)');
+    cx.fillStyle=g;cx.fillRect(px-r,py-r,r*2,r*2);
+  }
+  x.globalAlpha=cloudStrength;x.drawImage(cloud,0,0,W,H);x.globalAlpha=1;
+  x.font=`100px ${family}`;
+  const ind=mob?.35:.9,w1=x.measureText(lines[0]).width,w2=x.measureText(lines[1]).width,wide=Math.max(w1,w2+ind*100);
+  const fs=Math.min((W*(mob?.92:.82))/wide*100,(H*.54)/(2*.84));
+  x.font=`${fs}px ${family}`;x.textBaseline='alphabetic';
+  const lh=fs*.84,top=H*(mob?.18:.14),L1=x.measureText(lines[0]).width,L2=x.measureText(lines[1]).width;
+  const bw=Math.max(L1,L2+fs*ind),x1=(W-bw)/2,x2=x1+fs*ind;
+  const pos=[[x1,top+fs*.8],[x2,top+fs*.8+lh]];
+  x.lineJoin='round';x.lineWidth=fs*thick;x.strokeStyle='#000';x.fillStyle='#000';
+  lines.forEach((l,i)=>{x.fillText(l,pos[i][0],pos[i][1]);if(thick>0)x.strokeText(l,pos[i][0],pos[i][1])});
+  nameBox={x:x1,y:top,w:bw,h:lh*2};
+  // החותמת: בפינה הפנויה מימין ל-Liron's, מעל הסוף של Bakery
+  const st=$('stamp'),sw=st.offsetWidth;
+  if(mob){st.style.setProperty('--sx',(W-sw-16)+'px');st.style.setProperty('--sy',(top+lh*2+fs*.2)+'px')}
+  else{st.style.setProperty('--sx',Math.min(x1+L1+fs*.3,W-sw-16)+'px');st.style.setProperty('--sy',(top+fs*.05)+'px')}
+  const p=$('paper');
+  p.style.transformOrigin=`${x1+x.measureText("Lir").width+x.measureText("o").width*.5}px ${top+fs*.55}px`;
+  // blob קצר במקום data URL ארוך, כדי שעדכון הסגנון בכל פריים יישאר קל
+  c.toBlob(b=>{if(maskURL)URL.revokeObjectURL(maskURL);maskURL=URL.createObjectURL(b);p.style.webkitMaskImage=`url(${maskURL})`;p.style.maskImage=`url(${maskURL})`});
+}
+
+// החותמת של לירון: עיגול הדיו ואיור העוגה מהלוגו, צבועים בבורדו, והשם. מצויר פעם אחת לתמונה
+function loadImg(src){return new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=src})}
+function tint(img,w,h,color){const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.drawImage(img,0,0,w,h);x.globalCompositeOperation='source-in';x.fillStyle=color;x.fillRect(0,0,w,h);return c}
+async function buildStamp(){
+  const [ring,cake]=await Promise.all([loadImg('img/old-site/ink-ring.png'),loadImg('img/old-site/cake-engraving.png')]);
+  const S=420,c=document.createElement('canvas');c.width=c.height=S;const x=c.getContext('2d'),col='#8E3F35';
+  x.drawImage(tint(ring,S,S,col),0,0);
+  const cw=S*.34,ch=cw*395/470;x.drawImage(tint(cake,cw*2,ch*2,col),(S-cw)/2,S*.2,cw,ch);
+  x.fillStyle=col;x.textAlign='center';
+  x.font=`${S*.17}px BlackDelights`;x.fillText("Liron's",S/2,S*.66);
+  x.font=`400 ${S*.032}px Plinko`;if('letterSpacing' in x)x.letterSpacing=`${S*.008}px`;x.fillText('HOMEMADE BAKERSHOP',S/2,S*.75);
+  c.toBlob(b=>{$('stamp').src=URL.createObjectURL(b)});
+}
+
+function seg(id,fn){document.querySelectorAll(`#${id} button`).forEach(b=>b.onclick=()=>{document.querySelectorAll(`#${id} button`).forEach(x=>x.classList.remove('on'));b.classList.add('on');fn(b)})}
+function setPic(src,f){$('photo').style.backgroundImage=`url("${src}")`;flip=f?-1:1}
+setPic("img/cutouts/art-table-real.png");
+seg('pic',b=>setPic(b.dataset.src,b.dataset.flip));
+seg('line',b=>{$('headline').innerHTML=`<b>${b.dataset.b}</b> <i>${b.dataset.i}</i>`});
+seg('thick',b=>{thick=+b.dataset.t;buildMask()});
+seg('cloud',b=>{cloudStrength=+b.dataset.c;buildMask()});
+seg('font',b=>{family=b.dataset.f;document.fonts.load(`100px ${family}`).then(buildMask)});
+
+// טעינה: מסננת שעוברת משמאל לימין ופותחת את החלונות, עם סוכר שנופל
+const sv=$('sieve'),sx=sv.getContext('2d');let SW,SH,grains=[],sweep=null;
+function sizeSieve(){const r=sv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);SW=r.width;SH=r.height;sv.width=SW*d;sv.height=SH*d;sx.setTransform(d,0,0,d,0,0)}
+function play(){if(still){$('cover').style.opacity=0;return}$('cover').style.opacity=1;sweep={t0:performance.now(),dur:2800};grains=[]}
+$('replay').onclick=()=>{scrollTo({top:$('x3').offsetTop,behavior:'instant'});play()};
+
+// גלילה: הנייר נפתח, התמונה ממלאת את המסך, ושלושת השירותים עולים אחד אחרי השני
+const cards=[...document.querySelectorAll('.svc')];
+// גלילה רכה (smooth scroll): הגלגלת לא קופצת, אלא מחליקה בהדרגה. בנגיעה ובהעדפת "פחות תנועה" משאירים את הגלילה הרגילה
+(function(){
+  if(still||matchMedia('(pointer:coarse)').matches)return;
+  let target=scrollY,cur=scrollY,running=false,mine=false;
+  const max=()=>document.documentElement.scrollHeight-innerHeight;
+  addEventListener('wheel',e=>{
+    if(e.ctrlKey)return;e.preventDefault();
+    target=clamp(target+e.deltaY*(e.deltaMode===1?40:1),0,max());
+    if(!running){running=true;requestAnimationFrame(step)}
+  },{passive:false});
+  function step(){
+    cur+=(target-cur)*.085;
+    if(Math.abs(target-cur)<.5)cur=target;
+    mine=true;scrollTo(0,cur);
+    if(cur!==target)requestAnimationFrame(step);else running=false;
+  }
+  // גלילה במקלדת או בפס הגלילה: מסנכרנים, כדי שהגלגלת תמשיך מהמקום הנכון
+  addEventListener('scroll',()=>{if(mine){mine=false;return}if(!running){target=cur=scrollY}},{passive:true});
+})();
+
+function frame(now){
+  requestAnimationFrame(frame);
+  const s=$('x3'),pin=s.querySelector('.pin'),r=s.getBoundingClientRect(),total=s.offsetHeight-pin.offsetHeight;
+  const p=still?0:clamp(-r.top/total,0,1);
+  // מעדכנים את השכבות רק כשהגלילה (או התמונה) השתנתה, כדי לא לצבוע מחדש כל פריים
+  const key=p.toFixed(4)+flip;
+  if(key!==frame.last){frame.last=key;applyScroll(p)}
+  stepSieve(now);
+}
+function applyScroll(p){
+  const z=ease(clamp(p/.42,0,1));
+  $('paper').style.transform=`scale(${1+z*z*14})`;
+  $('paper').style.opacity=1-clamp((p-.2)/.2,0,1);
+  $('front').style.opacity=1-clamp(p/.1,0,1);
+  $('hint').style.opacity=1-clamp(p/.06,0,1);
+  $('photo').style.transform=`scale(${(1.12-z*.1)*flip},${1.12-z*.1})`;
+  $('veil').style.opacity=clamp((p-.4)/.15,0,1);
+  cards.forEach((c,i)=>{const k=ease(clamp((p-(.46+i*.1))/.12,0,1));c.style.opacity=k;c.style.transform=`translateY(${(1-k)*70}px) scale(${.96+k*.04})`;c.style.filter=k<1?`blur(${(1-k)*6}px)`:'none';c.classList.toggle('on',k>.5)});
+}
+function stepSieve(now){
+  if(!sweep&&!grains.length){if(stepSieve.dirty){sx.clearRect(0,0,SW,SH);stepSieve.dirty=false}return}
+  stepSieve.dirty=true;
+  if(sweep){
+    const q=clamp((now-sweep.t0)/sweep.dur,0,1),e=ease(q),w=-20+e*130;
+    $('cover').style.setProperty('--w',w+'%');
+    const hx=(w+5)/100*SW;
+    if(q<1)for(let i=0;i<16;i++)grains.push({x:hx+(Math.random()-.5)*120,y:nameBox.y-30+Math.random()*30,vy:1.2+Math.random()*2.4,vx:(Math.random()-.5)*.7,r:.3+Math.pow(Math.random(),2)*1.4,a:.55+Math.random()*.45});
+    if(q>=1&&!grains.length){sweep=null;$('cover').style.opacity=0}
+  }
+  sx.clearRect(0,0,SW,SH);
+  for(const g of grains){g.y+=g.vy;g.x+=g.vx;g.a*=.993;sx.beginPath();sx.arc(g.x,g.y,g.r,0,6.3);sx.fillStyle=`rgba(255,255,255,${g.a})`;sx.fill()}
+  grains=grains.filter(g=>g.y<SH&&g.a>.05);
+}
+
+// קמח דק באוויר, מעט ושקט (בלי תגובה לעכבר)
+const fc=$('flour'),fx=fc.getContext('2d');let FW,FH,fl=[];
+function sizeFlour(){const r=fc.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);FW=r.width;FH=r.height;fc.width=FW*d;fc.height=FH*d;fx.setTransform(d,0,0,d,0,0)}
+function mk(top){return{x:Math.random()*FW,y:top?-6:Math.random()*FH,r:.25+Math.pow(Math.random(),2.2)*1.05,vy:.12+Math.random()*.38,ph:Math.random()*6.28,sp:.004+Math.random()*.012,a:.4+Math.random()*.5}}
+function flourTick(){requestAnimationFrame(flourTick);if(still)return;fx.clearRect(0,0,FW,FH);
+  for(const p of fl){p.ph+=p.sp;p.x+=Math.sin(p.ph)*.18;p.y+=p.vy;if(p.y>FH+8)Object.assign(p,mk(true));
+    fx.beginPath();fx.arc(p.x,p.y,p.r,0,6.283);fx.fillStyle=`rgba(255,255,255,${p.a})`;fx.fill()}}
+
+function layout(){buildMask();sizeSieve();sizeFlour();if(!fl.length)for(let i=0;i<110;i++)fl.push(mk(false))}
+Promise.all([document.fonts.load(`100px ${family}`),document.fonts.load('100px BlackDelights'),document.fonts.load('400 20px Plinko')]).then(()=>{buildStamp();layout();play();requestAnimationFrame(frame);flourTick()});
+addEventListener('resize',layout);
+</script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>לירונ'ס · פתיחות בהשראת מאיר בן דוד</title>
+<style>
+/* =========================================================
+   לירונ'ס · פתיחות בהשראת סטודיו מאיר
+   מה לקחנו ממאיר: מילה ענקית ושקופה מאחורי כותרת עבה,
+   מוצר שחוצה את הטקסט, חותמת מסתובבת, קווי גריד דקים,
+   ושוליים קרועים. ומה נשאר משירה: הקשת והכותרת בשני משקלים.
+   בכל פתיחה יש משהו חי במסך: סוכר שנופל, מגש שמסתובב, שולחן לגילוי.
+   ========================================================= */
+@font-face{font-family:"BlackDelights";src:url("fonts/latin/L-Black-Delights-Regular.ttf") format("truetype")}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Extra-light-Regular.woff2") format("woff2");font-weight:200}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Light-Regular.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Bold.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Light.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Regular.woff2") format("woff2");font-weight:400}
+:root{--ink:#3A2A22;--muted:#7A6A60;--acc:#8E3F35;--flour:#F8F3EC;--cream:#FBF8F3;--line:rgb(58 42 34 / .14)}
+*{box-sizing:border-box}
+body{margin:0;background:#E9E5DF;color:var(--ink);font-family:"Plinko",system-ui,sans-serif;font-weight:300;font-size:16px;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:none}
+a{color:inherit;text-decoration:none}
+.doc{max-width:1200px;margin:0 auto;padding:52px max(20px,4vw) 6px;display:grid;gap:10px}
+.doc h1{font-weight:400;font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0}
+.doc p{margin:0;max-width:80ch;color:#5d544e}
+.doc ul{margin:4px 0 0;padding-inline-start:20px;color:#5d544e;max-width:80ch}
+.label{max-width:1200px;margin:56px auto 14px;padding:0 max(20px,4vw);display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+.label b{font-weight:400;font-size:22px}
+.label span{color:#6b625c}
+.sk{position:relative;margin:0 auto;max-width:1440px;overflow:hidden;background:linear-gradient(#FBF8F3,#F3ECE2)}
+
+.btn{display:inline-flex;align-items:center;border-radius:99px;padding:14px 28px;font-size:16px;font-weight:400;white-space:nowrap}
+.btn.p{background:var(--acc);color:#fff}
+.btn.s{background:rgb(255 255 255 / .75);box-shadow:inset 0 0 0 1px var(--line)}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+
+.nav{position:absolute;z-index:20;inset:0 0 auto 0;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px clamp(20px,4vw,56px)}
+.nav .links{display:flex;gap:30px;font-size:15px}
+.nav .logo{width:56px;height:56px;border-radius:50%;object-fit:contain;background:#fff}
+.nav .cart{font-size:14px;padding:9px 18px;border-radius:99px;background:rgb(255 255 255 / .75)}
+.burger{display:none;width:40px;height:40px;border:0;background:none;padding:8px;color:inherit}
+.burger span{display:block;height:1.5px;background:currentColor;margin:6px 0}
+
+.h2t{font-family:"Nostela",sans-serif;line-height:1.02;margin:0;max-width:100%}
+.h2t b{display:block;font-weight:700;color:var(--ink)}
+.h2t i{display:block;font-style:normal;font-weight:200;color:var(--acc);font-size:.62em;margin-top:.18em}
+.sub{margin:0;max-width:40ch;color:var(--muted);font-size:17px}
+
+/* מילה ענקית ושקופה (כמו "Strategy" ו-"Premium Wine" אצל מאיר) */
+.script{font-family:"BlackDelights",serif;direction:ltr;white-space:nowrap;line-height:.9;color:rgb(142 63 53 / .5);pointer-events:none}
+
+/* חותמת מסתובבת */
+.stamp{position:absolute;z-index:8;width:150px;height:150px}
+.stamp .disc{position:absolute;inset:22px;border-radius:50%;background:var(--acc);display:grid;place-items:center;color:#fff;font-family:"BlackDelights",serif;font-size:22px;line-height:1;text-align:center}
+.stamp svg{direction:ltr;unicode-bidi:isolate;position:absolute;inset:0;width:100%;height:100%;animation:spin 24s linear infinite;overflow:visible}
+.stamp svg text{font-family:"Plinko",sans-serif;font-size:11px;letter-spacing:.28em;fill:var(--acc);text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* צלחת עגולה חתוכה מתוך תמונה. --w,--cx,--cy,--r = התמונה המקורית בפיקסלים */
+.plate{--d:420px;position:relative;width:var(--d);height:var(--d);border-radius:50%;overflow:hidden;box-shadow:0 40px 70px -30px rgb(60 40 25 / .5)}
+.plate img{position:absolute;width:calc(var(--d) * var(--w) / (2 * var(--r)));left:calc(var(--d) / 2 - var(--d) * var(--cx) / (2 * var(--r)));top:calc(var(--d) / 2 - var(--d) * var(--cy) / (2 * var(--r)))}
+.p-tray{--w:1536;--cx:567;--cy:521;--r:452}
+.p-cookies{--w:1536;--cx:762;--cy:708;--r:232}
+.p-cake{--w:1536;--cx:248;--cy:478;--r:238}
+.p-sandwich{--w:1536;--cx:1160;--cy:772;--r:160}
+
+/* אבקת סוכר שנופלת (קנבס) */
+.sugar{position:absolute;inset:0;z-index:9;pointer-events:none;width:100%;height:100%}
+
+/* שורת קטגוריות בעיגולים (כמו האייקונים האדומים בדלתון) */
+.icons{position:relative;z-index:6;display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(10px,2vw,30px);max-width:1180px;margin:0 auto;padding:30px clamp(20px,5vw,80px) 70px}
+.ic{display:grid;justify-items:center;gap:12px;text-align:center}
+.ic .c{width:clamp(84px,7.4vw,108px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgb(58 42 34 / .45);background:rgb(255 255 255 / .55);transition:background .4s,transform .5s cubic-bezier(.2,.7,.2,1)}
+.ic:hover .c{background:var(--acc);transform:translateY(-4px)}
+.ic:hover svg{stroke:#fff}
+.ic svg{width:48%;height:48%;stroke:var(--ink);fill:none;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;transition:stroke .4s}
+.ic span{font-family:"Nostela",sans-serif;font-weight:300;font-size:clamp(16px,1.3vw,20px)}
+
+/* ---------- מ1 · המגש חוצה את הכותרת ---------- */
+.m1{background:var(--cream)}
+/* קווי גריד אנכיים דקים, כמו ברקע של סטודיו מאיר */
+.m1 .grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(90deg,rgb(58 42 34 / .07) 1px,transparent 1px);background-size:calc(100% / 6) 100%;pointer-events:none}
+.m1 .stage{position:relative;min-height:min(900px,100vh);padding:128px clamp(20px,5vw,80px) 0;display:grid;justify-items:center;align-content:start;text-align:center}
+.m1 .script{position:absolute;z-index:1;top:96px;left:0;right:0;text-align:center;font-size:clamp(110px,15.5vw,250px)}
+.m1 .copy{position:relative;z-index:4;display:grid;justify-items:center;gap:18px;margin-top:clamp(60px,7vw,110px)}
+.m1 .h2t{font-size:clamp(46px,5.4vw,88px)}
+.m1 .tray-wrap{position:relative;z-index:3;margin-top:-6px;height:clamp(300px,30vw,440px);width:100%;display:grid;justify-items:center}
+.m1 .plate.p-tray{--d:clamp(460px,46vw,680px);will-change:transform}
+.m1 .float{position:absolute;z-index:5;will-change:transform;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.m1 .f1{right:5%;top:46%}
+.m1 .f1 .plate{--d:clamp(150px,14vw,210px)}
+.m1 .f2{left:6%;top:60%}
+.m1 .f2 .plate{--d:clamp(130px,12vw,180px)}
+.m1 .stamp{left:calc(50% + clamp(170px,17vw,250px));top:clamp(40px,4vw,60px);z-index:6}
+.m1 .icons{background:var(--cream);box-shadow:0 -1px 0 var(--line);max-width:none;padding-top:34px}
+
+/* ---------- מ2 · קשת, סוכר ושוליים קרועים ---------- */
+.m2 .stage{position:relative;min-height:min(820px,96vh);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;padding:120px clamp(20px,5vw,80px) 90px}
+.m2 .copy{position:relative;z-index:6;display:grid;gap:22px;justify-items:start}
+.m2 .copy .script{font-size:clamp(70px,7.6vw,130px);margin:0 0 -.42em -.04em;justify-self:start}
+.m2 .h2t{font-size:clamp(44px,5vw,84px)}
+.m2 .archbox{position:relative;justify-self:center;width:min(500px,38vw);aspect-ratio:3/4}
+.m2 .arch{position:absolute;inset:0;border-radius:999px 999px 0 0;overflow:hidden;box-shadow:0 30px 60px -30px rgb(60 40 25 / .45)}
+.m2 .arch img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.m2 .arch .sugar{z-index:2}
+.m2 .stamp{right:-70px;bottom:14%}
+.m2 .bigname{position:absolute;z-index:1;left:0;right:0;bottom:70px;text-align:center;font-size:clamp(110px,15vw,240px);color:rgb(142 63 53 / .1)}
+/* פס בורדו עם שוליים קרועים וטקסט שרץ */
+.m2 .band{position:relative;z-index:7;background:var(--acc);color:#fff;margin-top:-34px;padding:26px 0 24px;overflow:hidden}
+.m2 .band::before{content:"";position:absolute;left:0;right:0;top:-1px;height:22px;background:var(--cream);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 22' preserveAspectRatio='none'%3E%3Cpath d='M0 0h240v10l-8 5-9-4-7 7-10-6-8 3-9-5-6 6-11-4-7 5-9-7-8 4-10-3-7 7-9-5-8 3-10-6-6 5-9-2-8 6-10-5-7 4-9-6-8 5-10-3-6 6-9-5-8 4-10-6-7 4-9-3-8 5-10-4-7 6-9-5-6 3-9-6-5 4z'/%3E%3C/svg%3E") 0 0/240px 22px repeat-x;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 22' preserveAspectRatio='none'%3E%3Cpath d='M0 0h240v10l-8 5-9-4-7 7-10-6-8 3-9-5-6 6-11-4-7 5-9-7-8 4-10-3-7 7-9-5-8 3-10-6-6 5-9-2-8 6-10-5-7 4-9-6-8 5-10-3-6 6-9-5-8 4-10-6-7 4-9-3-8 5-10-4-7 6-9-5-6 3-9-6-5 4z'/%3E%3C/svg%3E") 0 0/240px 22px repeat-x}
+.m2 .track{display:flex;gap:0;width:max-content;animation:run 38s linear infinite;font-family:"Nostela",sans-serif;font-weight:300;font-size:clamp(24px,2.6vw,38px);white-space:nowrap}
+.m2 .track span{padding:0 22px}
+.m2 .track em{font-style:normal;font-family:"BlackDelights",serif;opacity:.65;padding:0 6px}
+@keyframes run{to{transform:translateX(50%)}}
+
+/* ---------- מ3 · שולחן האירוח, רחפי וגלי ---------- */
+.m3 .stage{position:relative;aspect-ratio:3/2;min-height:620px;max-height:980px}
+.m3 .table{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.m3 .veil{position:absolute;inset:0;background:radial-gradient(60% 46% at 52% 20%,rgb(251 248 243 / .92),rgb(251 248 243 / .55) 55%,transparent 80%)}
+.m3 .copy{position:absolute;z-index:5;top:clamp(96px,10vw,140px);left:50%;transform:translateX(-50%);width:min(760px,90%);display:grid;justify-items:center;text-align:center;gap:16px}
+.m3 .copy .script{font-size:clamp(84px,9.4vw,160px);margin-bottom:-.5em;color:rgb(142 63 53 / .32)}
+.m3 .h2t{font-size:clamp(40px,4.4vw,74px)}
+/* נקודות על השולחן: כל מוצר הוא כניסה לשירות */
+.hs{position:absolute;z-index:6;transform:translate(-50%,-50%)}
+.hs button{width:34px;height:34px;border-radius:50%;border:0;background:#fff;color:var(--acc);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgb(60 40 25 / .3);position:relative}
+.hs button::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1.5px solid #fff;animation:ping 2.2s ease-out infinite}
+@keyframes ping{from{transform:scale(.7);opacity:1}to{transform:scale(1.5);opacity:0}}
+.hs .tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translate(-50%,8px);background:#fff;border-radius:16px;padding:12px 16px 12px;min-width:190px;text-align:right;box-shadow:0 18px 40px -16px rgb(60 40 25 / .45);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.hs .tip b{display:block;font-family:"Nostela",sans-serif;font-weight:700;font-size:19px;line-height:1.2}
+.hs .tip small{display:block;color:var(--muted);font-size:14px;line-height:1.4;margin-top:4px}
+.hs .tip u{text-decoration:none;color:var(--acc);font-size:14px;display:inline-block;margin-top:6px}
+.hs:hover .tip,.hs.on .tip{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.m3 .hint{position:absolute;z-index:6;left:50%;bottom:26px;transform:translateX(-50%);background:rgb(255 255 255 / .85);border-radius:99px;padding:8px 18px;font-size:14px;color:var(--muted)}
+.m3 .stamp{left:4%;top:16%}
+
+@media (max-width:900px){
+  .nav .links,.nav .cart{display:none}.burger{display:block}
+  .icons{grid-template-columns:repeat(3,1fr)}
+  .m1 .float{display:none}
+  .m1 .stamp{left:auto;right:4%;top:-40px;width:110px;height:110px}
+  .m1 .stamp .disc{inset:16px;font-size:16px}
+  .m2 .stage{grid-template-columns:1fr;padding-top:110px}
+  .m2 .archbox{width:76vw;order:-1}
+  .m2 .stamp{right:-20px;width:110px;height:110px}
+  .m2 .stamp .disc{inset:16px;font-size:16px}
+  .m3 .stage{aspect-ratio:auto;height:760px}
+  .m3 .stamp{display:none}
+  .m1 .stage,.m3 .copy{grid-template-columns:minmax(0,1fr)}.m3 .copy .script{font-size:64px}.m1 .copy{width:100%}.m1 .h2t,.m3 .h2t{font-size:40px}.ctas{justify-content:center;max-width:100%}.m2 .ctas{justify-content:flex-start}
+  .hs .tip{min-width:160px}
+}
+@media (prefers-reduced-motion:reduce){.stamp svg,.m2 .track,.hs button::after{animation:none}.sugar{display:none}}
+</style>
+<style>.doc{display:none!important}.label span,.label button{display:none!important}.label{margin-top:28px!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}.sk.m2,.label:has(+ .sk.m2){display:none!important}</style></head>
+<body><a class="back" href="./">← כל האפשרויות</a>
+
+<header class="doc">
+  <h1>פתיחות בהשראת מאיר בן דוד</h1>
+  <p>מה עושה את המסכים של מאיר מעניינים, ומה לקחנו לכאן:</p>
+  <ul>
+    <li>מילה ענקית ושקופה בכתב יד מאחורי כותרת עבה וקצרה ("Strategy", "Premium Wine").</li>
+    <li>המוצר חוצה את הטקסט: הבקבוק או הסטייק יושבים על הכותרת ולא לידה.</li>
+    <li>חותמת עגולה שמסתובבת, קווי גריד דקים ברקע, ושוליים קרועים בין אזורים.</li>
+    <li>הקטגוריות כעיגולים עם אייקון קו, ממש מתחת לפתיחה.</li>
+  </ul>
+  <p>ומה הוספתי בשביל "משהו מעניין במסך": בכל פתיחה יש דבר אחד חי. סוכר שנופל, מגש שמסתובב כשגוללים, או שולחן שאפשר לגלות. גללי וזוזי עם העכבר.</p>
+</header>
+
+
+<!-- ============ מ2 ============ -->
+<div class="label"><b>מ2 · הקשת, הסוכר והשוליים הקרועים</b><span>הכיוון של שירה שאהבת, עם הכלים של מאיר: מילה שקופה מעל הכותרת (כמו Premium Wine), סוכר שנופל בתוך הקשת ונזרק הצידה כשמעבירים עכבר, ופס בורדו קרוע עם השירותים רצים.</span></div>
+<section class="sk m2" id="m2">
+  <div data-tpl="nav"></div>
+  <div class="stage">
+    <div class="bigname script">Liron's Bakery</div>
+    <div class="copy">
+      <div class="script">Handmade</div>
+      <h1 class="h2t"><b>עוגות, עוגיות<br>ומגשי אירוח</b><i>לאירועים, בעבודת יד · חלבי ופרווה</i></h1>
+      <p class="sub">מאפים ביתיים מהמטבח של לירון, למגש שבת, לחג ולאירוע שלכם.</p>
+      <div class="ctas"><a class="btn p">לתפריט ולהזמנה</a><a class="btn s">מגשי אירוח לאירוע</a></div>
+    </div>
+    <div class="archbox">
+      <div class="arch"><img src="img/cutouts/art-sugar-loaf.png" alt="ניפוי אבקת סוכר על עוגה"><canvas class="sugar" data-sugar="240" data-push="1"></canvas></div>
+      <div data-tpl="stamp"></div>
+    </div>
+  </div>
+  <div class="band"><div class="track" id="m2track"></div></div>
+  <div data-tpl="icons"></div>
+</section>
+
+<!-- ============ מ3 ============ -->
+<div class="label"><b>מ3 · שולחן האירוח, רחפי וגלי</b><span>כמו התמונה המלאה של סמי קנפו, אבל השולחן חי: כל מוצר על השולחן הוא נקודה. מרחפים ומקבלים את השם, משפט קצר וכניסה לשירות. הפתיחה עצמה היא התפריט.</span></div>
+<section class="sk m3" id="m3">
+  <div data-tpl="nav"></div>
+  <div class="stage">
+    <img class="table" src="img/cutouts/art-table.png" alt="שולחן אירוח עם מאפים של לירונ'ס">
+    <div class="veil"></div>
+    <div class="copy">
+      <div class="script">Liron's Bakery</div>
+      <h1 class="h2t"><b>עוגות, עוגיות ומגשי אירוח</b><i>לאירועים, בעבודת יד · חלבי ופרווה</i></h1>
+      <div class="ctas"><a class="btn p">לתפריט ולהזמנה</a><a class="btn s">מגשי אירוח לאירוע</a></div>
+    </div>
+    <div class="hs" style="left:16%;top:46%"><button aria-label="עוגות בחושות">+</button><div class="tip"><b>עוגות בחושות</b><small>שיש, תפוזים ושמרים, לשבת ולחג</small><u>לעוגות ←</u></div></div>
+    <div class="hs" style="left:49%;top:70%"><button aria-label="עוגיות מגולגלות">+</button><div class="tip"><b>עוגיות מגולגלות</b><small>הקלאסיקה של לירון, בקופסה או על מגש</small><u>לעוגיות ←</u></div></div>
+    <div class="hs" style="left:76%;top:77%"><button aria-label="מגשי אירוח">+</button><div class="tip"><b>מגשי אירוח</b><small>מגש מעורב לאירוע, בהזמנה מראש</small><u>למגשים ←</u></div></div>
+    <div class="hs" style="left:83%;top:44%"><button aria-label="מארזים">+</button><div class="tip"><b>מארזים ומתנות</b><small>מארזי חג ומתנה, עם פתק אישי</small><u>למארזים ←</u></div></div>
+    <div class="hint">רחפו על השולחן ✦</div>
+    <div data-tpl="stamp"></div>
+  </div>
+</section>
+
+<div style="height:80px"></div>
+
+<template id="stampTpl"><div class="stamp"><svg viewBox="0 0 150 150" aria-hidden="true"><defs><path id="PATHID" d="M75,75 m-63,0 a63,63 0 1,1 126,0 a63,63 0 1,1 -126,0"/></defs><text><textPath href="#PATHID">handmade · dairy &amp; parve · since 2025 ·</textPath></text></svg><div class="disc">Liron's</div></div></template>
+<template id="iconsTpl"><div class="icons">
+  <a class="ic"><div class="c"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="30" rx="18" ry="6"/><path d="M6 30v2c0 3.3 8 6 18 6s18-2.7 18-6v-2"/><path d="M14 27c0-3 2-5 4-5s3 2 3 4M23 26c0-4 2.5-6 5-6s4 2.5 4 6"/></svg></div><span>אירוח ומגשים</span></a>
+  <a class="ic"><div class="c"><svg viewBox="0 0 48 48"><rect x="9" y="20" width="30" height="20" rx="1.5"/><path d="M7 14h34v6H7zM24 14v26"/><path d="M24 14c-3-6-11-6-9 0M24 14c3-6 11-6 9 0"/></svg></div><span>מארזים</span></a>
+  <a class="ic"><div class="c"><svg viewBox="0 0 48 48"><path d="M10 38c4-10 6-18 14-22"/><path d="M24 16l5-5 4 4-5 5"/><ellipse cx="17" cy="33" rx="9" ry="4"/><path d="M33 26c3 0 6 2 6 5"/></svg></div><span>סדנאות אפייה</span></a>
+  <a class="ic"><div class="c"><svg viewBox="0 0 48 48"><path d="M8 32l16-14 16 14z"/><path d="M8 32v6h32v-6"/><path d="M18 24l-2-6M24 19v-7M30 24l2-6"/></svg></div><span>עוגות ועוגיות</span></a>
+  <a class="ic"><div class="c"><svg viewBox="0 0 48 48"><path d="M24 40V14"/><path d="M24 22c-6-1-8-5-8-9 5 0 8 3 8 9zM24 22c6-1 8-5 8-9-5 0-8 3-8 9zM24 31c-6-1-8-5-8-9 5 0 8 3 8 9zM24 31c6-1 8-5 8-9-5 0-8 3-8 9z"/><path d="M10 10l28 28"/></svg></div><span>ללא גלוטן</span></a>
+  <a class="ic"><div class="c"><svg viewBox="0 0 48 48"><path d="M6 30V16h22v14"/><path d="M28 21h8l6 6v3h-14"/><circle cx="14" cy="33" r="3.5"/><circle cx="35" cy="33" r="3.5"/></svg></div><span>משלוחים</span></a>
+</div></template>
+<template id="navTpl"><nav class="nav"><img class="logo" src="img/old-site/logo.png" alt="לירונ'ס"><div class="links"><a>אירוח ומגשים</a><a>מארזים</a><a>סדנאות</a><a>התפריט</a><a>הסיפור שלי</a></div><a class="cart">ההזמנה שלי · 0</a><button class="burger" aria-label="תפריט"><span></span><span></span><span></span></button></nav></template>
+
+<script>
+// שכפול התבניות (תפריט, חותמת, אייקונים) לכל פתיחה
+let n=0;
+document.querySelectorAll('[data-tpl]').forEach(slot=>{
+  const t=document.getElementById(slot.dataset.tpl+'Tpl').content.cloneNode(true);
+  const p=t.querySelector('path[id]');
+  if(p){const id='sp'+(n++);p.id=id;t.querySelector('textPath').setAttribute('href','#'+id)}
+  slot.replaceWith(t);
+});
+
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+// רצועת השירותים שרצה בפס הקרוע
+const items=['מגשי אירוח','עוגות בחושות','עוגיות מגולגלות','מארזי חג','ללא גלוטן','סדנאות אפייה'];
+const half=items.map(t=>`<span>${t}</span><em>✦</em>`).join('');
+document.getElementById('m2track').innerHTML=half+half+half+half;
+
+
+// אבקת סוכר: חלקיקים קטנים שנופלים לאט; עם data-push העכבר מפזר אותם
+document.querySelectorAll('canvas.sugar').forEach(cv=>{
+  if(still)return;
+  const ctx=cv.getContext('2d'),N=+cv.dataset.sugar,push=!!cv.dataset.push;
+  let W,H,dpr=Math.min(devicePixelRatio||1,2),mx=-999,my=-999,parts=[];
+  function size(){const r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function mk(top){return{x:Math.random()*W,y:top?-10:Math.random()*H,r:.25+Math.pow(Math.random(),2.2)*1.05,vy:.12+Math.random()*.42,vx:0,ph:Math.random()*6.28,a:.45+Math.random()*.5}}
+  size();for(let i=0;i<N;i++)parts.push(mk(false));
+  addEventListener('resize',size);
+  const host=push?cv.parentElement:cv.closest('section');
+  host.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+  host.addEventListener('mouseleave',()=>{mx=my=-999});
+  let vis=true;new IntersectionObserver(es=>vis=es[0].isIntersecting).observe(cv);
+  (function tick(t){
+    requestAnimationFrame(tick);if(!vis)return;
+    ctx.clearRect(0,0,W,H);
+    for(const p of parts){
+      p.ph+=.012;p.x+=Math.sin(p.ph)*.25+p.vx;p.y+=p.vy;p.vx*=.95;
+      if(push){const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);if(d<90){p.vx+=dx/d*.6;p.y+=dy/d*.6}}
+      if(p.y>H+10||p.x<-20||p.x>W+20)Object.assign(p,mk(true));
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle=`rgba(255,255,255,${p.a})`;
+      ctx.shadowColor='rgba(120,90,70,.35)';ctx.shadowBlur=2;ctx.fill();
+    }
+  })();
+});
+
+// מ3: במגע (מובייל) לחיצה פותחת את הנקודה
+document.querySelectorAll('.hs button').forEach(b=>b.addEventListener('click',()=>{
+  const h=b.parentElement,on=h.classList.contains('on');
+  document.querySelectorAll('.hs').forEach(x=>x.classList.remove('on'));if(!on)h.classList.add('on');
+}));
+</script>
+</body>
+</html>

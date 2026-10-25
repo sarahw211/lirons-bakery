@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>הפתיחות של לירונ'ס</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* פריסה: דף הגשה שקט ללקוחה. שם המותג גדול ושקוף למעלה, ומתחתיו כרטיס לכל אפשרות, ההמלצה ראשונה וגדולה */
+@font-face{font-family:"BlackDelights";src:url("fonts/latin/L-Black-Delights-Regular.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Light-Regular.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+:root{
+  --bg:#F5EEE4;--card:#FBF8F3;--ink:#3A2A22;--muted:#7A6A60;--acc:#8E3F35;--acc-ink:#FFFFFF;--line:rgb(58 42 34 / .14);--ghost:rgb(142 63 53 / .16);
+  --display:"BlackDelights","Times New Roman",serif;--head:"Nostela","Segoe UI",Arial,sans-serif;--body:"Plinko","Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#231A16;--card:#2E231E;--ink:#F3EADF;--muted:#C2B2A5;--acc:#C9786B;--acc-ink:#231A16;--line:rgb(243 234 223 / .14);--ghost:rgb(201 120 107 / .2);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#231A16;--card:#2E231E;--ink:#F3EADF;--muted:#C2B2A5;--acc:#C9786B;--acc-ink:#231A16;--line:rgb(243 234 223 / .14);--ghost:rgb(201 120 107 / .2);color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:300;font-size:17px;line-height:1.6;direction:rtl}
+.wrap{max-width:1180px;margin:0 auto;padding-block:clamp(36px,6vw,72px) 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{position:relative;display:grid;gap:12px;margin-bottom:clamp(28px,4vw,44px)}
+.brand{font-family:var(--display);direction:ltr;text-align:right;font-size:clamp(58px,11vw,150px);line-height:.85;color:var(--ghost);margin:0 0 -.25em}
+h1{font-family:var(--head);font-weight:700;font-size:clamp(32px,4.4vw,54px);line-height:1.05;margin:0;text-wrap:balance}
+.intro{margin:0;max-width:62ch;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,22px)}
+.opt{display:grid;grid-template-rows:auto 1fr;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;color:inherit;text-decoration:none;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.opt:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgb(40 26 18 / .45)}
+.opt:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.opt .pic{aspect-ratio:16/9;max-width:100%;background:center/cover no-repeat;position:relative}
+.opt .t{padding:18px 20px 22px;display:grid;gap:6px;align-content:start;min-width:0}
+.opt h2{font-family:var(--head);font-weight:700;font-size:24px;line-height:1.15;margin:0}
+.opt p{margin:0;color:var(--muted);font-size:16px}
+.opt .go{margin-top:6px;color:var(--acc);font-family:var(--head);font-weight:700;font-size:16px}
+.opt.main{grid-column:1/-1;grid-template-columns:1.35fr 1fr;grid-template-rows:none}
+.opt.main .pic{aspect-ratio:auto;min-height:320px}
+.opt.main h2{font-size:clamp(26px,3vw,36px)}
+.tag{justify-self:start;font-family:var(--head);font-size:13px;letter-spacing:.04em;background:var(--acc);color:var(--acc-ink);border-radius:99px;padding:2px 12px}
+.note{margin-top:28px;color:var(--muted);font-size:15px;max-width:70ch}
+@media (max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}.opt.main{grid-template-columns:minmax(0,1fr)}.opt.main .pic{min-height:220px}}
+@media (prefers-reduced-motion:reduce){.opt{transition:none}.opt:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="brand" aria-hidden="true">Liron's Bakery</div>
+    <h1>הפתיחות לאתר החדש</h1>
+    <p class="intro">אלה אפשרויות לפתיחה של האתר, המסך הראשון שרואים. כולן באותה שפה: שמנת חמה, בורדו, והחותמת מהלוגו שלך. כדאי לפתוח כל אחת ולגלול לאט, כי הן משתנות בגלילה.</p>
+  </header>
+
+  <div class="grid">
+    <a class="opt main" href="h3.html">
+      <div class="pic" style="background-image:url('img/cutouts/art-table-real.png')"></div>
+      <div class="t">
+        <span class="tag">ההמלצה שלנו</span>
+        <h2>השם כחלון למאפים</h2>
+        <p>השם Liron's Bakery חתוך מנייר כמו חלונות, ודרכו רואים את שולחן המאפים. בגלילה הנייר נפתח, התמונה ממלאת את המסך, וארבעת השירותים עולים עליה אחד אחרי השני.</p>
+        <span class="go">לצפייה ←</span>
+      </div>
+    </a>
+    <a class="opt" href="h1-g1-m2.html#h1x">
+      <div class="pic" style="background-image:url('img/old-site/gifts.png')"></div>
+      <div class="t"><h2>ארבע רצועות, ארבעה שירותים</h2><p>כל רצועה היא שירות. מעבירים עכבר, והרצועה נפתחת ומספרת עליו.</p><span class="go">לצפייה ←</span></div>
+    </a>
+    <a class="opt" href="h1-g1-m2.html#g1x">
+      <div class="pic" style="background-image:url('img/cutouts/art-table-real.png');background-position:30% 50%"></div>
+      <div class="t"><h2>פרוסות</h2><p>תמונת השולחן חתוכה לרצועות בגבהים שונים, כמו עוגה פרוסה.</p><span class="go">לצפייה ←</span></div>
+    </a>
+    <a class="opt" href="h1-g1-m2.html#m2x">
+      <div class="pic" style="background-image:url('img/cutouts/art-sugar-loaf.png');background-position:28% 50%"></div>
+      <div class="t"><h2>הקשת והסוכר</h2><p>קשת עם ניפוי אבקת סוכר, במסגרת וינטג' דקה.</p><span class="go">לצפייה ←</span></div>
+    </a>
+    <a class="opt" href="m3.html#m3">
+      <div class="pic" style="background-image:url('img/cutouts/art-table.png')"></div>
+      <div class="t"><h2>שולחן לגלות</h2><p>שולחן אירוח שלם, ועל כל מוצר נקודה שמרחפים עליה כדי לגלות את השירות.</p><span class="go">לצפייה ←</span></div>
+    </a>
+  </div>
+
+  <p class="note">התמונות כאן הן הדמיה שנוצרה מהצילומים שלך. לפני שהאתר עולה נחליף אותן בצילום אמיתי. הפתיחות בנויות קודם כל למחשב, ועובדות גם בטלפון.</p>
+</div>
+</body>
+</html>
