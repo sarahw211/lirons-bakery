@@ -196,18 +196,30 @@ a{color:inherit;text-decoration:none}
 .band .cell b{font-family:"Nostela",sans-serif;font-weight:700;font-size:21px;line-height:1.2}
 .band .cell span{color:var(--muted);font-size:15.5px}
 
-/* סדנאות: הכי קטן בהיררכיה. גוון קרפט רך שנבלע בנייר, בלי קו מעבר */
-.ws::before{content:"";position:absolute;inset:-10% -20%;z-index:0;background:radial-gradient(50% 45% at 60% 55%,rgb(214 190 160 / .35),transparent 70%)}
-.ws .in{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:center;padding-top:clamp(130px,13vw,200px)}
-.ws .he-h{font-size:clamp(30px,2.8vw,44px)}
+/* סדנאות: רצועה שזזה הצידה. האזור נעוץ במסך, והגלילה למטה מזיזה את הכרטיסים מימין לשמאל */
+.ws{height:300vh}
+.ws::before{content:"";position:absolute;inset:-10% -20%;z-index:0;background:radial-gradient(50% 30% at 55% 50%,rgb(214 190 160 / .32),transparent 70%)}
+.ws .stick{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;grid-template-rows:auto minmax(0,1fr);padding:clamp(70px,11vh,120px) 0 6vh;box-sizing:border-box}
+.ws .mq{--mqy:clamp(10px,3vh,40px)}
 .ws .mq .tr{font-size:clamp(96px,12vw,200px)}
-.ws .txt{display:grid;gap:20px;justify-items:start}
-.ws .pics{position:relative;height:min(560px,44vw)}
-.ws .pics .ph{position:absolute;overflow:hidden;box-shadow:0 30px 60px -34px rgb(40 26 18 / .55)}
-.ws .pics img{width:100%;height:100%;object-fit:cover;display:block}
-.ws .pics .a{right:0;top:0;width:72%;height:70%}
-.ws .pics .b{left:0;bottom:0;width:58%;height:52%;outline:8px solid #F3EADD}
-.ws .tmp{position:absolute;z-index:4;left:12px;bottom:12px;font-size:11.5px;background:rgb(255 255 255 / .85);border-radius:99px;padding:2px 10px}
+.ws .head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,80px);box-sizing:border-box}
+.ws .head .lead2{max-width:40ch}
+.ws .he-h{font-size:clamp(30px,2.8vw,44px)}
+.ws .track{position:relative;z-index:2;display:flex;gap:clamp(16px,2vw,28px);width:max-content;height:100%;padding:4vh clamp(20px,5vw,80px) 0;box-sizing:border-box;will-change:transform}
+.wcard{position:relative;display:flex;flex-direction:column;gap:12px;width:clamp(260px,26vw,380px);height:100%;margin:0}
+.wcard:nth-child(even){padding-top:5vh}
+.wcard .ph{position:relative;flex:1;min-height:0;overflow:hidden}
+.wcard img{display:block;width:100%;height:100%;object-fit:cover}
+.wcard figcaption{display:grid;gap:2px;border-top:1px solid var(--line);padding-top:10px}
+.wcard b{font-family:"Nostela",sans-serif;font-weight:700;font-size:21px}
+.wcard span{color:var(--muted);font-size:15px;line-height:1.5}
+.wcard.join{justify-content:center;gap:16px;padding:clamp(24px,3vw,40px);background:var(--acc);color:#fff;clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0 calc(100% - 18px),0 18px)}
+.wcard.join b{font-size:clamp(24px,2.2vw,32px);line-height:1.15}
+.wcard.join span{color:rgb(251 248 243 / .85)}
+.wcard.join .wait input{border-color:rgb(251 248 243 / .5)}
+.wcard.join .btn.s{background:#FBF8F3;color:var(--acc);box-shadow:none}
+.wcard.join .ok{color:#fff}
+.ws .tmp{position:absolute;z-index:4;left:10px;bottom:10px;font-size:11.5px;background:rgb(255 255 255 / .85);border-radius:99px;padding:2px 10px}
 .wait{display:flex;flex-wrap:wrap;gap:10px;width:100%}
 .wait input{flex:1 1 160px;min-width:0;font:inherit;font-size:16px;padding:13px 16px;border:1px solid rgb(142 63 53 / .4);background:#fff;color:var(--ink);border-radius:2px}
 .wait input:focus{outline:2px solid var(--acc);outline-offset:1px}
@@ -242,11 +254,15 @@ a{color:inherit;text-decoration:none}
   .fan{height:96vw}.fan figure{width:58%}
   .band .rows{grid-template-columns:minmax(0,1fr)}
   .band .cell+.cell{border-right:0;border-top:1px solid var(--line)}
-  .ws .pics{height:78vw;order:-1}
+  .ws{height:auto}
+  .ws .stick{position:relative;height:auto;padding-bottom:60px}
+  .ws .track{width:auto;height:auto;overflow-x:auto;scroll-snap-type:x mandatory;transform:none!important;padding-bottom:10px}
+  .wcard{flex:none;width:76vw;height:480px;scroll-snap-align:center}
+  .wcard:nth-child(even){padding-top:0}
   .foot .in{grid-template-columns:1fr 1fr}
   .foot .stampimg{grid-column:1/-1;justify-self:center}
 }
-@media (prefers-reduced-motion:reduce){.js .reveal:not(.seen){opacity:1;transform:none}.bel{height:auto}.bel .in{position:relative;height:auto}}
+@media (prefers-reduced-motion:reduce){.js .reveal:not(.seen){opacity:1;transform:none}.bel{height:auto}.bel .in{position:relative;height:auto}.ws{height:auto}.ws .stick{position:relative;height:auto}.ws .track{width:auto;overflow-x:auto;transform:none!important}.wcard{flex:none;height:460px}}
 
 @media (max-width:900px){
   .nav .links,.nav .cart{display:none}.burger{display:block}
@@ -379,22 +395,27 @@ a{color:inherit;text-decoration:none}
 
 <!-- ============ סדנאות ============ -->
 <section class="sec ws" id="workshops">
-  <div class="mq" data-word="workshops" data-dir="r" aria-hidden="true"></div>
-  <div class="in">
-    <div class="txt reveal">
+  <div class="stick">
+    <div class="mq" data-word="workshops" data-dir="r" aria-hidden="true"></div>
+    <div class="head reveal">
       <h2 class="he-h">סדנאות אפייה<span class="l2">בקבוצות קטנות</span></h2>
-      <p class="lead2">סדנאות לנשים, לנוער ולילדים, סדנה פרטית לקבוצה, וקייטנת אפייה בקיץ. הסדנאות חוזרות בקרוב. השאירו פרטים, ואעדכן אתכם ראשונים.</p>
-      <form class="wait" id="waitForm" novalidate>
-        <input id="wName" name="name" type="text" placeholder="שם" aria-label="שם" autocomplete="name">
-        <input id="wPhone" name="phone" type="tel" placeholder="טלפון" aria-label="טלפון" autocomplete="tel">
-        <button class="btn s" type="submit" style="border:0;cursor:pointer">לרשימת ההמתנה</button>
-        <p class="ok" id="waitOk" hidden>תודה! נעדכן אותך כשנפתחת סדנה.</p>
-      </form>
+      <p class="lead2">הסדנאות חוזרות בקרוב. בחרו מה מתאים לכם, והשאירו פרטים בסוף, ואעדכן אתכם ראשונים.</p>
     </div>
-    <div class="pics reveal">
-      <div class="ph a" data-over><img src="img/cutouts/workshop-1.png" alt="סדנת אפייה: מגלגלים ופורסים עוגיות" loading="lazy"></div>
-      <div class="ph b" data-over><img src="img/cutouts/workshop-kids.png" alt="קייטנת אפייה לילדים ולנוער" loading="lazy"></div>
-      <span class="tmp">תמונות זמניות</span>
+    <div class="track" id="wstrack">
+      <figure class="wcard"><div class="ph" data-over><img src="img/cutouts/workshop-1.png" alt="סדנת אפייה לנשים: מגלגלים ופורסים עוגיות" loading="lazy"><span class="tmp">תמונות זמניות</span></div><figcaption><b>ערב אפייה לנשים</b><span>מגלגלים, קולעים ופורסים, ויוצאות עם קופסה מלאה.</span></figcaption></figure>
+      <figure class="wcard"><div class="ph" data-over><img src="img/cutouts/workshop-kids.png" alt="סדנת אפייה לנוער ולילדים" loading="lazy"></div><figcaption><b>נוער וילדים</b><span>חותכים צורות, מנפים סוכר ומקשטים.</span></figcaption></figure>
+      <figure class="wcard"><div class="ph" data-over><img src="img/cutouts/workshop-1.png" alt="סדנה פרטית לקבוצה" loading="lazy" style="object-position:85% 50%"></div><figcaption><b>סדנה פרטית לקבוצה</b><span>יום הולדת, צוות או חברות, בתיאום מראש.</span></figcaption></figure>
+      <figure class="wcard"><div class="ph" data-over><img src="img/cutouts/workshop-kids.png" alt="קייטנת אפייה בקיץ" loading="lazy" style="object-position:15% 50%"></div><figcaption><b>קייטנת אפייה בקיץ</b><span>כמה בקרים של אפייה בקבוצה קטנה.</span></figcaption></figure>
+      <div class="wcard join">
+        <b>רוצים לשמוע ראשונים?</b>
+        <span>השאירו שם וטלפון, ואעדכן כשנפתחת סדנה.</span>
+        <form class="wait" id="waitForm" novalidate>
+          <input id="wName" name="name" type="text" placeholder="שם" aria-label="שם" autocomplete="name">
+          <input id="wPhone" name="phone" type="tel" placeholder="טלפון" aria-label="טלפון" autocomplete="tel">
+          <button class="btn s" type="submit" style="border:0;cursor:pointer">לרשימת ההמתנה</button>
+          <p class="ok" id="waitOk" hidden>תודה! נעדכן אותך כשנפתחת סדנה.</p>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -600,6 +621,8 @@ const mqs=[...document.querySelectorAll('.mq')].map(m=>{
   return{m,sec,overs,dir:m.dataset.dir==='r'?1:-1,last:''};
 });
 const fan=$('fan');
+// סדנאות: כמה הרצועה צריכה לזוז = כמה היא רחבה מהמסך. בטלפון ובהעדפת "פחות תנועה" גוללים אותה ביד
+const wsS=$('workshops'),wsT=$('wstrack'),wsMQ=matchMedia('(max-width:900px)');
 // אני מאמינה: מפרקים את המשפט למילים, וכל מילה נדלקת כשהגלילה מגיעה אליה
 const belq=$('belq'),bel=$('believe');
 const belW=belq.textContent.split(' ').map(t=>{const s=document.createElement('span');s.className='w';s.textContent=t;return s});
@@ -623,6 +646,9 @@ function homeTick(){
      const n=Math.round(clamp(p/.55,0,1)*belW.length);belW.forEach((s,i)=>s.classList.toggle('on',i<n));
      $('belsig').style.setProperty('--sw',(100-ease(clamp((p-.55)/.25,0,1))*100).toFixed(1)+'%');
      $('belme').style.setProperty('--ms',(1.08-ease(clamp(p/.4,0,1))*.08).toFixed(3));$('belafter').style.setProperty('--ao',ease(clamp((p-.8)/.12,0,1)).toFixed(3))}}
+  if(!still&&!wsMQ.matches){const r=wsS.getBoundingClientRect();
+    if(r.bottom>0&&r.top<innerHeight){const p=clamp(-r.top/(wsS.offsetHeight-innerHeight),0,1),dist=Math.max(0,wsT.scrollWidth-wsS.clientWidth);
+      const tf=`translateX(${(ease(p)*dist).toFixed(1)}px)`;if(tf!==homeTick.w){homeTick.w=tf;wsT.style.transform=tf}}}
   // המניפה של המארזים נפתחת כשהיא עולה למסך
   if(fan){const r=fan.getBoundingClientRect();const k=still?1:ease(clamp((innerHeight-r.top)/(innerHeight*.75),0,1));
     const s=k.toFixed(3);if(s!==homeTick.k){homeTick.k=s;fan.style.setProperty('--k',s)}}
