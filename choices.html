@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>לירונ'ס · מה לבחור</title>
+<style>
+/* דף בחירות: כל החלטה פתוחה, והאפשרויות שלה אחת מתחת לשנייה, עם סקיצה קטנה לכל אחת */
+@font-face{font-family:"BlackDelights";src:url("fonts/latin/L-Black-Delights-Regular.ttf") format("truetype")}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Light-Regular.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Bold.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Light.woff2") format("woff2");font-weight:300}
+:root{--ink:#3A2A22;--muted:#7A6A60;--acc:#8E3F35;--paper:#F3EADD;--cream:#FBF8F3;--line:rgb(58 42 34 / .14)}
+*{box-sizing:border-box}
+body{margin:0;background:#E9E5DF;color:var(--ink);font-family:"Plinko",system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding:48px 16px 80px}
+h1{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(30px,4vw,46px);margin:0 0 6px}
+.intro{color:var(--muted);margin:0 0 40px;max-width:60ch}
+.q{margin:0 0 56px}
+.qh{display:flex;align-items:baseline;gap:14px;border-bottom:3px double rgb(142 63 53 / .45);padding-bottom:10px;margin-bottom:18px}
+.qh h2{font-family:"Nostela",sans-serif;font-weight:700;font-size:28px;margin:0}
+.qh span{color:var(--muted);font-size:15px}
+.opt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:22px;align-items:center;background:var(--cream);border:1px solid var(--line);border-radius:6px;padding:16px;margin-bottom:14px}
+.opt.rec{border:2px solid var(--acc)}
+.t{display:grid;gap:6px}
+.t .id{font-family:"Nostela",sans-serif;font-weight:700;font-size:40px;line-height:1;color:var(--acc)}
+.t h3{font-family:"Nostela",sans-serif;font-weight:700;font-size:22px;margin:0}
+.t p{margin:0;color:var(--muted);font-size:15.5px}
+.tag{justify-self:start;font-family:"Nostela",sans-serif;font-size:13px;background:var(--acc);color:#fff;border-radius:99px;padding:1px 12px}
+.sk{position:relative;height:250px;border-radius:4px;overflow:hidden;background:var(--paper)}
+.sk img{display:block;object-fit:cover}
+.lbl{font-family:"Nostela",sans-serif;font-size:12px;background:var(--cream);color:var(--acc);padding:3px 10px;clip-path:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px)}
+.btnx{display:inline-block;font-family:"Nostela",sans-serif;font-size:12px;background:var(--acc);color:#fff;padding:5px 12px;clip-path:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px)}
+.fld{height:22px;background:#fff;border:1px solid rgb(142 63 53 / .3);border-radius:2px}
+.big{position:absolute;font-family:"BlackDelights",serif;direction:ltr;white-space:nowrap;line-height:.8}
+
+/* סדנאות א: כרטיס מתכון */
+.rc{position:absolute;inset:18px 28% 18px 18px;background:#FFFDF8;box-shadow:0 14px 30px -18px rgb(40 26 18 / .5);padding:16px 18px;display:grid;align-content:start;gap:7px}
+.rc b{font-family:"Nostela",sans-serif;font-size:17px}
+.rc .ln{display:flex;justify-content:space-between;font-size:12.5px;border-bottom:1px dotted rgb(58 42 34 / .35);padding-bottom:3px}
+.pol{position:absolute;background:#fff;padding:5px 5px 16px;box-shadow:0 10px 22px -12px rgb(40 26 18 / .6)}
+.pol img{width:100%;height:100%}
+.pol::before{content:"";position:absolute;top:-7px;left:50%;width:34px;height:12px;transform:translateX(-50%) rotate(-4deg);background:rgb(232 218 199 / .85)}
+/* סדנאות ב: רצועה */
+.strip{position:absolute;top:30px;bottom:30px;right:-40px;display:flex;gap:12px}
+.strip .c{width:150px;height:100%;position:relative}
+.strip .c img{width:100%;height:100%}
+.strip .c span{position:absolute;bottom:8px;right:8px}
+/* פוטר */
+.burg{position:absolute;left:0;right:0;bottom:0;background:#6F2F27}
+@media (max-width:720px){.opt{grid-template-columns:minmax(0,1fr)}.big{font-size:64px!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>מה לבחור בדף הבית</h1>
+  <p class="intro">כל החלטה פתוחה, והאפשרויות שלה אחת מתחת לשנייה. המסגרת הבורדו מסמנת את ההמלצה שלי. הסקיצות קטנות ומראות רק את הרעיון, לא את העיצוב הסופי.</p>
+
+  <!-- ===== סדנאות ===== -->
+  <section class="q">
+    <div class="qh"><h2>1. סדנאות</h2><span>איך האזור ייראה</span></div>
+
+    <div class="opt rec">
+      <div class="t"><span class="tag">ההמלצה שלי</span><div class="id">א</div><h3>כרטיס מתכון</h3><p>סוגי הסדנאות כתובים כמו רשימת מצרכים בכרטיס מתכון ישן, ותמונות מודבקות לידו. מתחבר למסר "לפי המתכון".</p></div>
+      <div class="sk">
+        <div class="rc"><b>מתכון לסדנה טובה</b>
+          <div class="ln"><span>סדנה לנשים</span><span>ערב</span></div>
+          <div class="ln"><span>נוער וילדים</span><span>אחה"צ</span></div>
+          <div class="ln"><span>קבוצה פרטית</span><span>בתיאום</span></div>
+          <div class="ln"><span>קייטנת אפייה</span><span>בקיץ</span></div>
+          <div style="display:flex;gap:6px;margin-top:6px"><div class="fld" style="flex:1"></div><div class="fld" style="flex:1"></div><span class="btnx">לרשימת ההמתנה</span></div>
+        </div>
+        <div class="pol" style="left:16px;top:14px;width:130px;height:120px;transform:rotate(-6deg);left:auto;right:14px"><img src="img/cutouts/workshop-1.png" alt=""></div>
+        <div class="pol" style="right:40px;bottom:14px;width:120px;height:105px;transform:rotate(5deg)"><img src="img/cutouts/workshop-kids.png" alt=""></div>
+      </div>
+    </div>
+
+    <div class="opt">
+      <div class="t"><div class="id">ב</div><h3>רצועה שזזה הצידה</h3><p>גוללים למטה, וארבעה סוגי הסדנאות זזים הצידה כמו סרט, כל אחד עם תמונה גדולה.</p></div>
+      <div class="sk">
+        <div class="strip">
+          <div class="c"><img src="img/cutouts/workshop-1.png" alt=""><span class="lbl">נשים</span></div>
+          <div class="c"><img src="img/cutouts/workshop-kids.png" alt=""><span class="lbl">נוער וילדים</span></div>
+          <div class="c"><img src="img/cutouts/workshop-1.png" alt="" style="object-position:80% 50%"><span class="lbl">קבוצה פרטית</span></div>
+          <div class="c"><img src="img/cutouts/workshop-kids.png" alt="" style="object-position:20% 50%"><span class="lbl">קייטנה</span></div>
+        </div>
+        <span class="lbl" style="position:absolute;left:12px;top:8px">← גוללים</span>
+      </div>
+    </div>
+
+    <div class="opt">
+      <div class="t"><div class="id">ג</div><h3>תמונה מלאה עם תוויות</h3><p>תמונת ידיים לכל הרוחב, וסוגי הסדנאות יושבים עליה כתוויות קטנות.</p></div>
+      <div class="sk">
+        <img src="img/cutouts/workshop-1.png" alt="" style="width:100%;height:100%">
+        <span class="lbl" style="position:absolute;right:18%;top:22%">סדנה לנשים</span>
+        <span class="lbl" style="position:absolute;left:14%;top:40%">נוער וילדים</span>
+        <span class="lbl" style="position:absolute;right:40%;bottom:24%">קבוצה פרטית</span>
+        <span class="lbl" style="position:absolute;left:30%;bottom:10%">קייטנת אפייה</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== סיום ופוטר ===== -->
+  <section class="q">
+    <div class="qh"><h2>2. סיום ופוטר</h2><span>מתוך קובץ הפוטרים בפיגמה</span></div>
+
+    <div class="opt rec">
+      <div class="t"><span class="tag">ההמלצה שלי</span><div class="id">1</div><h3>תמונות מרחפות ושם ענק</h3><p>שורה של תמונות מוצר אמיתיות, מוטות, שמרחפות על הגבול בין הנייר לבורדו. מתחתן Liron's Bakery ענק שנחתך בתחתית.</p></div>
+      <div class="sk">
+        <div class="burg" style="top:42%"></div>
+        <div style="position:absolute;inset:16px 10px auto;display:flex;justify-content:center;gap:8px">
+          <div class="pol" style="position:relative;width:76px;height:92px;transform:rotate(-7deg) translateY(14px)"><img src="img/old-site/p13.jpg" alt=""></div>
+          <div class="pol" style="position:relative;width:76px;height:92px;transform:rotate(4deg)"><img src="img/old-site/p16.jpg" alt=""></div>
+          <div class="pol" style="position:relative;width:76px;height:92px;transform:rotate(-2deg) translateY(8px)"><img src="img/old-site/p07.jpg" alt=""></div>
+          <div class="pol" style="position:relative;width:76px;height:92px;transform:rotate(6deg) translateY(-4px)"><img src="img/old-site/p18.jpg" alt=""></div>
+        </div>
+        <div style="position:absolute;bottom:62px;inset-inline:20px;display:flex;justify-content:space-between;font-size:11px;color:rgb(251 248 243 / .75)"><span>השירותים</span><span>איסוף ומשלוח</span><span>דברו איתי</span></div>
+        <div class="big" style="left:50%;bottom:-16px;transform:translateX(-50%);font-size:92px;color:rgb(251 248 243 / .9)">Liron's Bakery</div>
+      </div>
+    </div>
+
+    <div class="opt">
+      <div class="t"><div class="id">2</div><h3>כרטיס צף עם טופס</h3><p>"יש לכם אירוע בקרוב?" בכרטיס בצורת התווית, עם טופס קצר בשורה אחת. הכרטיס יושב חצי על הנייר וחצי על הבורדו.</p></div>
+      <div class="sk">
+        <div class="burg" style="top:50%"></div>
+        <div style="position:absolute;inset:34px 26px auto;background:var(--cream);box-shadow:0 18px 34px -20px rgb(40 26 18 / .6);padding:16px;display:grid;gap:10px;clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px)">
+          <b style="font-family:Nostela;font-size:18px">יש לכם אירוע בקרוב?</b>
+          <div style="display:flex;gap:6px"><div class="fld" style="flex:1"></div><div class="fld" style="flex:1"></div><div class="fld" style="flex:1"></div><span class="btnx">לוואטסאפ</span></div>
+        </div>
+        <div class="big" style="left:50%;bottom:-16px;transform:translateX(-50%);font-size:80px;color:rgb(251 248 243 / .9)">Liron's Bakery</div>
+      </div>
+    </div>
+
+    <div class="opt">
+      <div class="t"><div class="id">3</div><h3>החותמת שלה במרכז</h3><p>החותמת מהלוגו גדולה, בין השאלה לבין הפוטר. כשגוללים אליה היא "מטביעה" דיו.</p></div>
+      <div class="sk">
+        <div class="burg" style="top:58%"></div>
+        <b style="position:absolute;top:18px;inset-inline:0;text-align:center;font-family:Nostela;font-size:20px">יש לכם אירוע בקרוב?</b>
+        <img src="img/old-site/logo.png" alt="" style="position:absolute;left:50%;top:58%;width:120px;height:120px;object-fit:contain;transform:translate(-50%,-50%) rotate(-8deg);background:var(--cream);border-radius:50%;padding:8px;box-shadow:0 14px 26px -14px rgb(20 10 6 / .7)">
+        <div style="position:absolute;bottom:14px;inset-inline:20px;display:flex;justify-content:space-between;font-size:11px;color:rgb(251 248 243 / .75)"><span>השירותים</span><span>איסוף ומשלוח</span><span>דברו איתי</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== רשימת אהובים ===== -->
+  <section class="q">
+    <div class="qh"><h2>3. רשימת אהובים (wishlist)</h2><span>איך שומרים מנות אהובות</span></div>
+
+    <div class="opt rec">
+      <div class="t"><span class="tag">ההמלצה שלי</span><div class="id">א</div><h3>לב על כל מוצר, ושליחה ללירון</h3><p>לוחצים על הלב, והמנה נכנסת ל"האהובים שלי" שנפתח מהצד. משם כפתור אחד שולח את הרשימה ללירון בוואטסאפ, כמו שמזמינים היום.</p></div>
+      <div class="sk">
+        <div style="position:absolute;right:16px;top:20px;width:42%">
+          <div style="position:relative;height:150px"><img src="img/old-site/p13.jpg" alt="" style="width:100%;height:100%"><span style="position:absolute;top:8px;left:8px;width:30px;height:30px;border-radius:50%;background:var(--cream);color:var(--acc);display:grid;place-items:center;font-size:17px">♥</span></div>
+          <div style="font-family:Nostela;font-weight:700;margin-top:6px">המגולגלות</div>
+        </div>
+        <div style="position:absolute;left:0;top:0;bottom:0;width:46%;background:var(--cream);box-shadow:8px 0 24px -14px rgb(40 26 18 / .5);padding:14px;display:grid;align-content:start;gap:8px;font-size:13px">
+          <b style="font-family:Nostela;font-size:16px">האהובים שלי (3)</b>
+          <div class="ln" style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line)"><span>המגולגלות</span><span>♥</span></div>
+          <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line)"><span>ספינג'</span><span>♥</span></div>
+          <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line)"><span>עוגת שמרים</span><span>♥</span></div>
+          <span class="btnx" style="justify-self:start;margin-top:4px">לשלוח ללירון בוואטסאפ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt">
+      <div class="t"><div class="id">ב</div><h3>לב עם מונה בתפריט</h3><p>לב על כל מוצר, ומספר קטן ליד הלב בתפריט העליון. לחיצה עליו פותחת עמוד נפרד עם הרשימה.</p></div>
+      <div class="sk">
+        <div style="position:absolute;inset:0 0 auto;height:44px;background:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:12px;border-bottom:1px solid var(--line)"><span>אירועים · מארזים · סדנאות · תפריט</span><span style="color:var(--acc);font-size:16px">♥ <sup style="background:var(--acc);color:#fff;border-radius:99px;padding:0 5px;font-size:10px">3</sup></span></div>
+        <div style="position:absolute;top:62px;right:16px;left:16px;display:flex;gap:10px">
+          <div style="flex:1;position:relative;height:150px"><img src="img/old-site/p16.jpg" alt="" style="width:100%;height:100%"><span style="position:absolute;top:6px;left:6px;color:var(--cream);font-size:18px">♥</span></div>
+          <div style="flex:1;position:relative;height:150px"><img src="img/old-site/p07.jpg" alt="" style="width:100%;height:100%"><span style="position:absolute;top:6px;left:6px;color:var(--cream);font-size:18px">♡</span></div>
+          <div style="flex:1;position:relative;height:150px"><img src="img/old-site/p04.jpg" alt="" style="width:100%;height:100%"><span style="position:absolute;top:6px;left:6px;color:var(--cream);font-size:18px">♥</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt">
+      <div class="t"><div class="id">ג</div><h3>"בונים את השולחן"</h3><p>הרשימה היא השולחן לאירוע: בוחרים מנות אהובות, מוסיפים כמה אורחים, ושולחים ללירון בקשה להצעה. מחבר את האהובים לאירועים.</p></div>
+      <div class="sk">
+        <div style="position:absolute;inset:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+            <img src="img/old-site/p13.jpg" alt="" style="width:100%;height:100%;outline:2px solid var(--acc)">
+            <img src="img/old-site/p16.jpg" alt="" style="width:100%;height:100%">
+            <img src="img/old-site/p07.jpg" alt="" style="width:100%;height:100%;outline:2px solid var(--acc)">
+            <img src="img/old-site/p04.jpg" alt="" style="width:100%;height:100%">
+          </div>
+          <div style="background:var(--cream);padding:12px;display:grid;align-content:start;gap:8px;font-size:13px">
+            <b style="font-family:Nostela;font-size:16px">השולחן שלי</b>
+            <span>המגולגלות · עוגת שמרים</span>
+            <span>כמה אורחים? <b style="color:var(--acc)">− 40 +</b></span>
+            <span class="btnx" style="justify-self:start">לקבל הצעה מלירון</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
