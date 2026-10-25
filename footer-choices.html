@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>לירונ'ס · סיום ופוטר</title>
+<style>
+/* דף בחירות: כל החלטה פתוחה, והאפשרויות שלה אחת מתחת לשנייה, עם סקיצה קטנה לכל אחת */
+@font-face{font-family:"BlackDelights";src:url("fonts/latin/L-Black-Delights-Regular.ttf") format("truetype")}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Light-Regular.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Bold.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Light.woff2") format("woff2");font-weight:300}
+:root{--ink:#3A2A22;--muted:#7A6A60;--acc:#8E3F35;--paper:#F3EADD;--cream:#FBF8F3;--line:rgb(58 42 34 / .14)}
+*{box-sizing:border-box}
+body{margin:0;background:#E9E5DF;color:var(--ink);font-family:"Plinko",system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding:48px 16px 80px}
+h1{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(30px,4vw,46px);margin:0 0 6px}
+.intro{color:var(--muted);margin:0 0 40px;max-width:60ch}
+.q{margin:0 0 56px}
+.qh{display:flex;align-items:baseline;gap:14px;border-bottom:3px double rgb(142 63 53 / .45);padding-bottom:10px;margin-bottom:18px}
+.qh h2{font-family:"Nostela",sans-serif;font-weight:700;font-size:28px;margin:0}
+.qh span{color:var(--muted);font-size:15px}
+.opt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:22px;align-items:center;background:var(--cream);border:1px solid var(--line);border-radius:6px;padding:16px;margin-bottom:14px}
+.opt.rec{border:2px solid var(--acc)}
+.t{display:grid;gap:6px}
+.t .id{font-family:"Nostela",sans-serif;font-weight:700;font-size:40px;line-height:1;color:var(--acc)}
+.t h3{font-family:"Nostela",sans-serif;font-weight:700;font-size:22px;margin:0}
+.t p{margin:0;color:var(--muted);font-size:15.5px}
+.tag{justify-self:start;font-family:"Nostela",sans-serif;font-size:13px;background:var(--acc);color:#fff;border-radius:99px;padding:1px 12px}
+.sk{position:relative;height:250px;border-radius:4px;overflow:hidden;background:var(--paper)}
+.sk img{display:block;object-fit:cover}
+.lbl{font-family:"Nostela",sans-serif;font-size:12px;background:var(--cream);color:var(--acc);padding:3px 10px;clip-path:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px)}
+.btnx{display:inline-block;font-family:"Nostela",sans-serif;font-size:12px;background:var(--acc);color:#fff;padding:5px 12px;clip-path:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px)}
+.fld{height:22px;background:#fff;border:1px solid rgb(142 63 53 / .3);border-radius:2px}
+.big{position:absolute;font-family:"BlackDelights",serif;direction:ltr;white-space:nowrap;line-height:.8}
+
+/* סדנאות א: כרטיס מתכון */
+.rc{position:absolute;inset:18px 28% 18px 18px;background:#FFFDF8;box-shadow:0 14px 30px -18px rgb(40 26 18 / .5);padding:16px 18px;display:grid;align-content:start;gap:7px}
+.rc b{font-family:"Nostela",sans-serif;font-size:17px}
+.rc .ln{display:flex;justify-content:space-between;font-size:12.5px;border-bottom:1px dotted rgb(58 42 34 / .35);padding-bottom:3px}
+.pol{position:absolute;background:#fff;padding:5px 5px 16px;box-shadow:0 10px 22px -12px rgb(40 26 18 / .6)}
+.pol img{width:100%;height:100%}
+.pol::before{content:"";position:absolute;top:-7px;left:50%;width:34px;height:12px;transform:translateX(-50%) rotate(-4deg);background:rgb(232 218 199 / .85)}
+/* סדנאות ב: רצועה */
+.strip{position:absolute;top:30px;bottom:30px;right:-40px;display:flex;gap:12px}
+.strip .c{width:150px;height:100%;position:relative}
+.strip .c img{width:100%;height:100%}
+.strip .c span{position:absolute;bottom:8px;right:8px}
+/* פוטר */
+.ico{display:inline-flex;align-items:center;gap:3px;color:var(--ink)}
+.ico svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.15;stroke-linejoin:round;stroke-linecap:round}
+.ico .n{font-style:normal;font-family:"Plinko",sans-serif;font-size:11px;color:var(--muted)}
+.burg{position:absolute;left:0;right:0;bottom:0;background:#6F2F27}
+@media (max-width:720px){.opt{grid-template-columns:minmax(0,1fr)}.big{font-size:64px!important}}
+.src{font-size:12.5px;color:var(--muted)}.src a{color:var(--acc)}
+.tear{position:absolute;left:0;right:0;height:16px;background:#F3EADD;clip-path:polygon(0 0,0.0% 24%,1.6% 22%,3.2% 30%,4.8% 29%,6.4% 32%,8.0% 36%,9.6% 70%,11.2% 69%,12.8% 42%,14.4% 54%,16.0% 39%,17.6% 73%,19.2% 17%,20.8% 52%,22.4% 33%,24.0% 50%,25.6% 58%,27.2% 73%,28.8% 60%,30.4% 65%,32.0% 63%,33.6% 55%,35.2% 61%,36.8% 38%,38.4% 15%,40.0% 27%,41.6% 71%,43.2% 38%,44.8% 70%,46.4% 24%,48.0% 77%,49.6% 43%,51.2% 54%,52.8% 66%,54.4% 23%,56.0% 27%,57.6% 33%,59.2% 75%,60.8% 28%,62.4% 18%,64.0% 22%,65.6% 26%,67.2% 54%,68.8% 76%,70.4% 35%,72.0% 33%,73.6% 76%,75.2% 66%,76.8% 78%,78.4% 16%,80.0% 31%,81.6% 24%,83.2% 27%,84.8% 27%,86.4% 72%,88.0% 68%,89.6% 43%,91.2% 69%,92.8% 54%,94.4% 45%,96.0% 15%,97.6% 68%,99.2% 40%,100% 0)}
+.tg{position:absolute;font-family:Nostela;font-size:11px;background:#FBF8F3;color:var(--ink);padding:3px 9px;clip-path:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>סיום ופוטר: עוד אפשרויות</h1>
+  <p class="intro">החותמת על הגבול נשארת, והשאלה היא מה קורה סביבה. בלי Liron's Bakery ענק, כי זה כבר חוזר בהרבה אתרים. ליד כל אפשרות כתוב מאיזו השראה היא באה. אפשר לשלב סיום מאחת ופוטר מאחרת.</p>
+
+  <section class="q">
+    <div class="qh"><h2>הסיום ("יש לכם אירוע בקרוב?")</h2><span>הרגע שלפני הפוטר</span></div>
+
+    <div class="opt rec">
+      <div class="t"><span class="tag">ההמלצה שלי</span><div class="id">1</div><h3>החותמת נפתחת לשולחן</h3><p>התנועה של הפתיחה, הפוכה. החלון שבחותמת גדל בגלילה עד שתמונת השולחן ממלאת את המסך, והשאלה והכפתור יושבים עליה בכרטיס זכוכית, כמו כרטיסי השירותים בפתיחה. אחר כך התמונה נסגרת חזרה לחותמת. האתר נפתח ונסגר באותו רגע.</p><span class="src">השראה: הפתיחה שלנו (ה3)</span></div>
+      <div class="sk"><img src="img/cutouts/art-table-real.png" alt="" style="width:100%;height:100%">
+ <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgb(251 248 243 / .7);backdrop-filter:blur(8px);padding:16px 22px;display:grid;gap:8px;justify-items:center;clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px)"><b style="font-family:Nostela;font-size:18px;color:var(--ink)">יש לכם <span style="color:var(--acc)">אירוע</span> בקרוב?</b><span class="btnx">לכתוב בוואטסאפ</span></div>
+ <span class="lbl" style="position:absolute;right:10px;top:10px">החלון גדל ← מסך מלא</span></div>
+    </div>
+
+    <div class="opt">
+      <div class="t"><div class="id">2</div><h3>סיום אישי של לירון</h3><p>תמונה קטנה של לירון מוטה כמו פולארויד, החתימה שלה, והכפתור נראה כמו הודעה ממנה: "היי, אני לירון, ספרו לי על האירוע". חם ואישי, למי שקונה מאדם ולא ממותג.</p></div>
+      <div class="sk"><div class="pol" style="position:absolute;right:30px;top:30px;width:120px;height:140px;transform:rotate(5deg)"><img src="img/liron-warm.jpg" alt=""></div>
+ <div style="position:absolute;left:24px;top:40px;width:56%;display:grid;gap:10px"><b style="font-family:Nostela;font-size:18px;color:var(--ink)">יש לכם <span style="color:var(--acc)">אירוע</span> בקרוב?</b>
+  <div style="background:#fff;border-radius:12px 12px 2px 12px;padding:8px 12px;font-size:12px;box-shadow:0 6px 16px -10px rgb(40 26 18 / .5)">היי, אני לירון. ספרו לי על האירוע</div>
+  <img src="img/liron-signature.png" alt="" style="width:90px"></div></div>
+    </div>
+
+    <div class="opt">
+      <div class="t"><div class="id">3</div><h3>קרע נייר</h3><p>הנייר של האתר נקרע בקצה התחתון, ומתחתיו מתגלה תמונת השולחן. השאלה כתובה על הנייר, והחותמת יושבת על הקרע. חומר מהעולם של המותג הופך למעבר.</p><span class="src">השראה: <a href="https://www.behance.net/gallery/251580915/Serotoninn-E-commerce-Website" target="_blank">Serotoninn</a></span></div>
+      <div class="sk"><div style="position:absolute;inset:52% 0 0;background:url(img/cutouts/art-table-real.png) center/cover"></div><div class="tear" style="top:52%"></div>
+ <div style="position:absolute;top:26px;inset-inline:0;display:grid;justify-items:center;gap:8px"><b style="font-family:Nostela;font-size:18px;color:var(--ink)">יש לכם <span style="color:var(--acc)">אירוע</span> בקרוב?</b><span class="btnx">לכתוב בוואטסאפ</span></div>
+ <div style="position:absolute;left:50%;top:56%;width:86px;height:86px;transform:translate(-50%,-50%) rotate(-6deg)"><div style="position:absolute;inset:15%;border-radius:50%;background:url(img/cutouts/art-table-real.png) 46% 55%/260%;box-shadow:0 0 0 3px #6F2F27"></div><div style="position:absolute;inset:0;background:linear-gradient(#8E3F35 50%,#F3EADD 50%);-webkit-mask:url(img/old-site/ink-ring.png) center/contain no-repeat;mask:url(img/old-site/ink-ring.png) center/contain no-repeat"></div></div></div>
+    </div>
+  </section>
+
+  <section class="q">
+    <div class="qh"><h2>הפוטר</h2><span>מה יש מתחת לחותמת</span></div>
+
+    <div class="opt rec">
+      <div class="t"><span class="tag">ההמלצה שלי</span><div class="id">א</div><h3>פוטר כמו תפריט של קונדיטוריה</h3><p>השירותים כתובים גדול, אחד מתחת לשני, כמו תפריט ישן בין קווים כפולים. מעבר עכבר על שירות מראה תמונה קטנה שלו. פרטי הקשר והקרדיט קטנים בצד.</p></div>
+      <div class="sk"><div style="position:absolute;inset:0;background:#6F2F27"></div><div style="position:absolute;left:50%;top:0%;width:70px;height:70px;transform:translate(-50%,-50%) rotate(-6deg)"><div style="position:absolute;inset:15%;border-radius:50%;background:url(img/cutouts/art-table-real.png) 46% 55%/260%;box-shadow:0 0 0 3px #6F2F27"></div><div style="position:absolute;inset:0;background:linear-gradient(#8E3F35 50%,#F3EADD 50%);-webkit-mask:url(img/old-site/ink-ring.png) center/contain no-repeat;mask:url(img/old-site/ink-ring.png) center/contain no-repeat"></div></div>
+ <div style="position:absolute;top:48px;right:26px;display:grid;gap:0;font-family:Nostela;font-weight:700;font-size:21px;color:#FBF8F3;line-height:1.35;border-top:3px double rgb(251 248 243 / .4);border-bottom:3px double rgb(251 248 243 / .4);padding:6px 0">
+  <span>קייטרינג לאירועים</span><span style="color:#F1D9CF">מגשי אירוח ←</span><span>מארזי חג ומתנה</span><span>סדנאות אפייה</span></div>
+ <div class="pol" style="position:absolute;left:26%;top:70px;width:74px;height:84px;transform:rotate(-5deg)"><img src="img/cutouts/art-stand-real.png" alt=""></div>
+ <div style="position:absolute;left:22px;top:60px;font-size:11px;color:rgb(251 248 243 / .75);display:grid;gap:4px"><span>052-893-1990</span><span>קירשטיין 15ב', עפולה</span><span>חלבי ופרווה</span></div>
+ <div style="position:absolute;bottom:9px;inset-inline:14px;display:flex;justify-content:space-between;font-size:10px;color:rgb(251 248 243 / .72)"><span>השירותים</span><span>איסוף ומשלוח</span><span>052-893-1990</span><span>עיצוב: שרה וייצמן</span></div></div>
+    </div>
+
+    <div class="opt">
+      <div class="t"><div class="id">ב</div><h3>תגיות שמרחפות סביב החותמת</h3><p>החותמת במרכז, ומסביבה תגיות קטנות בצורת התווית עם מה שחשוב לדעת: חלבי ופרווה, יומיים מראש, עפולה עד רמת ישי, הטלפון. הן זזות לאט במקום. כל המידע במבט אחד.</p><span class="src">השראה: <a href="https://www.behance.net/gallery/247720157/prezentacija-Presentation" target="_blank">Keshyou Pet</a></span></div>
+      <div class="sk"><div style="position:absolute;inset:0;background:#6F2F27"></div><div style="position:absolute;left:50%;top:48%;width:110px;height:110px;transform:translate(-50%,-50%) rotate(-6deg)"><div style="position:absolute;inset:15%;border-radius:50%;background:url(img/cutouts/art-table-real.png) 46% 55%/260%;box-shadow:0 0 0 3px #6F2F27"></div><div style="position:absolute;inset:0;background:linear-gradient(#F3EADD 50%,#F3EADD 50%);-webkit-mask:url(img/old-site/ink-ring.png) center/contain no-repeat;mask:url(img/old-site/ink-ring.png) center/contain no-repeat"></div></div>
+ <span class="tg" style="right:12%;top:20%">חלבי ופרווה</span><span class="tg" style="left:12%;top:26%">יומיים מראש</span>
+ <span class="tg" style="right:16%;top:62%">עפולה עד רמת ישי</span><span class="tg" style="left:14%;top:66%">052-893-1990</span>
+ <div style="position:absolute;bottom:9px;inset-inline:14px;display:flex;justify-content:space-between;font-size:10px;color:rgb(251 248 243 / .72)"><span>השירותים</span><span>איסוף ומשלוח</span><span>052-893-1990</span><span>עיצוב: שרה וייצמן</span></div></div>
+    </div>
+
+    <div class="opt">
+      <div class="t"><div class="id">ג</div><h3>שולחן מטושטש שזז לאט</h3><p>הרקע של הפוטר הוא תמונת השולחן, מטושטשת מאוד ובגוון בורדו, וזזה לאט כמו וידאו. מעליו החותמת והקישורים בקווים דקים. רך ועשיר, בלי להוסיף עוד אלמנט.</p><span class="src">השראה: <a href="https://dribbble.com/shots/27801252-VASA-Footer" target="_blank">VASA Footer</a></span></div>
+      <div class="sk"><div style="position:absolute;inset:0;background:url(img/cutouts/art-table-real.png) center/cover;filter:blur(14px) saturate(1.2);transform:scale(1.2)"></div><div style="position:absolute;inset:0;background:rgb(111 47 39 / .72)"></div>
+ <div style="position:absolute;left:50%;top:40%;width:90px;height:90px;transform:translate(-50%,-50%) rotate(-6deg)"><div style="position:absolute;inset:15%;border-radius:50%;background:url(img/cutouts/art-table-real.png) 46% 55%/260%;box-shadow:0 0 0 3px #6F2F27"></div><div style="position:absolute;inset:0;background:linear-gradient(#F3EADD 50%,#F3EADD 50%);-webkit-mask:url(img/old-site/ink-ring.png) center/contain no-repeat;mask:url(img/old-site/ink-ring.png) center/contain no-repeat"></div></div>
+ <div style="position:absolute;inset:66% 14px auto;display:grid;grid-template-columns:repeat(3,1fr);font-size:10.5px;color:rgb(251 248 243 / .8);border-top:1px solid rgb(251 248 243 / .3)"><span style="padding-top:6px">השירותים</span><span style="padding-top:6px;border-right:1px solid rgb(251 248 243 / .3);padding-right:8px">איסוף ומשלוח</span><span style="padding-top:6px;border-right:1px solid rgb(251 248 243 / .3);padding-right:8px">דברו איתי</span></div>
+ <div style="position:absolute;bottom:9px;inset-inline:14px;display:flex;justify-content:space-between;font-size:10px;color:rgb(251 248 243 / .72)"><span>השירותים</span><span>איסוף ומשלוח</span><span>052-893-1990</span><span>עיצוב: שרה וייצמן</span></div></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
