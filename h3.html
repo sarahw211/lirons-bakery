@@ -227,21 +227,29 @@ a{color:inherit;text-decoration:none}
 .wait input:focus{outline:2px solid var(--acc);outline-offset:1px}
 .wait .ok{flex-basis:100%;color:var(--acc);font-size:15px;margin:0}
 
-/* סיום: התמונה עולה מתוך הנייר (דהייה רכה למעלה), ושאלה אחת */
-.end{min-height:min(700px,85vh);display:grid;place-items:center;text-align:center}
-.end .bg{position:absolute;inset:0;background:url("img/cutouts/hero-spread.png") center/cover;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 35%);mask-image:linear-gradient(to bottom,transparent,#000 35%)}
-.end::after{content:"";position:absolute;inset:0;background:radial-gradient(55% 55% at 50% 55%,rgb(243 234 221 / .92),rgb(243 234 221 / .7) 60%,rgb(243 234 221 / .25))}
-.end .box{position:relative;z-index:2;display:grid;justify-items:center;gap:18px;padding:40px 20px}
-.end .en-h{font-family:"BlackDelights",serif;direction:ltr;line-height:.85;color:rgb(142 63 53 / .4);font-size:clamp(70px,8vw,140px);margin:0 0 -.2em;white-space:nowrap}
-.end .he-h{font-size:clamp(40px,4.6vw,76px)}
+/* סיום: השאלה על הנייר, ממש מעל החותמת */
+.close .in{display:grid;justify-items:center;text-align:center;gap:16px;padding-bottom:calc(var(--seal) * .5 + 40px)}
+.close .he-h{font-size:clamp(40px,4.6vw,72px)}
+:root{--seal:clamp(170px,17vw,250px)}
+
+/* החותמת על הגבול: עיגול הדיו של לירון סביב חלון לשולחן מהפתיחה */
+.seal{position:absolute;z-index:5;left:50%;top:0;width:var(--seal);aspect-ratio:1;transform:translate(-50%,-50%) rotate(var(--sr,-18deg)) scale(var(--ss,1.35));will-change:transform}
+.seal .win{position:absolute;inset:15%;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px #6F2F27,0 18px 40px -16px rgb(20 10 6 / .7)}
+.seal .win i{position:absolute;inset:-20%;background:url("img/cutouts/art-table-real.png") 46% 55%/cover;transform:rotate(calc(var(--sr,-18deg) * -1)) scale(var(--ws,1.3))}
+/* העיגול בבורדו על הנייר ובשמנת על הבורדו, כך שהוא נראה שלם משני צידי הגבול */
+.seal .ring{position:absolute;inset:0;background:linear-gradient(to bottom,#8E3F35 50%,#F3EADD 50%);-webkit-mask:url("img/old-site/ink-ring.png") center/contain no-repeat;mask:url("img/old-site/ink-ring.png") center/contain no-repeat}
+/* העקבה: עיגול דיו בהיר שמתפשט ונעלם ברגע הלחיצה */
+.seal .print{position:absolute;inset:0;background:rgb(251 248 243 / .5);-webkit-mask:url("img/old-site/ink-ring.png") center/contain no-repeat;mask:url("img/old-site/ink-ring.png") center/contain no-repeat;opacity:0;pointer-events:none}
+.seal.pressed .print{animation:print 1.4s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes print{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.45)}}
+.puff{position:absolute;z-index:6;left:50%;top:0;width:calc(var(--seal) * 2.6);height:calc(var(--seal) * 1.6);transform:translate(-50%,-50%);pointer-events:none}
 
 /* פוטר בבורדו */
 .foot{background:#6F2F27;color:rgb(251 248 243 / .88)}
-.foot .in{display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);align-items:start;padding-top:64px;padding-bottom:40px}
-.foot .stampimg{width:118px;opacity:.95;filter:brightness(0) invert(.94) sepia(.15)}
+.foot .in{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(24px,4vw,60px);align-items:start;text-align:center;padding-top:calc(var(--seal) * .5 + 56px);padding-bottom:36px}
 .foot h4{margin:0 0 10px;font-family:"Nostela",sans-serif;font-weight:700;font-size:18px;color:#fff}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:15.5px}
-.foot .leaf{grid-column:1/-1;height:20px;background:rgb(251 248 243 / .55);-webkit-mask:url("img/old-site/leaf-sprig.png") center/contain no-repeat;mask:url("img/old-site/leaf-sprig.png") center/contain no-repeat;margin-top:10px}
+.foot .leaf{grid-column:1/-1;height:20px;background:rgb(251 248 243 / .55);-webkit-mask:url("img/old-site/leaf-sprig.png") center/contain no-repeat;mask:url("img/old-site/leaf-sprig.png") center/contain no-repeat;margin-top:6px}
 .foot .copy{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:13.5px;color:rgb(251 248 243 / .6);border-top:1px solid rgb(251 248 243 / .18);padding-top:16px;margin:0}
 .foot .credit a{color:rgb(251 248 243 / .85);text-decoration:underline;text-underline-offset:3px}
 
@@ -262,7 +270,7 @@ a{color:inherit;text-decoration:none}
   .wcard{flex:none;width:76vw;height:480px;scroll-snap-align:center}
   .wcard:nth-child(even){padding-top:0}
   .foot .in{grid-template-columns:1fr 1fr}
-  .foot .stampimg{grid-column:1/-1;justify-self:center}
+  .foot .in>div:first-child{grid-column:1/-1}
 }
 @media (prefers-reduced-motion:reduce){.js .reveal:not(.seen){opacity:1;transform:none}.bel{height:auto}.bel .in{position:relative;height:auto}.ws{height:auto}.ws .stick{position:relative;height:auto}.ws .track{width:auto;overflow-x:auto;transform:none!important}.wcard{flex:none;height:460px}}
 
@@ -421,19 +429,18 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- ============ סיום ============ -->
-<section class="sec end" id="contact">
-  <div class="bg" aria-hidden="true"></div>
-  <div class="box reveal">
-    <div class="en-h">see you soon</div>
-    <h2 class="he-h">יש לכם אירוע בקרוב?</h2>
+<section class="sec close" id="contact">
+  <div class="in reveal">
+    <h2 class="he-h">יש לכם <em>אירוע</em> בקרוב?</h2>
     <p class="lead2" style="max-width:40ch">כתבו לי בוואטסאפ מה מתוכנן וכמה אורחים, ואחזור אליכם עם הצעה.</p>
     <div class="ctas" style="justify-content:center"><a class="btn p">לכתוב בוואטסאפ</a><a class="btn s">לתפריט ולהזמנה</a></div>
   </div>
 </section>
 
-<footer class="sec foot">
+<footer class="sec foot" id="foot">
+  <div class="seal" id="seal" aria-hidden="true"><div class="win"><i></i></div><div class="ring"></div><div class="print"></div></div>
+  <canvas class="puff" id="puff" aria-hidden="true"></canvas>
   <div class="in">
-    <img class="stampimg" data-stampcopy alt="Liron's Bakery">
     <div><h4>השירותים</h4><ul><li>קייטרינג לאירועים</li><li>מגשי אירוח</li><li>מארזי חג ומתנה</li><li>סדנאות אפייה</li><li>עוגות ועוגיות</li></ul></div>
     <div><h4>איסוף ומשלוח</h4><ul><li>קירשטיין 15ב', עפולה</li><li>איסוף בתיאום מראש</li><li>משלוחים עד רמת ישי</li></ul></div>
     <div><h4>דברו איתי</h4><ul><li>וואטסאפ: 052-893-1990</li><li>חלבי ופרווה</li><li>בד"צ העדה החרדית · לנדא · רובין</li></ul></div>
@@ -648,6 +655,13 @@ const mqs=[...document.querySelectorAll('.mq')].map(m=>{
   return{m,sec,overs,dir:m.dataset.dir==='r'?1:-1,last:''};
 });
 const fan=$('fan');
+// החותמת על הגבול: נלחצת למקום כשהפוטר עולה, ואז עקבת דיו ואבק קמח, פעם אחת
+const seal=$('seal'),foot=$('foot'),pc=$('puff'),px=pc.getContext('2d');let puffs=[];
+function puff(){const r=pc.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);pc.width=r.width*d;pc.height=r.height*d;px.setTransform(d,0,0,d,0,0);
+  const cx=r.width/2,cy=r.height/2,R=seal.offsetWidth*.42;
+  puffs=Array.from({length:90},()=>{const a=Math.random()*6.283,s=.6+Math.random()*2.2;return{x:cx+Math.cos(a)*R,y:cy+Math.sin(a)*R,vx:Math.cos(a)*s,vy:Math.sin(a)*s*.6-.3,r:.4+Math.random()*1.3,a:.5+Math.random()*.45}});
+  (function tick(){px.clearRect(0,0,r.width,r.height);for(const p of puffs){p.x+=p.vx;p.y+=p.vy;p.vx*=.96;p.vy=p.vy*.96+.03;p.a*=.975;px.beginPath();px.arc(p.x,p.y,p.r,0,6.283);px.fillStyle=`rgba(251,248,243,${p.a})`;px.fill()}
+    puffs=puffs.filter(p=>p.a>.04);if(puffs.length)requestAnimationFrame(tick);else px.clearRect(0,0,r.width,r.height)})()}
 // סדנאות: כמה הרצועה צריכה לזוז = כמה היא רחבה מהמסך. בטלפון ובהעדפת "פחות תנועה" גוללים אותה ביד
 const wsS=$('workshops'),wsT=$('wstrack'),wsMQ=matchMedia('(max-width:900px)');
 // אני מאמינה: מפרקים את המשפט למילים, וכל מילה נדלקת כשהגלילה מגיעה אליה
@@ -676,6 +690,11 @@ function homeTick(){
   if(!still&&!wsMQ.matches){const r=wsS.getBoundingClientRect();
     if(r.bottom>0&&r.top<innerHeight){const p=clamp(-r.top/(wsS.offsetHeight-innerHeight),0,1),dist=Math.max(0,wsT.scrollWidth-wsS.clientWidth);
       const tf=`translateX(${(ease(p)*dist).toFixed(1)}px)`;if(tf!==homeTick.w){homeTick.w=tf;wsT.style.transform=tf}}}
+  {const r=foot.getBoundingClientRect();
+   if(r.top<innerHeight+200&&r.bottom>0){const k=still?1:clamp((innerHeight-r.top)/(innerHeight*.45),0,1),e=k*k*k,key=k.toFixed(3);
+     if(key!==homeTick.s){homeTick.s=key;seal.style.setProperty('--ss',(1.35-.35*e).toFixed(3));seal.style.setProperty('--sr',(-18+12*e).toFixed(1)+'deg');seal.style.setProperty('--ws',(1.3-.3*e).toFixed(3));
+       if(k>=1&&!seal.classList.contains('pressed')){seal.classList.add('pressed');if(!still)puff()}
+       if(k<.6)seal.classList.remove('pressed')}}}
   // המניפה של המארזים נפתחת כשהיא עולה למסך
   if(fan){const r=fan.getBoundingClientRect();const k=still?1:ease(clamp((innerHeight-r.top)/(innerHeight*.75),0,1));
     const s=k.toFixed(3);if(s!==homeTick.k){homeTick.k=s;fan.style.setProperty('--k',s)}}
