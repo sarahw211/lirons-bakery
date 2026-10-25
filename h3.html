@@ -63,11 +63,12 @@ a{color:inherit;text-decoration:none}
 .mini{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.7}
 
 /* ---------- הפתיחה ---------- */
-.x3{position:relative;height:470vh;max-width:1440px;margin:0 auto}
+.x3{position:relative;height:250vh;max-width:1440px;margin:0 auto}
 .pin{position:sticky;top:0;height:100vh;min-height:640px;overflow:hidden;background:#EFE6DA}
 .photo{position:absolute;inset:0;background:center/cover no-repeat;will-change:transform}
 .paper{position:absolute;inset:0;z-index:2;background:var(--paper),radial-gradient(80% 70% at 70% 30%,#FBF6EE 0%,#F3EADD 60%,#ECE0CF 100%);background-size:360px 360px,auto;
   -webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;will-change:transform,opacity}
+.outline{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;will-change:transform,opacity}
 .cover{position:absolute;inset:0;z-index:3;background:var(--paper),radial-gradient(80% 70% at 70% 30%,#FBF6EE 0%,#F3EADD 60%,#ECE0CF 100%);background-size:360px 360px,auto;
   --w:-20%;-webkit-mask:linear-gradient(90deg,transparent var(--w),#000 calc(var(--w) + 10%));mask:linear-gradient(90deg,transparent var(--w),#000 calc(var(--w) + 10%));pointer-events:none}
 .sieve{position:absolute;inset:0;z-index:4;pointer-events:none;width:100%;height:100%}
@@ -156,6 +157,7 @@ a{color:inherit;text-decoration:none}
     <div class="photo" id="photo"></div>
     <div class="veil" id="veil"></div>
     <div class="paper" id="paper"></div>
+    <img class="outline" id="outline" alt="" aria-hidden="true">
     <div class="cover" id="cover"></div>
     <canvas class="sieve" id="sieve"></canvas>
     <div class="front" id="front">
@@ -167,12 +169,6 @@ a{color:inherit;text-decoration:none}
         <div class="ctas"><a class="btn p">לתפריט ולהזמנה</a><a class="btn s">אירועים וקייטרינג</a></div>
       </div>
     </div>
-    <div class="services" id="services">
-      <a class="svc big"><div class="en">events</div><h3>קייטרינג ומגשי אירוח</h3><span class="rule"></span><p>שולחן קינוחים ומגשי אירוח חלביים ופרווה לברית, לבר מצווה, לשבע ברכות ולקידוש. ספרו לי כמה אורחים מגיעים, ואני ארכיב לכם את השולחן.</p><span class="dl">לתכנון אירוע<i></i></span></a>
-      <a class="svc"><div class="en">gifts</div><h3>מארזי חג ומתנה</h3><span class="rule"></span><p>מארזים בעבודת יד לחגים, למשפחה ולעסקים, או מארז שמרכיבים בעצמכם.</p><span class="dl">למארזים<i></i></span></a>
-      <a class="svc"><div class="en">workshops</div><h3>סדנאות אפייה</h3><span class="rule"></span><p>בקבוצות קטנות, סדנה פרטית לקבוצה וקייטנת קיץ. כרגע ברשימת המתנה.</p><span class="dl">לרשימת ההמתנה<i></i></span></a>
-      <a class="svc"><div class="en">bakes</div><h3>עוגות ועוגיות</h3><span class="rule"></span><p>עוגות בחושות, עוגיות ומאפים לשבת ולבית. חלבי ופרווה, גם ללא גלוטן.</p><span class="dl">לתפריט<i></i></span></a>
-    </div>
     <canvas class="flour" id="flour"></canvas>
     <div class="hint mini" id="hint">scroll ↓</div>
   </div>
@@ -183,7 +179,7 @@ a{color:inherit;text-decoration:none}
 const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const ease=t=>1-Math.pow(1-t,3),clamp=(v,a,b)=>Math.min(Math.max(v,a),b);
 const $=id=>document.getElementById(id);
-let thick=.02,cloudStrength=.6,family='Laviossa',flip=1,nameBox={x:0,y:0,w:0,h:0},maskURL=null;
+let thick=.032,cloudStrength=.4,family='Laviossa',flip=1,nameBox={x:0,y:0,w:0,h:0},maskURL=null;
 
 // נייר עבודת יד
 (function(){
@@ -224,6 +220,13 @@ function buildMask(){
   x.lineJoin='round';x.lineWidth=fs*thick;x.strokeStyle='#000';x.fillStyle='#000';
   lines.forEach((l,i)=>{x.fillText(l,pos[i][0],pos[i][1]);if(thick>0)x.strokeText(l,pos[i][0],pos[i][1])});
   nameBox={x:x1,y:top,w:bw,h:lh*2};
+  // קו מתאר: מציירים קו עבה בבורדו ומוחקים ממנו את האות עצמה, כך שנשארת טבעת דקה סביב כל אות
+  const oc=document.createElement('canvas');oc.width=W*dpr;oc.height=H*dpr;const ox=oc.getContext('2d');ox.scale(dpr,dpr);
+  ox.font=x.font;ox.lineJoin='round';ox.textBaseline='alphabetic';
+  ox.strokeStyle='rgba(142,63,53,.75)';ox.lineWidth=fs*thick+3;lines.forEach((l,i)=>ox.strokeText(l,pos[i][0],pos[i][1]));
+  ox.globalCompositeOperation='destination-out';ox.lineWidth=Math.max(fs*thick,.1);ox.fillStyle='#000';
+  lines.forEach((l,i)=>{ox.fillText(l,pos[i][0],pos[i][1]);if(thick>0)ox.strokeText(l,pos[i][0],pos[i][1])});
+  oc.toBlob(b=>{const o=$('outline');if(o.src.startsWith('blob:'))URL.revokeObjectURL(o.src);o.src=URL.createObjectURL(b)});
   // החותמת: בפינה הפנויה מימין ל-Liron's, מעל הסוף של Bakery
   const st=$('stamp'),sw=st.offsetWidth;
   if(mob){st.style.setProperty('--sx',(W-sw-16)+'px');st.style.setProperty('--sy',(top+lh*2+fs*.2)+'px')}
@@ -295,14 +298,13 @@ function frame(now){
   stepSieve(now);
 }
 function applyScroll(p){
-  const z=ease(clamp(p/.42,0,1));
-  $('paper').style.transform=`scale(${1+z*z*14})`;
-  const po=1-clamp((p-.2)/.2,0,1);$('paper').style.opacity=po;$('paper').style.visibility=po<=0?'hidden':'visible';
-  $('front').style.opacity=1-clamp(p/.1,0,1);
+  // בלי כרטיסים: הנייר נפתח לאורך כל הגלילה, והתמונה נשארת מלאה בסוף
+  const z=ease(clamp(p/.85,0,1));
+  $('paper').style.transform=`scale(${1+z*z*14})`;$('outline').style.transform=$('paper').style.transform;
+  const po=1-clamp((p-.35)/.4,0,1);$('outline').style.opacity=po;$('paper').style.opacity=po;$('paper').style.visibility=po<=0?'hidden':'visible';
+  $('front').style.opacity=1-clamp(p/.15,0,1);
   $('hint').style.opacity=1-clamp(p/.06,0,1);
   $('photo').style.transform=`scale(${(1.12-z*.1)*flip},${1.12-z*.1})`;
-  $('veil').style.opacity=clamp((p-.4)/.15,0,1);
-  cards.forEach((c,i)=>{const k=ease(clamp((p-(.46+i*.1))/.12,0,1));c.style.opacity=k;c.style.transform=`translateY(${(1-k)*70}px) scale(${.96+k*.04})`;c.style.filter=k<1?`blur(${(1-k)*6}px)`:'none';c.classList.toggle('on',k>.5)});
 }
 function stepSieve(now){
   if(!sweep&&!grains.length){if(stepSieve.dirty){sx.clearRect(0,0,SW,SH);stepSieve.dirty=false}return}
