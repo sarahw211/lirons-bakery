@@ -38,7 +38,7 @@ a{color:inherit;text-decoration:none;cursor:pointer}
 .btn::after{content:"";position:absolute;inset:4px;border:.8px solid currentColor;opacity:.5;clip-path:inherit;transition:inset .35s,opacity .35s}
 .btn:hover::after{inset:6px;opacity:.75}
 .btn.p{background:var(--acc);color:#fff}.btn.p:hover{background:#7A342B}
-.btn.s{background:var(--cream);color:var(--acc);box-shadow:inset 0 0 0 1px rgb(142 63 53 / .5)}.btn.s:hover{background:#fff}
+.btn.s{background:rgb(232 218 199 / .5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--acc);box-shadow:inset 0 0 0 1px rgb(142 63 53 / .45)}.btn.s:hover{background:rgb(232 218 199 / .75)}
 .ctas{display:flex;gap:10px;flex-wrap:wrap}
 .dl{display:inline-grid;gap:5px;color:var(--acc);font-family:"Nostela",sans-serif;font-weight:700;font-size:16px;justify-self:start}
 .dl i{display:block;height:4px;border-top:1px solid currentColor;border-bottom:1px solid currentColor;transform:scaleX(.35);transform-origin:right;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
@@ -107,6 +107,31 @@ a{color:inherit;text-decoration:none;cursor:pointer}
 .slices:hover .slice{transform:translateY(calc(var(--y,0) * 1.7))}
 .g1x .stamp{width:clamp(120px,10vw,150px);right:-40px;top:-50px}
 
+/* ================= מ3 · שולחן לגלות ================= */
+.m3x .stage{position:relative;aspect-ratio:3/2;min-height:640px;max-height:980px}
+.m3x .table{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.m3x .veil{position:absolute;inset:0;background:radial-gradient(58% 44% at 50% 20%,rgb(251 248 243 / .94),rgb(251 248 243 / .6) 55%,transparent 80%)}
+.m3x .copy{position:absolute;z-index:6;top:clamp(96px,9vw,130px);left:50%;transform:translateX(-50%);width:min(780px,92%);display:grid;justify-items:center;text-align:center;gap:16px}
+.m3x .copy .bn{font-family:"BlackDelights",serif;direction:ltr;white-space:nowrap;font-size:clamp(80px,9vw,150px);line-height:.9;color:rgb(142 63 53 / .4);margin-bottom:-.42em}
+.m3x .h2t{font-size:clamp(40px,4.2vw,70px)}
+.m3x .h2t b,.m3x .h2t i{display:inline}.m3x .h2t i{font-size:.62em;margin-right:.3em}
+.m3x .ctas{justify-content:center}
+.m3x .stamp{width:clamp(110px,9vw,140px);left:4%;top:15%}
+/* נקודות על השולחן: כל מוצר הוא כניסה לשירות */
+.hs{position:absolute;z-index:6;transform:translate(-50%,-50%)}
+.hs button{width:34px;height:34px;border-radius:50%;border:0;background:var(--acc);color:#fff;font-size:20px;line-height:1;cursor:pointer;position:relative;box-shadow:0 6px 18px rgb(60 40 25 / .3)}
+.hs button::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid rgb(251 248 243 / .9);animation:ping 2.4s ease-out infinite}
+@keyframes ping{from{transform:scale(.7);opacity:1}to{transform:scale(1.45);opacity:0}}
+.hs .tip{--cut:10px;position:absolute;bottom:calc(100% + 14px);left:50%;transform:translate(-50%,8px);width:220px;padding:14px 16px 12px;text-align:right;
+  background:rgb(251 248 243 / .9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  clip-path:polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut));
+  opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;display:grid;gap:4px}
+.hs .tip::before{content:"";position:absolute;inset:5px;border:.8px solid rgb(142 63 53 / .45);clip-path:inherit}
+.hs .tip b{font-family:"Nostela",sans-serif;font-weight:700;font-size:19px;line-height:1.2}
+.hs .tip small{color:var(--muted);font-size:14px;line-height:1.4}
+.hs:hover .tip,.hs.on .tip{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.m3x .hint{position:absolute;z-index:6;left:50%;bottom:24px;transform:translateX(-50%);background:rgb(251 248 243 / .85);border-radius:99px;padding:7px 18px;font-size:14px;color:var(--muted)}
+
 /* ================= מ2 · הקשת והסוכר ================= */
 .m2x .stage{position:relative;min-height:min(900px,max(780px,100vh));display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding:120px clamp(20px,5vw,80px) 70px}
 .m2x .copy{position:relative;z-index:6;display:grid;gap:20px;justify-items:start}
@@ -139,12 +164,13 @@ a{color:inherit;text-decoration:none;cursor:pointer}
   .m2x .stage{grid-template-columns:minmax(0,1fr);padding:110px 20px 60px}
   .m2x .archbox{width:74vw;order:-1;margin-bottom:20px}
   .m2x .stamp{width:96px;left:-24px}
+  .m3x .stage{aspect-ratio:auto;height:760px}.m3x .h2t b,.m3x .h2t i{display:block}.m3x .copy .bn{font-size:64px}.m3x .stamp{display:none}.hs .tip{width:180px}
   .h2t{font-size:38px !important}
   .svcrow a{font-size:14px;padding:2px 9px}
 }
 @media (prefers-reduced-motion:reduce){.flour{display:none}.h1x .st{transition:none}}
 </style>
-<style>.doc{display:none!important}.label span,.label button{display:none!important}.label{margin-top:28px!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style></head>
+<style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style></head>
 <body><a class="back" href="./">← כל האפשרויות</a>
 
 <header class="doc">
@@ -166,53 +192,11 @@ a{color:inherit;text-decoration:none;cursor:pointer}
     </div>
     <img class="stamp" data-stamp alt="" aria-hidden="true">
     <div class="copy">
-      <h1 class="h2t"><b>עוגות, עוגיות<br>ומגשי אירוח</b><i>לאירועים, בעבודת יד</i></h1>
+      <h1 class="h2t"><b>עוגות, עוגיות<br>ומגשי אירוח</b><i>בעבודת יד</i></h1>
       <div class="ctas"><a class="btn p">לתפריט ולהזמנה</a><a class="btn s">אירועים וקייטרינג</a></div>
     </div>
   </div>
   <canvas class="flour" data-n="160"></canvas>
-</section>
-
-<!-- ============ ג1 ============ -->
-<div class="label"><b>ג1 · פרוסות</b><span>תמונת השולחן החדשה, חתוכה לחמש רצועות בגבהים שונים, כמו עוגה פרוסה. Liron's Bakery ענק ושקוף בתחתית, ונכנס מאחורי הפרוסות. מעבירים עכבר והפרוסות זזות עוד קצת. מימין הכותרת, שורת השירותים והכפתורים.</span></div>
-<section class="sk g1x" id="g1x">
-  <div data-tpl="nav"></div>
-  <div class="stage">
-    <div class="bigname">Liron's Bakery</div>
-    <div class="copy">
-      <div class="script">Handmade</div>
-      <h1 class="h2t"><b>עוגות, עוגיות<br>ומגשי אירוח</b><i>לאירועים, בעבודת יד</i></h1>
-      <nav class="svcrow" aria-label="השירותים"><a>קייטרינג</a><a>מגשי אירוח</a><a>מארזים</a><a>סדנאות</a><a>עוגות ועוגיות</a></nav>
-      <div class="ctas"><a class="btn p">לתפריט ולהזמנה</a><a class="btn s">אירועים וקייטרינג</a></div>
-    </div>
-    <div class="slicebox">
-      <div class="slices" data-img="img/cutouts/art-table-real.png" data-y="-34,14,-58,22,-14" role="img" aria-label="שולחן אירוח של לירונ'ס, חתוך לפרוסות"></div>
-      <img class="stamp" data-stamp alt="" aria-hidden="true">
-    </div>
-  </div>
-  <canvas class="flour" data-n="150"></canvas>
-</section>
-
-<!-- ============ מ2 ============ -->
-<div class="label"><b>מ2 · הקשת והסוכר</b><span>הקשת עם ניפוי הסוכר, עכשיו במסגרת וינטג' של שני קווים דקים, עם החותמת של לירון על הקצה וענף העלים מהלוגו שלה מעל הכותרת. השם ענק ושקוף בתחתית, ונכנס מאחורי הקשת. מתחת לכותרת יש שורה עם כל השירותים.</span></div>
-<section class="sk m2x" id="m2x">
-  <div data-tpl="nav"></div>
-  <div class="stage">
-    <div class="bigname">Liron's Bakery</div>
-    <div class="copy">
-      <div class="leaf" aria-hidden="true"></div>
-      <div class="script">Handmade</div>
-      <h1 class="h2t"><b>עוגות, עוגיות<br>ומגשי אירוח</b><i>לאירועים, בעבודת יד</i></h1>
-      <nav class="svcrow" aria-label="השירותים"><a>קייטרינג</a><a>מגשי אירוח</a><a>מארזים</a><a>סדנאות</a><a>עוגות ועוגיות</a></nav>
-      <div class="ctas"><a class="btn p">לתפריט ולהזמנה</a><a class="btn s">אירועים וקייטרינג</a></div>
-    </div>
-    <div class="archbox">
-      <div class="arch"><img src="img/cutouts/art-sugar-loaf.png" alt="ניפוי אבקת סוכר על עוגה"><canvas class="flour" data-n="200" data-dense="1"></canvas></div>
-      <div class="base"></div>
-      <img class="stamp" data-stamp alt="" aria-hidden="true">
-    </div>
-  </div>
-  <canvas class="flour" data-n="90"></canvas>
 </section>
 
 <div style="height:80px"></div>
@@ -251,16 +235,16 @@ async function buildStamp(){
 
 // ה1: עותק של השם בתוך כל רצועה באותו מקום בדיוק, כך שרק החלק שבתוכה מתהפך לשמנת.
 // כשרצועה נפתחת הרוחב משתנה, ולכן מעדכנים את המיקום בזמן המעבר בלבד
-const h1=document.getElementById('h1x'),stage=h1.querySelector('.stage'),main=stage.querySelector('[data-name]'),strips=[...stage.querySelectorAll('.st')];
+const h1=document.getElementById('h1x'),stage=h1&&h1.querySelector('.stage'),main=stage&&stage.querySelector('[data-name]'),strips=stage?[...stage.querySelectorAll('.st')]:[];
 strips.forEach(st=>{const n=main.cloneNode(true);n.removeAttribute('data-name');n.setAttribute('aria-hidden','true');st.prepend(n)});
 function placeNames(){
+  if(!stage)return;
   const sr=stage.getBoundingClientRect(),mt=main.getBoundingClientRect().top;
   strips.forEach(st=>{const n=st.querySelector('.name'),tr=st.getBoundingClientRect();n.style.left=(sr.left-tr.left)+'px';n.style.width=sr.width+'px';n.style.right='auto';n.style.top=(mt-tr.top)+'px'});
 }
 let until=0;
 function follow(){until=performance.now()+950;(function loop(){placeNames();if(performance.now()<until)requestAnimationFrame(loop)})()}
-stage.querySelector('.strips').addEventListener('mouseover',follow);
-stage.querySelector('.strips').addEventListener('mouseleave',follow);
+if(stage){stage.querySelector('.strips').addEventListener('mouseover',follow);stage.querySelector('.strips').addEventListener('mouseleave',follow)}
 
 // ג1: הפרוסות. כל פרוסה מציגה את החלק שלה מאותה תמונה, כך שביחד הן תמונה אחת
 function buildSlices(){
@@ -298,6 +282,12 @@ function flour(cv){
     for(const p of parts){p.ph+=p.sp;p.x+=Math.sin(p.ph)*.18;p.y+=p.vy;if(p.y>H+8)Object.assign(p,mk(true));
       ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle=`rgba(255,255,255,${p.a})`;ctx.fill()}})();
 }
+
+// מ3: בנגיעה (טלפון) לחיצה על נקודה פותחת את התווית שלה
+document.querySelectorAll('.hs button').forEach(b=>b.addEventListener('click',()=>{
+  const h=b.parentElement,on=h.classList.contains('on');
+  document.querySelectorAll('.hs').forEach(x=>x.classList.remove('on'));if(!on)h.classList.add('on');
+}));
 
 Promise.all([document.fonts.load('100px BlackDelights'),document.fonts.load('400 20px Plinko')]).then(()=>{
   buildStamp();placeNames();document.querySelectorAll('canvas.flour').forEach(flour);
