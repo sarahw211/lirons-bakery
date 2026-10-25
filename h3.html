@@ -120,7 +120,8 @@ a{color:inherit;text-decoration:none}
 .sec{position:relative}
 .in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:clamp(72px,9vw,130px) clamp(20px,5vw,80px)}
 .he-h{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(36px,3.8vw,62px);line-height:1.04;margin:0;text-wrap:balance}
-.he-h .l2{display:block;font-weight:300;color:var(--acc)}
+.he-h .l2{display:block;font-weight:300}
+.he-h em{font-style:normal;color:var(--acc)}
 .lead2{margin:0;color:var(--muted);font-size:18px;line-height:1.65;max-width:46ch}
 .reveal{opacity:1;transform:none;transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
 .js .reveal:not(.seen){opacity:0;transform:translateY(40px)}
@@ -134,7 +135,7 @@ a{color:inherit;text-decoration:none}
 
 /* אירועים ומגשי אירוח: הכי גדול בדף. הכותרת הרצה עוברת על החלק העליון של התמונה */
 .ev{--mqy:clamp(150px,15vw,230px)}
-.ev .in{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,5vw,80px);align-items:center;padding-top:clamp(150px,16vw,250px)}
+.ev .in{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
 .ev .he-h{font-size:clamp(40px,4.6vw,76px)}
 .ev .pic{position:relative;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(16px 0,calc(100% - 16px) 0,100% 16px,100% calc(100% - 16px),calc(100% - 16px) 100%,16px 100%,0 calc(100% - 16px),0 16px)}
 .ev .pic img{width:100%;height:100%;object-fit:cover;object-position:30% 50%}
@@ -152,8 +153,8 @@ a{color:inherit;text-decoration:none}
 .gift .panel::before{content:"";position:absolute;inset:12px;z-index:2;pointer-events:none;background:rgb(251 248 243 / .4);
   clip-path:polygon(20px 0,calc(100% - 20px) 0,100% 20px,100% calc(100% - 20px),calc(100% - 20px) 100%,20px 100%,0 calc(100% - 20px),0 20px);-webkit-mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);padding:1px}
 .gift .mq .tr{color:rgb(251 248 243 / .08)}
-.gift .in{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(30px,5vw,80px);align-items:center;padding-top:clamp(130px,13vw,210px)}
-.gift .he-h{color:#fff}.gift .he-h .l2{color:#F1D9CF}
+.gift .in{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(30px,5vw,80px);align-items:center}
+.gift .he-h{color:#fff}.gift .he-h em{color:#F1D9CF}
 .gift .lead2{color:rgb(251 248 243 / .85)}
 .gift .txt{display:grid;gap:20px;justify-items:start}
 .gift .kinds{display:grid;width:100%;margin:0;padding:0;list-style:none;border-top:1px solid rgb(251 248 243 / .3)}
@@ -172,9 +173,10 @@ a{color:inherit;text-decoration:none}
 
 /* אני מאמינה: האזור השקט, עם החתימה האמיתית */
 /* האזור נעוץ במסך אחד בזמן שגוללים: המילים מתמלאות בדיו, ואז החתימה נכתבת */
-.bel{height:230vh}
+.bel{height:175vh}
 .bel .in{position:sticky;top:0;height:100vh;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(30px,5vw,80px);align-items:center;padding-block:40px}
-.bel .bt{display:grid;justify-items:center;text-align:center;gap:14px}
+.bel .bt{display:grid;justify-items:center;text-align:center;gap:10px}
+.bel .after .dl{justify-self:center}
 /* התמונה של לירון במסגרת התווית, נכנסת בעדינות כשהגלילה מתחילה */
 .bel .me{position:relative;margin:0;height:min(72vh,620px);overflow:hidden;clip-path:polygon(16px 0,calc(100% - 16px) 0,100% 16px,100% calc(100% - 16px),calc(100% - 16px) 100%,16px 100%,0 calc(100% - 16px),0 16px)}
 .bel .me img{width:100%;height:100%;object-fit:cover;object-position:58% 35%;transform:scale(var(--ms,1.08));transition:transform .3s}
@@ -184,7 +186,7 @@ a{color:inherit;text-decoration:none}
 .bel q .w{opacity:.14;transition:opacity .25s}
 .bel q .w.on{opacity:1}
 .bel .sig{width:min(210px,56vw);height:auto;clip-path:inset(0 0 0 var(--sw,100%))}
-.bel .after{display:grid;justify-items:center;gap:12px;opacity:var(--ao,0);transform:translateY(calc((1 - var(--ao,0)) * 14px))}
+.bel .after{display:grid;justify-items:center;gap:8px;opacity:var(--ao,0);transform:translateY(calc((1 - var(--ao,0)) * 14px))}
 .bel p{margin:0;max-width:56ch;color:var(--muted)}
 
 /* כשרות ואזור שירות, כמו הדפס של תפריט ישן */
@@ -245,7 +247,7 @@ a{color:inherit;text-decoration:none}
 
 @media (max-width:900px){
   .ev .in,.gift .in,.ws .in{grid-template-columns:minmax(0,1fr)}
-  .ev .in,.gift .in,.ws .in{padding-top:clamp(110px,30vw,150px)}
+
   .mq .tr{font-size:clamp(96px,26vw,150px)}
   .ev .pic{aspect-ratio:4/3}
   .bel .in{grid-template-columns:minmax(0,1fr);align-content:center;gap:16px;padding-block:20px}
@@ -330,11 +332,10 @@ a{color:inherit;text-decoration:none}
 <div class="home">
 <!-- ============ אירועים ומגשי אירוח ============ -->
 <section class="sec ev" id="events">
-  <div class="mq" data-word="events" aria-hidden="true"></div>
   <div class="in">
     <div class="pic reveal" data-over><img src="img/cutouts/art-stand-real.png" alt="מעמד עם מאפים של לירונ'ס לאירוח" loading="lazy" style="transform:scaleX(-1)"></div>
     <div class="txt reveal">
-      <h2 class="he-h">כמה אורחים מגיעים?<span class="l2">את השולחן תשאירו לי</span></h2>
+      <h2 class="he-h">כמה אורחים מגיעים?<span class="l2">את <em>השולחן</em> תשאירו לי</span></h2>
       <p class="lead2">ברית, בר מצווה, שבע ברכות או קידוש. ספרו לי כמה אורחים מגיעים, ואני ארכיב לכם שולחן חלבי ופרווה, מסודר עד המדבקה האחרונה. מזמינים עד יומיים לפני.</p>
       <div class="trays">
         <div class="tray"><b>מגשי אירוח</b><span>20 יחידות במגש</span><em>140–150 ₪</em></div>
@@ -349,10 +350,9 @@ a{color:inherit;text-decoration:none}
 <!-- ============ מארזי חג ומתנה ============ -->
 <section class="sec gift" id="gifts">
   <div class="panel">
-    <div class="mq" data-word="gifts" aria-hidden="true"></div>
     <div class="in">
       <div class="txt reveal">
-        <h2 class="he-h">מארזים שארוזים<span class="l2">כמו מתנה</span></h2>
+        <h2 class="he-h">מארזים שארוזים<span class="l2">כמו <em>מתנה</em></span></h2>
         <p class="lead2">מארזי חג ומתנה, עם המדבקה שלי על כל קופסה. אפשר לבחור מארז מוכן, או להרכיב אחד בעצמכם.</p>
         <ul class="kinds"><li><b>מארזים לחגים</b><span>ראש השנה, חנוכה ופורים</span></li><li><b>מארזים לעסקים</b><span>ללקוחות ולעובדים</span></li><li><b>הרכיבו מארז</b><span>בוחרים מה נכנס פנימה</span></li></ul>
         <div class="ctas"><a class="btn p">למארזים</a><a class="btn s">להרכיב מארז</a></div>
@@ -398,7 +398,7 @@ a{color:inherit;text-decoration:none}
   <div class="stick">
     <div class="mq" data-word="workshops" data-dir="r" aria-hidden="true"></div>
     <div class="head reveal">
-      <h2 class="he-h">סדנאות אפייה<span class="l2">בקבוצות קטנות</span></h2>
+      <h2 class="he-h">סדנאות אפייה<span class="l2">בקבוצות <em>קטנות</em></span></h2>
       <p class="lead2">הסדנאות חוזרות בקרוב. בחרו מה מתאים לכם, והשאירו פרטים בסוף, ואעדכן אתכם ראשונים.</p>
     </div>
     <div class="track" id="wstrack">
@@ -536,25 +536,51 @@ $('replay').onclick=()=>{scrollTo({top:$('x3').offsetTop,behavior:'instant'});pl
 
 // גלילה: הנייר נפתח, התמונה ממלאת את המסך, ושלושת השירותים עולים אחד אחרי השני
 const cards=[...document.querySelectorAll('.svc')];
-// גלילה רכה (smooth scroll): הגלגלת לא קופצת, אלא מחליקה בהדרגה. בנגיעה ובהעדפת "פחות תנועה" משאירים את הגלילה הרגילה
+// גלילה רכה (smooth scroll), עם עצירות בפתיחה. בנגיעה ובהעדפת "פחות תנועה" משאירים את הגלילה הרגילה
+// הפתיחה עובדת בשלוש גלילות: (1) הנייר נפתח, התמונה המלאה ושירות האירועים · (2) שלושת השירותים הבאים · (3) האזור הבא.
+// אחרי זה הגלילה חלקה וחופשית. בעלייה מלמטה עוצרים בתחילת האזור הבא, ומשם חוזרים באותן עצירות
 (function(){
   if(still||matchMedia('(pointer:coarse)').matches)return;
-  let target=scrollY,cur=scrollY,running=false,mine=false;
+  let target=scrollY,cur=scrollY,running=false,mine=false,tween=null,lastWheel=0,swallow=false;
   const max=()=>document.documentElement.scrollHeight-innerHeight;
+  function stops(){const s=$('x3'),T=s.getBoundingClientRect().top+scrollY,total=s.offsetHeight-s.querySelector('.pin').offsetHeight;
+    return[T,T+total*.6,T+total*.92,T+s.offsetHeight]}
+  const io=q=>q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2;
+  function go(y){running=false;tween={from:scrollY,y,t0:performance.now(),dur:1100};requestAnimationFrame(tstep)}
+  function tstep(now){if(!tween)return;const q=clamp((now-tween.t0)/tween.dur,0,1);
+    cur=target=tween.from+(tween.y-tween.from)*io(q);mine=true;scrollTo(0,cur);
+    if(q<1)requestAnimationFrame(tstep);else{tween=null;swallow=true}}
   addEventListener('wheel',e=>{
-    if(e.ctrlKey)return;e.preventDefault();
-    const d=clamp(e.deltaY*(e.deltaMode===1?40:1),-140,140);
-    target=clamp(clamp(target+d,cur-innerHeight*.75,cur+innerHeight*.75),0,max());
+    if(e.ctrlKey)return;
+    const now=performance.now(),gap=now-lastWheel;lastWheel=now;
+    if(gap>=160)swallow=false;
+    const d=e.deltaY*(e.deltaMode===1?40:1);if(!d)return;
+    const st=stops(),dir=Math.sign(d),y=tween?tween.y:(running?target:scrollY);
+    const inHero=dir>0?(y>=st[0]-2&&y<st[3]-2):(y>st[0]+2&&y<=st[3]+2);
+    e.preventDefault();
+    if(inHero){
+      // תנועה אחת של הגלגלת או של משטח המגע = עצירה אחת. מה שממשיך להגיע מאותה תנועה לא מדלג הלאה
+      if(tween||swallow)return;
+      const next=dir>0?st.find(v=>v>y+2):[...st].reverse().find(v=>v<y-2);
+      if(next!==undefined)go(next);
+      return;
+    }
+    let t=clamp(target+clamp(d,-140,140),0,max());
+    t=clamp(t,cur-innerHeight*.75,cur+innerHeight*.75);
+    if(dir<0&&cur>=st[3]-2&&t<st[3])t=st[3];
+    if(dir>0&&cur<=st[0]+2&&t>st[0])t=st[0];
+    target=t;
     if(!running){running=true;requestAnimationFrame(step)}
   },{passive:false});
   function step(){
+    if(!running)return;
     cur+=(target-cur)*.12;
     if(Math.abs(target-cur)<.5)cur=target;
     mine=true;scrollTo(0,cur);
     if(cur!==target)requestAnimationFrame(step);else running=false;
   }
   // גלילה במקלדת או בפס הגלילה: מסנכרנים, כדי שהגלגלת תמשיך מהמקום הנכון
-  addEventListener('scroll',()=>{if(mine){mine=false;return}if(!running){target=cur=scrollY}},{passive:true});
+  addEventListener('scroll',()=>{if(mine){mine=false;return}if(!running&&!tween){target=cur=scrollY}},{passive:true});
 })();
 
 function frame(now){
@@ -568,7 +594,8 @@ function frame(now){
 }
 function applyScroll(p){
   const z=ease(clamp(p/.42,0,1));
-  $('paper').style.transform=`scale(${1+z*z*14})`;$('outline').style.transform=$('paper').style.transform;
+  const zz=z>.001,pz=zz?`scale(${1+z*z*14})`:'none',wc=zz?'transform,opacity':'auto';
+  for(const id of ['paper','outline']){const el=$(id);el.style.transform=pz;el.style.willChange=wc}
   const po=1-clamp((p-.2)/.2,0,1);$('outline').style.opacity=po;$('paper').style.opacity=po;$('paper').style.visibility=po<=0?'hidden':'visible';
   $('front').style.opacity=1-clamp(p/.1,0,1);
   $('hint').style.opacity=1-clamp(p/.06,0,1);
