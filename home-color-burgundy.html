@@ -392,8 +392,14 @@ a{color:inherit;text-decoration:none}
 .wa:hover,.wa:focus-visible{gap:10px;padding:0 20px 0 18px}.wa:hover span,.wa:focus-visible span{max-width:200px}
 @media (max-width:700px){.wa{right:14px;bottom:14px;height:52px;padding:0 13px}}
 </style>
-<style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style></head>
-<body><a class="back" href="./">← כל האפשרויות</a>
+<style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style><style>
+/* בורר הצבע (רק לתצוגה ללירון, לא חלק מהאתר) */
+.pal{position:fixed;z-index:70;bottom:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:7px 14px;border-radius:99px;background:rgb(255 255 255 / .94);box-shadow:0 10px 26px -12px rgb(40 26 18 / .45);font:14px/1 system-ui,sans-serif;color:#3A2A22}
+.pal a{display:flex;align-items:center;gap:6px;padding:5px 9px;border-radius:99px;color:inherit;text-decoration:none}
+.pal a i{width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 1px rgb(0 0 0 / .15)}
+.pal a.on{background:#F3EADD;font-weight:600}
+</style></head>
+<body><nav class="pal" aria-label="בחירת צבע"><span>איזה צבע?</span><a href="home-color-burgundy.html" class="on" aria-current="page"><i style="background:#8E3F35"></i>בורדו</a><a href="home-color-rose.html"><i style="background:#9C5A55"></i>ורוד עתיק</a><a href="home-color-cocoa.html"><i style="background:#6B4A3A"></i>קקאו</a></nav><a class="back" href="./">← כל האפשרויות</a>
 
 <header class="doc">
   <h1>ה3 במקסימום</h1>
@@ -838,5 +844,9 @@ function homeTick(){
 }
 requestAnimationFrame(homeTick);
 </script>
-</body>
+<script>
+// שומרים את מקום הגלילה כשעוברים צבע, כדי להשוות את אותו אזור
+document.querySelectorAll('.pal a').forEach(a=>a.addEventListener('click',()=>{try{sessionStorage.setItem('palY',String(scrollY))}catch(e){}}));
+addEventListener('load',()=>{try{const y=sessionStorage.getItem('palY');if(y){sessionStorage.removeItem('palY');setTimeout(()=>scrollTo(0,+y),300)}}catch(e){}});
+</script></body>
 </html>
