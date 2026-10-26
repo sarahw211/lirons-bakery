@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>לירונ'ס · ניסיון סדנאות</title>
+<style>
+/* =========================================================
+   ניסיון חי לאזור הסדנאות: שלושה גרידים במקום הרצועה שגוללים הצידה.
+   בורר למעלה מחליף בין הגרסאות. התמונות זמניות (AI) עד שיגיעו תמונות אמיתיות.
+   ========================================================= */
+@font-face{font-family:"BlackDelights";src:url("fonts/latin/L-Black-Delights-Regular.ttf") format("truetype")}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Light-Regular.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Bold.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Light.woff2") format("woff2");font-weight:300}
+:root{--ink:#3A2A22;--muted:#7A6A60;--acc:#8E3F35;--line:rgb(58 42 34 / .14);--paper:none}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper),#F3EADD;background-size:360px 360px,auto;color:var(--ink);font-family:"Plinko",system-ui,sans-serif;font-weight:300;font-size:16px;line-height:1.6}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none;cursor:pointer}
+.he-h{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(32px,3vw,48px);line-height:1.04;margin:0}
+.he-h .l2{display:block;font-weight:300}.he-h em{font-style:normal;color:var(--acc)}
+.lead2{margin:0;color:var(--muted);font-size:17px;line-height:1.65;max-width:42ch}
+.cut{clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 14px,100% calc(100% - 14px),calc(100% - 14px) 100%,14px 100%,0 calc(100% - 14px),0 14px)}
+.picker{position:sticky;top:12px;z-index:50;margin:12px auto 0;width:max-content;max-width:calc(100vw - 24px);display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;background:rgb(255 255 255 / .92);border-radius:16px;padding:8px 12px;box-shadow:0 10px 30px -14px rgb(40 26 18 / .4);font-size:14px}
+.seg{display:inline-flex;flex-wrap:wrap;background:#F3EADD;border-radius:99px;padding:3px}
+.seg button{font:inherit;font-size:13.5px;border:0;background:none;border-radius:99px;padding:5px 12px;cursor:pointer;color:var(--ink)}
+.seg button.on{background:var(--acc);color:#fff}
+.wrap{max-width:1240px;margin:0 auto;padding:clamp(60px,8vw,110px) clamp(20px,5vw,80px)}
+.hide{display:none!important}
+.tmp{position:absolute;z-index:3;left:10px;bottom:10px;font-size:11.5px;background:rgb(255 255 255 / .85);border-radius:99px;padding:2px 10px}
+/* כרטיס רשימת ההמתנה, משותף לכל הגרסאות */
+.join{background:var(--acc);color:#fff;display:grid;align-content:center;gap:12px;padding:clamp(22px,2.6vw,36px)}
+.join b{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(22px,2vw,30px);line-height:1.15}
+.join span{color:rgb(251 248 243 / .85);font-size:15px}
+.join form{display:flex;flex-wrap:wrap;gap:8px}
+.join input{flex:1 1 130px;min-width:0;font:inherit;font-size:15px;padding:11px 14px;border:1px solid rgb(251 248 243 / .5);background:#fff;color:var(--ink);border-radius:2px}
+.join button{font:inherit;font-family:"Nostela",sans-serif;font-size:15px;border:0;cursor:pointer;background:#FBF8F3;color:var(--acc);padding:11px 18px}
+.cap b{display:block;font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(19px,1.6vw,23px)}
+.cap span{color:var(--muted);font-size:14.5px}
+
+/* ---------- א. בנטו: תמונה גדולה אחת, ומסביבה סדנאות וכרטיס ההמתנה בגדלים שונים ---------- */
+.gA{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto auto;gap:clamp(14px,1.6vw,22px);margin-top:clamp(28px,3vw,44px)}
+.gA .big{grid-row:1/3;position:relative;min-height:520px}
+.gA .big .cap{position:absolute;inset:auto 0 0 0;padding:22px;background:linear-gradient(transparent,rgb(40 20 14 / .72));color:#fff}
+.gA .big .cap span{color:rgb(251 248 243 / .85)}
+.gA .card{display:grid;grid-template-rows:200px auto;gap:10px}
+.gA .card .ph{position:relative;overflow:hidden}
+.gA .txt{grid-column:2/4;display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:3px double rgb(142 63 53 / .4);border-bottom:3px double rgb(142 63 53 / .4);padding:16px 0}
+.gA .txt i{font-style:normal;font-family:"Nostela",sans-serif;color:var(--acc)}
+.gA .join{grid-column:1/4;grid-template-columns:1fr 1.2fr;align-items:center}
+
+/* ---------- ב. קולאז' עם רשימה: שתי תמונות שחופפות, וסוגי הסדנאות כרשימה מסודרת ---------- */
+.gB{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:center;margin-top:clamp(28px,3vw,44px)}
+.gB .pics{position:relative;height:clamp(420px,42vw,560px)}
+.gB .pics .ph{position:absolute;overflow:hidden;box-shadow:0 30px 60px -34px rgb(40 26 18 / .55)}
+.gB .pics .a{right:0;top:0;width:74%;height:72%}
+.gB .pics .b{left:0;bottom:0;width:56%;height:50%;outline:8px solid #F3EADD}
+.gB .list{display:grid;border-top:3px double rgb(142 63 53 / .4)}
+.gB .item{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.gB .item b{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(21px,1.9vw,27px)}
+.gB .item i{font-style:normal;font-family:"Nostela",sans-serif;color:var(--acc);font-size:15px;align-self:center}
+.gB .item span{grid-column:1/-1;color:var(--muted);font-size:15px}
+.gB .join{margin-top:22px}
+
+/* ---------- ג. מדרגות: ארבעה טורים בגבהים שונים, והכרטיס הבורדו נכנס כטור חמישי ---------- */
+.gC{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,1.4vw,20px);align-items:start;margin-top:clamp(28px,3vw,44px)}
+.gC .col{display:grid;gap:10px}
+.gC .col .ph{position:relative;overflow:hidden}
+.gC .col:nth-child(1) .ph{height:400px}.gC .col:nth-child(2){margin-top:70px}.gC .col:nth-child(2) .ph{height:300px}
+.gC .col:nth-child(3) .ph{height:360px}.gC .col:nth-child(3){margin-top:30px}.gC .col:nth-child(4){margin-top:110px}.gC .col:nth-child(4) .ph{height:280px}
+.gC .join{margin-top:40px;min-height:380px}
+
+@media (max-width:900px){
+  .gA{grid-template-columns:1fr 1fr}.gA .big{grid-column:1/-1;grid-row:auto;min-height:360px}.gA .txt,.gA .join{grid-column:1/-1;grid-template-columns:1fr}
+  .gB{grid-template-columns:minmax(0,1fr)}.gB .pics{height:80vw}
+  .gC{grid-template-columns:1fr 1fr}.gC .col{margin-top:0!important}.gC .col .ph{height:220px!important}.gC .join{grid-column:1/-1;margin-top:0;min-height:0}
+}
+</style>
+</head>
+<body>
+<div class="picker"><span>סדנאות:</span><span class="seg" id="pick"><button data-v="gA" class="on">א. בנטו</button><button data-v="gB">ב. קולאז' ורשימה</button><button data-v="gC">ג. מדרגות</button></span></div>
+
+<section class="wrap">
+  <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+    <h2 class="he-h">סדנאות אפייה<span class="l2">בקבוצות <em>קטנות</em></span></h2>
+    <p class="lead2">הסדנאות חוזרות בקרוב. בחרו מה מתאים לכם, והשאירו פרטים כדי שאעדכן אתכם ראשונים.</p>
+  </div>
+
+  <!-- א. בנטו -->
+  <div class="gA" id="gA">
+    <a class="big cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים"><span class="tmp" style="left:auto;right:10px;top:10px;bottom:auto">תמונות זמניות</span><div class="cap"><b>ערב אפייה לנשים</b><span>מגלגלים, קולעים ופורסים, ויוצאות עם קופסה מלאה.</span></div></a>
+    <a class="card"><div class="ph cut"><img src="img/cutouts/workshop-kids.png" alt="נוער וילדים"></div><div class="cap"><b>נוער וילדים</b><span>חותכים צורות, מנפים סוכר ומקשטים.</span></div></a>
+    <a class="card"><div class="ph cut"><img src="img/cutouts/workshop-1.png" alt="סדנה פרטית" style="object-position:85% 50%"></div><div class="cap"><b>סדנה פרטית לקבוצה</b><span>יום הולדת, צוות או חברות, בתיאום מראש.</span></div></a>
+    <div class="txt"><div class="cap"><b>קייטנת אפייה בקיץ</b><span>כמה בקרים של אפייה בקבוצה קטנה.</span></div><i>פרטים בקרוב</i></div>
+    <div class="join cut"><div style="display:grid;gap:6px"><b>רוצים לשמוע ראשונים?</b><span>השאירו שם וטלפון, ואעדכן כשנפתחת סדנה.</span></div>
+      <form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
+  </div>
+
+  <!-- ב. קולאז' ורשימה -->
+  <div class="gB hide" id="gB">
+    <div class="pics"><div class="ph a"><img src="img/cutouts/workshop-1.png" alt="סדנת אפייה"></div><div class="ph b"><img src="img/cutouts/workshop-kids.png" alt="סדנה לילדים"></div><span class="tmp">תמונות זמניות</span></div>
+    <div>
+      <div class="list">
+        <div class="item"><b>ערב אפייה לנשים</b><i>מגיל 18</i><span>מגלגלים, קולעים ופורסים, ויוצאות עם קופסה מלאה.</span></div>
+        <div class="item"><b>נוער וילדים</b><i>גילאי 6–14</i><span>חותכים צורות, מנפים סוכר ומקשטים.</span></div>
+        <div class="item"><b>סדנה פרטית לקבוצה</b><i>בתיאום</i><span>יום הולדת, צוות או חברות.</span></div>
+        <div class="item"><b>קייטנת אפייה בקיץ</b><i>בקיץ</i><span>כמה בקרים של אפייה בקבוצה קטנה.</span></div>
+      </div>
+      <div class="join cut"><b>רוצים לשמוע ראשונים?</b><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
+    </div>
+  </div>
+
+  <!-- ג. מדרגות -->
+  <div class="gC hide" id="gC">
+    <a class="col"><div class="ph cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים"><span class="tmp">תמונות זמניות</span></div><div class="cap"><b>ערב אפייה לנשים</b><span>מגלגלים, קולעים ופורסים.</span></div></a>
+    <a class="col"><div class="ph cut"><img src="img/cutouts/workshop-kids.png" alt="נוער וילדים"></div><div class="cap"><b>נוער וילדים</b><span>חותכים צורות ומקשטים.</span></div></a>
+    <a class="col"><div class="ph cut"><img src="img/cutouts/workshop-1.png" alt="סדנה פרטית" style="object-position:85% 50%"></div><div class="cap"><b>סדנה פרטית</b><span>יום הולדת, צוות או חברות.</span></div></a>
+    <a class="col"><div class="ph cut"><img src="img/cutouts/workshop-kids.png" alt="קייטנה" style="object-position:15% 50%"></div><div class="cap"><b>קייטנת קיץ</b><span>כמה בקרים בקבוצה קטנה.</span></div></a>
+    <div class="join cut"><b>רוצים לשמוע ראשונים?</b><span>השאירו שם וטלפון.</span><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
+  </div>
+</section>
+
+<script>
+// נייר עבודת יד (אותו נייר כמו באתר)
+(function(){const S=360,c=document.createElement('canvas');c.width=c.height=S;const x=c.getContext('2d'),d=x.createImageData(S,S);
+  for(let i=0;i<d.data.length;i+=4){d.data[i]=90;d.data[i+1]=64;d.data[i+2]=44;d.data[i+3]=Math.random()<.5?Math.random()*16:0}x.putImageData(d,0,0);
+  for(let i=0;i<70;i++){const r=Math.random()<.85?.4+Math.random()*.9:1.2+Math.random()*1.4;x.beginPath();x.ellipse(Math.random()*S,Math.random()*S,r,r*(.5+Math.random()*.6),Math.random()*3,0,6.3);
+    x.fillStyle=`rgba(${110+Math.random()*40|0},${78+Math.random()*30|0},${55+Math.random()*20|0},${.18+Math.random()*.32})`;x.fill()}
+  document.documentElement.style.setProperty('--paper',`url(${c.toDataURL()})`)})();
+document.querySelectorAll('#pick button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#pick button').forEach(x=>x.classList.toggle('on',x===b));['gA','gB','gC'].forEach(k=>document.getElementById(k).classList.toggle('hide',k!==b.dataset.v))});
+</script>
+</body>
+</html>
