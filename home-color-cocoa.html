@@ -236,7 +236,7 @@ a{color:inherit;text-decoration:none}
 /* החותמת על הגבול: עיגול הדיו של לירון סביב חלון לשולחן מהפתיחה */
 .seal{position:absolute;z-index:5;left:50%;top:0;width:var(--seal);aspect-ratio:1;transform:translate(-50%,-50%) rotate(var(--sr,-18deg)) scale(var(--ss,1.35));will-change:transform}
 .seal .win{position:absolute;inset:15%;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px #3F2A21,0 18px 40px -16px rgb(20 10 6 / .7)}
-.seal .win i{position:absolute;inset:-20%;background:url("img/cutouts/art-table-real.png") 46% 55%/cover;transform:rotate(calc(var(--sr,-18deg) * -1)) scale(var(--ws,1.3))}
+.seal .win i{position:absolute;inset:-20%;background:url("img/cutouts/hero-spread.png") 50% 50%/cover;transform:rotate(calc(var(--sr,-18deg) * -1)) scale(var(--ws,1.3))}
 /* העיגול בבורדו על הנייר ובשמנת על הבורדו, כך שהוא נראה שלם משני צידי הגבול */
 .seal .ring{position:absolute;inset:0;background:linear-gradient(to bottom,#6B4A3A 50%,#F3EADD 50%);-webkit-mask:url("img/old-site/ink-ring.png") center/contain no-repeat;mask:url("img/old-site/ink-ring.png") center/contain no-repeat}
 /* העקבה: עיגול דיו בהיר שמתפשט ונעלם ברגע הלחיצה */
@@ -319,7 +319,7 @@ a{color:inherit;text-decoration:none}
 .c1{position:relative;height:250vh}
 .c1 .stage{position:sticky;top:0;height:100vh;overflow:hidden}
 .c1 .ask{position:absolute;inset:24vh 20px auto;display:grid;justify-items:center;text-align:center;gap:14px;z-index:3}
-.c1 .tbl{position:absolute;inset:0;z-index:2;background:url("img/cutouts/art-table-real.png") center/cover;clip-path:circle(var(--r,70px) at 50% 60%)}
+.c1 .tbl{position:absolute;inset:0;z-index:2;background:url("img/cutouts/hero-spread.png") center/cover;clip-path:circle(var(--r,70px) at 50% 60%)}
 .c1 .ring2{position:absolute;z-index:4;left:50%;top:60%;width:calc(var(--r,70px) * 2.9);aspect-ratio:1;transform:translate(-50%,-50%) rotate(-6deg);background:#6B4A3A;-webkit-mask:url("img/old-site/ink-ring.png") center/contain no-repeat;mask:url("img/old-site/ink-ring.png") center/contain no-repeat;opacity:var(--ro,1);pointer-events:none}
 .c1 .card{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,calc(-50% + (1 - var(--co,0)) * 30px));opacity:var(--co,0);display:grid;justify-items:center;gap:14px;text-align:center;
   padding:clamp(28px,4vw,48px) clamp(24px,5vw,64px);background:rgb(251 248 243 / .66);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);clip-path:polygon(16px 0,calc(100% - 16px) 0,100% 16px,100% calc(100% - 16px),calc(100% - 16px) 100%,16px 100%,0 calc(100% - 16px),0 16px);width:min(640px,calc(100vw - 32px))}
