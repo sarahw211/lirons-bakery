@@ -93,9 +93,14 @@ a{color:inherit;text-decoration:none}
 /* בגרסה הזאת אין כרטיסים בפתיחה: התמונה מתכווצת לרצועה של תמונות */
 .services{display:none!important}
 .tiles{position:absolute;inset:0;z-index:3;pointer-events:none}
-.tile{position:absolute;background:center/cover no-repeat;will-change:left,top,width,height,opacity}
-.tile.t0{z-index:2}
-.tile:not(.t0){clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px)}
+.t0{position:absolute;z-index:3;background:url(img/cutouts/art-table-real.png) center/cover no-repeat}
+/* הפס הנע: תמונות קטנות צמודות, שתי סדרות זהות כדי שהתנועה תהיה רציפה בלי קפיצה */
+.belt{position:absolute;left:0;right:0;overflow:hidden;opacity:0;transition:opacity .5s}
+.belt.on{opacity:1}
+.belt .run{display:flex;width:max-content;height:100%;animation:belt 70s linear infinite}
+.belt .run div{height:100%;aspect-ratio:4/5;background:center/cover no-repeat}
+@keyframes belt{to{transform:translateX(50%)}}
+@media (prefers-reduced-motion:reduce){.belt .run{animation:none}}
 .stripcap{position:absolute;z-index:4;left:0;right:0;text-align:center;font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(24px,2.4vw,38px);opacity:0}
 .stripcap span{display:block;font-family:"Plinko",sans-serif;font-weight:300;font-size:17px;color:var(--muted)}
 .veil{position:absolute;inset:0;z-index:4;background:linear-gradient(rgb(40 26 18 / .05),rgb(40 26 18 / .35));opacity:0;pointer-events:none}
@@ -424,13 +429,8 @@ a{color:inherit;text-decoration:none}
   <div class="pin">
     <div class="photo" id="photo"></div>
     <div class="tiles" id="tiles" aria-hidden="true">
-      <div class="tile t0" style="background-image:url(img/cutouts/art-table-real.png)"></div>
-      <div class="tile" style="background-image:url(img/old-site/p13.jpg)"></div>
-      <div class="tile" style="background-image:url(img/old-site/gifts.png)"></div>
-      <div class="tile" style="background-image:url(img/cutouts/workshop-1.png)"></div>
-      <div class="tile" style="background-image:url(img/old-site/p07.jpg)"></div>
-      <div class="tile" style="background-image:url(img/old-site/p18.jpg)"></div>
-      <div class="tile" style="background-image:url(img/cutouts/art-stand-real.png)"></div>
+      <div class="belt" id="belt"><div class="run"><div style="background-image:url(img/cutouts/art-table-real.png)"></div><div style="background-image:url(img/old-site/p13.jpg)"></div><div style="background-image:url(img/old-site/gifts.png)"></div><div style="background-image:url(img/old-site/p07.jpg)"></div><div style="background-image:url(img/cutouts/workshop-1.png)"></div><div style="background-image:url(img/old-site/p18.jpg)"></div><div style="background-image:url(img/cutouts/art-stand-real.png)"></div><div style="background-image:url(img/old-site/p16.jpg)"></div><div style="background-image:url(img/old-site/p03.jpg)"></div><div style="background-image:url(img/old-site/p11.jpg)"></div><div style="background-image:url(img/cutouts/hero-spread.png)"></div><div style="background-image:url(img/old-site/p04.jpg)"></div><div style="background-image:url(img/cutouts/art-table-real.png)"></div><div style="background-image:url(img/old-site/p13.jpg)"></div><div style="background-image:url(img/old-site/gifts.png)"></div><div style="background-image:url(img/old-site/p07.jpg)"></div><div style="background-image:url(img/cutouts/workshop-1.png)"></div><div style="background-image:url(img/old-site/p18.jpg)"></div><div style="background-image:url(img/cutouts/art-stand-real.png)"></div><div style="background-image:url(img/old-site/p16.jpg)"></div><div style="background-image:url(img/old-site/p03.jpg)"></div><div style="background-image:url(img/old-site/p11.jpg)"></div><div style="background-image:url(img/cutouts/hero-spread.png)"></div><div style="background-image:url(img/old-site/p04.jpg)"></div></div></div>
+      <div class="t0" id="t0"></div>
     </div>
     <div class="stripcap" id="stripcap">עוגות, עוגיות ומגשי <span style="display:inline;font:inherit;color:var(--acc)">אירוח</span><span>לשבת, לחג, לאירוח, וסתם כי בא לכם</span></div>
     <div class="veil" id="veil"></div>
@@ -481,9 +481,9 @@ a{color:inherit;text-decoration:none}
   <div class="in">
     <div class="pic reveal" data-over><img src="img/cutouts/hero-spread.png" alt="שולחן מאפים של לירונ'ס לאירוח" loading="lazy"></div>
     <div class="txt reveal">
-      <h2 class="he-h">כמה אורחים מגיעים?<span class="l2">את <em>השולחן</em> תשאירו לי</span></h2>
-      <p class="lead2">ברית, בר מצווה, שבע ברכות או קידוש. ספרו לי כמה אורחים מגיעים, ואני ארכיב לכם שולחן חלבי ופרווה, מסודר עד המדבקה האחרונה. מזמינים עד יומיים לפני.</p>
-      <div class="ctas"><a class="btn p">לתכנון אירוע</a></div>
+      <h2 class="he-h">קייטרינג חלבי <em>לאירועים</em><span class="l2">מגשי אירוח, פינגר פוד וקינוחים</span></h2>
+      <p class="lead2">ברית, בר מצווה, שבע ברכות, קידוש או ארוחת בוקר בעבודה. שלחו לי תאריך ומספר אורחים, ואחזור אליכם עם תפריט ומחיר. חלבי ופרווה, מזמינים עד יומיים לפני.</p>
+      <div class="ctas"><a class="btn p">לקבלת הצעה לאירוע</a></div>
     </div>
     <div class="trayz reveal">
       <div class="ttl"><b>מגשי אירוח, 20 יחידות במגש</b><a class="dl">לכל המגשים<i></i></a></div>
@@ -712,26 +712,25 @@ const cards=[...document.querySelectorAll('.svc')];
 // אחרי זה הגלילה חלקה וחופשית. בעלייה מלמטה עוצרים בתחילת האזור הבא, ומשם חוזרים באותן עצירות
 (function(){
   if(still||matchMedia('(pointer:coarse)').matches)return;
-  let target=scrollY,cur=scrollY,running=false,mine=false,tween=null,lastWheel=0,swallow=false;
+  let target=scrollY,cur=scrollY,running=false,mine=false,tween=null,lastWheel=0,swallowUntil=0;
   const max=()=>document.documentElement.scrollHeight-innerHeight;
   function stops(){const s=$('x3'),T=s.getBoundingClientRect().top+scrollY,total=s.offsetHeight-s.querySelector('.pin').offsetHeight;
-    return[T,T+total*.42,T+total*.9,T+s.offsetHeight]}
+    return[T,T+total*.42,T+total*.85,T+s.offsetHeight]}
   const io=q=>q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2;
-  function go(y){running=false;tween={from:scrollY,y,t0:performance.now(),dur:1100};requestAnimationFrame(tstep)}
+  function go(y){running=false;tween={from:scrollY,y,t0:performance.now(),dur:850};requestAnimationFrame(tstep)}
   function tstep(now){if(!tween)return;const q=clamp((now-tween.t0)/tween.dur,0,1);
     cur=target=tween.from+(tween.y-tween.from)*io(q);mine=true;scrollTo(0,cur);
-    if(q<1)requestAnimationFrame(tstep);else{tween=null;swallow=true}}
+    if(q<1)requestAnimationFrame(tstep);else{tween=null;swallowUntil=performance.now()+450}}
   addEventListener('wheel',e=>{
     if(e.ctrlKey)return;
     const now=performance.now(),gap=now-lastWheel;lastWheel=now;
-    if(gap>=160)swallow=false;
     const d=e.deltaY*(e.deltaMode===1?40:1);if(!d)return;
     const st=stops(),dir=Math.sign(d),y=tween?tween.y:(running?target:scrollY);
     const inHero=dir>0?(y>=st[0]-2&&y<st[3]-2):(y>st[0]+2&&y<=st[3]+2);
     e.preventDefault();
     if(inHero){
       // תנועה אחת של הגלגלת או של משטח המגע = עצירה אחת. מה שממשיך להגיע מאותה תנועה לא מדלג הלאה
-      if(tween||swallow)return;
+      if(tween||now<swallowUntil)return;
       const next=dir>0?st.find(v=>v>y+2):[...st].reverse().find(v=>v<y-2);
       if(next!==undefined)go(next);
       return;
@@ -777,19 +776,16 @@ function applyScroll(p){
   cards.forEach((c,i)=>{const k=ease(clamp((p-(.46+i*.1))/.12,0,1));c.style.opacity=k;c.style.transform=`translateY(${(1-k)*70}px) scale(${.96+k*.04})`;c.style.filter=k<1?`blur(${(1-k)*6}px)`:'none';c.classList.toggle('on',k>.5)});
 }
 // הרצועה: התמונה המלאה מתכווצת לאריח אחד במרכז, ולצידה עולות עוד תמונות. בהמשך הגלילה הרצועה זזה הצידה
-const tiles=[...document.querySelectorAll('#tiles .tile')];
+// הפס: התמונה המלאה מתכווצת לגובה הפס, ובסוף ההתכווצות הפס הנע מופיע מאחוריה והיא נבלעת בו
 function strip(p){
   const pin=$('x3').querySelector('.pin'),W=pin.clientWidth,H=pin.clientHeight,mob=W<700;
-  const k=ease(clamp((p-.44)/.34,0,1)),tw=mob?W*.62:Math.min(W*.26,380),th=tw*1.25,gap=mob?12:22,cx=W/2,cy=H*(mob?.42:.44);
-  const drift=clamp((p-.78)/.22,0,1)*(tw+gap)*1.5;
+  const k=ease(clamp((p-.42)/.36,0,1)),bh=H*(mob?.24:.3),bt=H*(mob?.38:.42)-bh/2,tw=bh*.8;
+  const t=$('t0'),b=$('belt');
   $('photo').style.opacity=k>0?0:1;
-  tiles.forEach((t,i)=>{
-    if(i===0){t.style.left=((cx-tw/2+drift)*k).toFixed(1)+'px';t.style.top=((cy-th/2)*k).toFixed(1)+'px';t.style.width=(W+(tw-W)*k).toFixed(1)+'px';t.style.height=(H+(th-H)*k).toFixed(1)+'px';t.style.opacity=k>0?1:0;return}
-    const j=[1,-1,2,-2,3,-3][i-1];
-    t.style.width=tw+'px';t.style.height=th+'px';t.style.top=(cy-th/2+(1-k)*40).toFixed(1)+'px';
-    t.style.left=(cx-tw/2+j*(tw+gap)+drift).toFixed(1)+'px';t.style.opacity=clamp((k-.35)/.5,0,1).toFixed(3);
-  });
-  const c=$('stripcap');c.style.top=(cy+th/2+22)+'px';c.style.opacity=clamp((k-.6)/.3,0,1).toFixed(3);
+  t.style.left=((W/2-tw/2)*k).toFixed(1)+'px';t.style.top=(bt*k).toFixed(1)+'px';t.style.width=(W+(tw-W)*k).toFixed(1)+'px';t.style.height=(H+(bh-H)*k).toFixed(1)+'px';
+  t.style.opacity=k<=0?0:(k<.92?1:clamp((1-k)/.08,0,1)).toFixed(3);
+  b.style.top=bt+'px';b.style.height=bh+'px';b.classList.toggle('on',k>.85);
+  const c=$('stripcap');c.style.top=(bt+bh+24)+'px';c.style.opacity=clamp((k-.7)/.25,0,1).toFixed(3);
 }
 function stepSieve(now){
   if(!sweep&&!grains.length){if(stepSieve.dirty){sx.clearRect(0,0,SW,SH);stepSieve.dirty=false}return}

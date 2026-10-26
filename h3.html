@@ -351,14 +351,14 @@ a{color:inherit;text-decoration:none}
   <div class="in">
     <div class="pic reveal" data-over><img src="img/cutouts/art-stand-real.png" alt="מעמד עם מאפים של לירונ'ס לאירוח" loading="lazy" style="transform:scaleX(-1)"></div>
     <div class="txt reveal">
-      <h2 class="he-h">כמה אורחים מגיעים?<span class="l2">את <em>השולחן</em> תשאירו לי</span></h2>
-      <p class="lead2">ברית, בר מצווה, שבע ברכות או קידוש. ספרו לי כמה אורחים מגיעים, ואני ארכיב לכם שולחן חלבי ופרווה, מסודר עד המדבקה האחרונה. מזמינים עד יומיים לפני.</p>
+      <h2 class="he-h">קייטרינג חלבי <em>לאירועים</em><span class="l2">מגשי אירוח, פינגר פוד וקינוחים</span></h2>
+      <p class="lead2">ברית, בר מצווה, שבע ברכות, קידוש או ארוחת בוקר בעבודה. שלחו לי תאריך ומספר אורחים, ואחזור אליכם עם תפריט ומחיר. חלבי ופרווה, מזמינים עד יומיים לפני.</p>
       <div class="trays">
         <div class="tray"><b>מגשי אירוח</b><span>20 יחידות במגש</span><em>140–150 ₪</em></div>
         <div class="tray"><b>עוגות לשולחן</b><span>חלבי או פרווה</span><em>45–55 ₪</em></div>
         <div class="tray"><b>שולחן קינוחים לאירוע</b><span>לפי מספר האורחים</span><em>בהתאמה</em></div>
       </div>
-      <div class="ctas"><a class="btn p">לתכנון אירוע</a><a class="btn s">לכל המגשים</a></div>
+      <div class="ctas"><a class="btn p">לקבלת הצעה לאירוע</a><a class="btn s">לכל המגשים</a></div>
     </div>
   </div>
 </section>
@@ -557,26 +557,25 @@ const cards=[...document.querySelectorAll('.svc')];
 // אחרי זה הגלילה חלקה וחופשית. בעלייה מלמטה עוצרים בתחילת האזור הבא, ומשם חוזרים באותן עצירות
 (function(){
   if(still||matchMedia('(pointer:coarse)').matches)return;
-  let target=scrollY,cur=scrollY,running=false,mine=false,tween=null,lastWheel=0,swallow=false;
+  let target=scrollY,cur=scrollY,running=false,mine=false,tween=null,lastWheel=0,swallowUntil=0;
   const max=()=>document.documentElement.scrollHeight-innerHeight;
   function stops(){const s=$('x3'),T=s.getBoundingClientRect().top+scrollY,total=s.offsetHeight-s.querySelector('.pin').offsetHeight;
     return[T,T+total*.6,T+total*.92,T+s.offsetHeight]}
   const io=q=>q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2;
-  function go(y){running=false;tween={from:scrollY,y,t0:performance.now(),dur:1100};requestAnimationFrame(tstep)}
+  function go(y){running=false;tween={from:scrollY,y,t0:performance.now(),dur:850};requestAnimationFrame(tstep)}
   function tstep(now){if(!tween)return;const q=clamp((now-tween.t0)/tween.dur,0,1);
     cur=target=tween.from+(tween.y-tween.from)*io(q);mine=true;scrollTo(0,cur);
-    if(q<1)requestAnimationFrame(tstep);else{tween=null;swallow=true}}
+    if(q<1)requestAnimationFrame(tstep);else{tween=null;swallowUntil=performance.now()+450}}
   addEventListener('wheel',e=>{
     if(e.ctrlKey)return;
     const now=performance.now(),gap=now-lastWheel;lastWheel=now;
-    if(gap>=160)swallow=false;
     const d=e.deltaY*(e.deltaMode===1?40:1);if(!d)return;
     const st=stops(),dir=Math.sign(d),y=tween?tween.y:(running?target:scrollY);
     const inHero=dir>0?(y>=st[0]-2&&y<st[3]-2):(y>st[0]+2&&y<=st[3]+2);
     e.preventDefault();
     if(inHero){
       // תנועה אחת של הגלגלת או של משטח המגע = עצירה אחת. מה שממשיך להגיע מאותה תנועה לא מדלג הלאה
-      if(tween||swallow)return;
+      if(tween||now<swallowUntil)return;
       const next=dir>0?st.find(v=>v>y+2):[...st].reverse().find(v=>v<y-2);
       if(next!==undefined)go(next);
       return;

@@ -156,75 +156,49 @@ a{color:inherit;text-decoration:none;cursor:pointer}
   .gE2{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gE2 .tall,.gE2 .wide{grid-row:auto;grid-column:1/-1;min-height:280px}.gE2 .two,.gE2 .join{grid-column:1/-1}
   .gF2{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gF2 .tile{min-height:240px}.gF2 .tile:nth-child(3){grid-column:1/-1}.gF2 .camp,.gF2 .joinrow{grid-column:1/-1}
 }
+
+/* ===== שדרוג הנראות ===== */
+.enw{font-family:"BlackDelights",serif;direction:ltr;text-align:right;font-size:clamp(70px,8vw,130px);line-height:.85;color:rgb(142 63 53 / .2);margin:0 0 -.28em}
+/* כל תמונה: מסגרת פנימית דקה בשמנת, כמו בתמונת האירועים, וזום איטי במעבר עכבר */
+.gC2 .ph,.gE2 .tile.ov,.gF2 .tile.ov{position:relative;overflow:hidden}
+.gC2 .ph::after,.gE2 .tile.ov::after,.gF2 .tile.ov::after{content:"";position:absolute;inset:9px;border:.8px solid rgb(251 248 243 / .85);pointer-events:none;z-index:3}
+.gC2 img,.gE2 .tile.ov img,.gF2 .tile.ov img{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.gC2 .col:hover img,.gE2 .tile.ov:hover img,.gF2 .tile.ov:hover img{transform:scale(1.05)}
+/* בתמונות עם פרטים עליהן: תווית שמנת עם פינות חתוכות, במקום פס כהה */
+.ov .meta{inset:auto 18px 18px 18px;padding:14px 16px 12px;background:rgb(251 248 243 / .9);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--ink);
+  clip-path:polygon(9px 0,calc(100% - 9px) 0,100% 9px,100% calc(100% - 9px),calc(100% - 9px) 100%,9px 100%,0 calc(100% - 9px),0 9px);z-index:4}
+.ov .meta>span{color:var(--muted);border-color:var(--line)}.ov .meta em{color:var(--acc)}
+/* במדרגות: קו כפול מתחת לשם, שמתמלא במעבר עכבר (כמו הקישורים באתר) */
+.gC2 .meta b::after{content:"";display:block;width:100%;height:4px;margin-top:6px;border-top:1px solid var(--acc);border-bottom:1px solid var(--acc);transform:scaleX(.18);transform-origin:right;transition:transform .5s cubic-bezier(.2,.7,.2,1);opacity:.7}
+.gC2 .col:hover .meta b::after{transform:scaleX(1)}
+.gC2 .meta b{flex-direction:column;align-items:flex-start;justify-content:flex-end}
+.gC2 .meta>span{border-top:0;padding-top:2px}
+/* קוביות הטקסט: נייר שמנת עם מסגרת פנימית */
+.gE2 .two,.gF2 .camp{position:relative}
+.gE2 .two::after,.gF2 .camp::after{content:"";position:absolute;inset:9px;border:.8px solid rgb(142 63 53 / .3);pointer-events:none}
+.gE2 .two .meta+.meta{padding-top:18px;border-top:3px double rgb(142 63 53 / .3)}
+/* הטופס: עיגול הדיו של לירון כסימן מים בפינה */
+.joinrow,.gE2 .join{position:relative;overflow:hidden}
+.joinrow::after,.gE2 .join::after{content:"";position:absolute;width:260px;aspect-ratio:1;left:-70px;bottom:-90px;background:rgb(251 248 243 / .14);transform:rotate(-12deg);-webkit-mask:url("img/old-site/ink-ring.png") center/contain no-repeat;mask:url("img/old-site/ink-ring.png") center/contain no-repeat;pointer-events:none}
+.joinrow>*,.gE2 .join>*{position:relative;z-index:1}
+.wf input,.wf select{border-color:transparent}
+.wf input:focus,.wf select:focus{outline:2px solid #F1D9CF;outline-offset:1px}
+.wf button{transition:background .3s}.wf button:hover{background:#fff}
+/* עלייה מדורגת כשהגריד נכנס למסך */
+.js .rise{opacity:0;transform:translateY(28px)}
+.rise{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rise.seen{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rise{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div class="picker"><span>סדנאות:</span><span class="seg" id="pick"><button data-v="gA">א. בנטו</button><button data-v="gB">ב. קולאז' ורשימה</button><button data-v="gC2" class="on">ג. מדרגות</button><button data-v="gD">ד. לוח שחמט</button><button data-v="gE2">ה. פסיפס</button><button data-v="gF2">ו. שלוש ושורה</button></span></div>
+<div class="picker"><span>סדנאות:</span><span class="seg" id="pick"><button data-v="gC2" class="on">ג. מדרגות</button><button data-v="gE2">ה. פסיפס</button><button data-v="gF2">ו. שלוש ושורה</button></span></div>
 
 <section class="wrap">
-  <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
-    <h2 class="he-h">סדנאות אפייה<span class="l2">בקבוצות <em>קטנות</em></span></h2>
+  <div class="head" style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+    <div><div class="enw" aria-hidden="true">workshops</div>
+    <h2 class="he-h">סדנאות אפייה<span class="l2">בקבוצות <em>קטנות</em></span></h2></div>
     <p class="lead2">הסדנאות חוזרות בקרוב. בחרו מה מתאים לכם, והשאירו פרטים כדי שאעדכן אתכם ראשונים.</p>
-  </div>
-
-  <!-- א. בנטו -->
-  <div class="gA hide" id="gA">
-    <a class="big cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים"><span class="tmp" style="left:auto;right:10px;top:10px;bottom:auto">תמונות זמניות</span><div class="cap"><b>ערב אפייה לנשים</b><span>מגלגלים, קולעים ופורסים, ויוצאות עם קופסה מלאה.</span></div></a>
-    <a class="card"><div class="ph cut"><img src="img/cutouts/workshop-kids.png" alt="נוער וילדים"></div><div class="cap"><b>נוער וילדים</b><span>חותכים צורות, מנפים סוכר ומקשטים.</span></div></a>
-    <a class="card"><div class="ph cut"><img src="img/cutouts/workshop-1.png" alt="סדנה פרטית" style="object-position:85% 50%"></div><div class="cap"><b>סדנה פרטית לקבוצה</b><span>יום הולדת, צוות או חברות, בתיאום מראש.</span></div></a>
-    <div class="txt"><div class="cap"><b>קייטנת אפייה בקיץ</b><span>כמה בקרים של אפייה בקבוצה קטנה.</span></div><i>פרטים בקרוב</i></div>
-    <div class="join cut"><div style="display:grid;gap:6px"><b>רוצים לשמוע ראשונים?</b><span>השאירו שם וטלפון, ואעדכן כשנפתחת סדנה.</span></div>
-      <form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
-  </div>
-
-  <!-- ב. קולאז' ורשימה -->
-  <div class="gB hide" id="gB">
-    <div class="pics"><div class="ph a"><img src="img/cutouts/workshop-1.png" alt="סדנת אפייה"></div><div class="ph b"><img src="img/cutouts/workshop-kids.png" alt="סדנה לילדים"></div><span class="tmp">תמונות זמניות</span></div>
-    <div>
-      <div class="list">
-        <div class="item"><b>ערב אפייה לנשים</b><i>מגיל 18</i><span>מגלגלים, קולעים ופורסים, ויוצאות עם קופסה מלאה.</span></div>
-        <div class="item"><b>נוער וילדים</b><i>גילאי 6–14</i><span>חותכים צורות, מנפים סוכר ומקשטים.</span></div>
-        <div class="item"><b>סדנה פרטית לקבוצה</b><i>בתיאום</i><span>יום הולדת, צוות או חברות.</span></div>
-        <div class="item"><b>קייטנת אפייה בקיץ</b><i>בקיץ</i><span>כמה בקרים של אפייה בקבוצה קטנה.</span></div>
-      </div>
-      <div class="join cut"><b>רוצים לשמוע ראשונים?</b><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
-    </div>
-  </div>
-
-  <!-- ג. מדרגות -->
-  <div class="gC hide" id="gC">
-    <a class="col"><div class="ph cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים"><span class="tmp">תמונות זמניות</span></div><div class="cap"><b>ערב אפייה לנשים</b><span>מגלגלים, קולעים ופורסים.</span></div></a>
-    <a class="col"><div class="ph cut"><img src="img/cutouts/workshop-kids.png" alt="נוער וילדים"></div><div class="cap"><b>נוער וילדים</b><span>חותכים צורות ומקשטים.</span></div></a>
-    <a class="col"><div class="ph cut"><img src="img/cutouts/workshop-1.png" alt="סדנה פרטית" style="object-position:85% 50%"></div><div class="cap"><b>סדנה פרטית</b><span>יום הולדת, צוות או חברות.</span></div></a>
-    <a class="col"><div class="ph cut"><img src="img/cutouts/workshop-kids.png" alt="קייטנה" style="object-position:15% 50%"></div><div class="cap"><b>קייטנת קיץ</b><span>כמה בקרים בקבוצה קטנה.</span></div></a>
-    <div class="join cut"><b>רוצים לשמוע ראשונים?</b><span>השאירו שם וטלפון.</span><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
-  </div>
-
-  <!-- ד. לוח שחמט -->
-  <div class="gD hide" id="gD">
-    <div class="tile cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים"><span class="chip">ערב אפייה לנשים</span><span class="tmp">תמונות זמניות</span></div>
-    <div class="tile ttile cut"><b>נוער וילדים</b><span>חותכים צורות, מנפים סוכר ומקשטים. כל אחד חוזר הביתה עם קופסה.</span><i>גילאי 6–14</i></div>
-    <div class="tile cut"><img src="img/cutouts/workshop-kids.png" alt="נוער וילדים"></div>
-    <div class="tile ttile cut"><b>סדנה פרטית לקבוצה</b><span>יום הולדת, צוות עבודה או חברות, בתיאום מראש.</span><i>בתיאום</i></div>
-    <div class="tile join cut"><b>רוצים לשמוע ראשונים?</b><span>השאירו פרטים ואעדכן כשנפתחת סדנה.</span><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
-    <div class="tile cut"><img src="img/cutouts/workshop-kids.png" alt="קייטנת אפייה" style="object-position:15% 50%"><span class="chip">קייטנת אפייה בקיץ</span></div>
-  </div>
-
-  <!-- ה. פסיפס -->
-  <div class="gE hide" id="gE">
-    <div class="tile tall cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים"><span class="chip">ערב אפייה לנשים</span><span class="tmp">תמונות זמניות</span></div>
-    <div class="tile wide cut"><img src="img/cutouts/workshop-kids.png" alt="נוער וילדים"><span class="chip">נוער וילדים</span></div>
-    <div class="tile ttile cut"><b>סדנה פרטית או קייטנה</b><span>קבוצה משלכם בתיאום מראש, או כמה בקרים של אפייה בקיץ.</span><i>פרטים בהודעה</i></div>
-    <div class="tile join cut"><b>רוצים לשמוע ראשונים?</b><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
-  </div>
-
-  <!-- ו. שלוש ושורה -->
-  <div class="gF hide" id="gF">
-    <div class="tile cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים"><span class="chip">ערב אפייה לנשים</span><span class="tmp">תמונות זמניות</span></div>
-    <div class="tile cut"><img src="img/cutouts/workshop-kids.png" alt="נוער וילדים"><span class="chip">נוער וילדים</span></div>
-    <div class="tile cut"><img src="img/cutouts/workshop-1.png" alt="סדנה פרטית" style="object-position:85% 50%"><span class="chip">סדנה פרטית</span></div>
-    <div class="note cut"><b>מה עושים בסדנה?</b><ul><li>מגלגלים ופורסים</li><li>קולעים שמרים</li><li>חותכים צורות</li><li>אורזים הביתה</li><li>וגם קייטנה בקיץ</li></ul></div>
-    <div class="join cut"><b>רוצים לשמוע ראשונים?</b><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
   </div>
 
   <!-- ג. מדרגות, סבב 2 -->
@@ -253,13 +227,19 @@ a{color:inherit;text-decoration:none;cursor:pointer}
 </section>
 
 <script>
+// עלייה מדורגת: כל קוביה נכנסת קצת אחרי הקודמת
+document.documentElement.classList.add('js');
+document.querySelectorAll('.gC2>*,.gE2>*,.gF2>*').forEach((el,i,arr)=>{el.classList.add('rise');el.style.transitionDelay=(([...el.parentNode.children].indexOf(el))*90)+'ms'});
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');rio.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rise').forEach(el=>rio.observe(el));
+
 // נייר עבודת יד (אותו נייר כמו באתר)
 (function(){const S=360,c=document.createElement('canvas');c.width=c.height=S;const x=c.getContext('2d'),d=x.createImageData(S,S);
   for(let i=0;i<d.data.length;i+=4){d.data[i]=90;d.data[i+1]=64;d.data[i+2]=44;d.data[i+3]=Math.random()<.5?Math.random()*16:0}x.putImageData(d,0,0);
   for(let i=0;i<70;i++){const r=Math.random()<.85?.4+Math.random()*.9:1.2+Math.random()*1.4;x.beginPath();x.ellipse(Math.random()*S,Math.random()*S,r,r*(.5+Math.random()*.6),Math.random()*3,0,6.3);
     x.fillStyle=`rgba(${110+Math.random()*40|0},${78+Math.random()*30|0},${55+Math.random()*20|0},${.18+Math.random()*.32})`;x.fill()}
   document.documentElement.style.setProperty('--paper',`url(${c.toDataURL()})`)})();
-document.querySelectorAll('#pick button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#pick button').forEach(x=>x.classList.toggle('on',x===b));['gA','gB','gC','gD','gE','gF','gC2','gE2','gF2'].forEach(k=>document.getElementById(k).classList.toggle('hide',k!==b.dataset.v))});
+document.querySelectorAll('#pick button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#pick button').forEach(x=>x.classList.toggle('on',x===b));['gC2','gE2','gF2'].forEach(k=>{const g=document.getElementById(k);g.classList.toggle('hide',k!==b.dataset.v);if(k===b.dataset.v)g.querySelectorAll('.rise').forEach(x=>x.classList.add('seen'))})});
 </script>
 </body>
 </html>
