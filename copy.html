@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>לירונ'ס · הצעת קופי</title>
+<style>
+/* הצעת קופי לדף הבית: לכל טקסט, מה כתוב היום ומה ההצעה. העובדות (מחירים, זמנים, כשרות) לא משתנות */
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Bold.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Light.woff2") format("woff2");font-weight:300}
+:root{--ink:#3A2A22;--muted:#7A6A60;--acc:#8E3F35;--line:rgb(58 42 34 / .14)}
+*{box-sizing:border-box}
+body{margin:0;background:#F3EADD;color:var(--ink);font-family:"Plinko",system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.65}
+.wrap{max-width:1040px;margin:0 auto;padding:48px 16px 80px}
+h1{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(30px,4vw,44px);margin:0 0 8px}
+.intro{color:var(--muted);margin:0 0 36px;max-width:64ch}
+h2{font-family:"Nostela",sans-serif;font-weight:700;font-size:24px;margin:40px 0 12px;padding-bottom:8px;border-bottom:3px double rgb(142 63 53 / .4)}
+.row{display:grid;grid-template-columns:150px 1fr 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.row .k{font-size:14px;color:var(--muted)}
+.row .old{color:var(--muted);text-decoration:line-through;text-decoration-color:rgb(142 63 53 / .35)}
+.row .new{background:#FBF8F3;padding:10px 14px;box-shadow:inset 3px 0 0 var(--acc)}
+.head{display:grid;grid-template-columns:150px 1fr 1fr;gap:18px;font-family:"Nostela",sans-serif;font-weight:700;font-size:14px;color:var(--acc);padding-bottom:6px}
+@media (max-width:760px){.row,.head{grid-template-columns:1fr}.head{display:none}.row .k{font-weight:700;color:var(--acc)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>הצעת קופי לדף הבית</h1>
+  <p class="intro">הכיוון: פחות דיווח, יותר רגע. כל טקסט מתאר את מה שהלקוח ירגיש או יזכור, בקול של לירון. העובדות (מחירים, זמנים, כשרות, אזורים) נשארו בדיוק כמו שהן. הכותרות הראשיות לא השתנו.</p>
+
+  <div class="head"><span>איפה</span><span>היום</span><span>ההצעה</span></div>
+
+  <h2>מה אני מכינה</h2>
+  <div class="row"><span class="k">קייטרינג ומגשי אירוח</span><span class="old">שולחן חלבי ופרווה לברית, בר מצווה, שבע ברכות וקידוש. מזמינים עד יומיים לפני.</span><span class="new">השולחן שהאורחים יצלמו לפני שיתחילו לאכול. חלבי ופרווה, לברית, לבר מצווה ולכל שמחה.</span></div>
+  <div class="row"><span class="k">מארזי חג ומתנה</span><span class="old">מארזים מוכנים, או מארז שמרכיבים לבד.</span><span class="new">קופסה שפותחים לאט, כי כל פרט בה נבחר בשבילם.</span></div>
+  <div class="row"><span class="k">עוגות ועוגיות</span><span class="old">המגולגלות, הספינג' והעוגות, מהתפריט לסל.</span><span class="new">המגולגלות והספינג' שכבר מבקשים ממני בשם.</span></div>
+  <div class="row"><span class="k">סדנאות אפייה</span><span class="old">לנשים, לנוער ולילדים. חוזרות בקרוב.</span><span class="new">ידיים בקמח, ריח של תנור, וקופסה שאפיתם בעצמכם.</span></div>
+
+  <h2>קייטרינג חלבי לאירועים</h2>
+  <div class="row"><span class="k">פסקה</span><span class="old">ברית ובריתה, בר מצווה, שבע ברכות, יום הולדת או ארוחת בוקר בעבודה. שלחו לי תאריך ומספר אורחים, ואחזור אליכם עם תפריט ומחיר. חלבי ופרווה, מזמינים עד יומיים לפני.</span><span class="new">אתם דואגים לאורחים, ואני לשולחן. ספרו לי מתי חוגגים וכמה מגיעים, ואחזור אליכם עם תפריט ומחיר. ברית ובריתה, בר מצווה, שבע ברכות או ארוחת בוקר בעבודה. חלבי ופרווה, ומזמינים עד יומיים לפני.</span></div>
+
+  <h2>מארזי חג ומתנה</h2>
+  <div class="row"><span class="k">פסקה</span><span class="old">אפשר לבחור מארז מוכן, או להרכיב אחד בעצמכם.</span><span class="new">מארז מוכן לחג, או מארז שתרכיבו בעצמכם מהדברים שהם הכי אוהבים. וכל קופסה נסגרת רק כשהיא נראית כמו מתנה.</span></div>
+
+  <h2>השבוע אצלי</h2>
+  <div class="row"><span class="k">שורת משנה</span><span class="old">עוגות ועוגיות מהתפריט, לשבת ולבית</span><span class="new">מה שיוצא מהתנור השבוע, לשבת ולבית</span></div>
+
+  <h2>אני מאמינה</h2>
+  <div class="row"><span class="k">פסקה מתחת לחתימה</span><span class="old">אני לירון. אופה מהבית בעפולה, לפי המתכון, כל פעם מחדש. המגולגלות, הספינג' והמארזים שאתם כבר מכירים, ועכשיו גם שולחנות לאירועים.</span><span class="new">אני לירון, ואני אופה מהמטבח שלי בעפולה. כל עוגה לפי המתכון, גם בפעם המאה, וכל קופסה יוצאת רק כשהייתי שמחה לקבל אותה בעצמי.</span></div>
+
+  <h2>סדנאות אפייה</h2>
+  <div class="row"><span class="k">פסקה</span><span class="old">הסדנאות חוזרות בקרוב. בחרו מה מתאים לכם, והשאירו פרטים כדי שאעדכן אתכם ראשונים.</span><span class="new">שלוש שעות של בצק, קמח וצחוק, ובסוף כל אחד יוצא עם מה שאפה בעצמו. הסדנאות חוזרות בקרוב, והראשונים לדעת הם מי שברשימה.</span></div>
+  <div class="row"><span class="k">קייטנת אפייה בקיץ</span><span class="old">אפייה בכל בוקר, ובסוף כל אחד חוזר עם קופסה מלאה.</span><span class="new">כל בוקר מתכון חדש, וכל צהריים הילדים חוזרים הביתה עם מה שאפו במו ידיהם.</span></div>
+  <div class="row"><span class="k">סדנה פרטית, מחיר</span><span class="old">לפי הקבוצה</span><span class="new">מותאם (כבר עודכן)</span></div>
+
+  <h2>הסיום</h2>
+  <div class="row"><span class="k">לפני שהחותמת נפתחת</span><span class="old">גללו, ותראו מה אפשר להכין לכם.</span><span class="new">השמחה הבאה שלכם מתחילה בשולחן.</span></div>
+  <div class="row"><span class="k">בכרטיס על התמונה</span><span class="old">כתבו לי בוואטסאפ מה מתוכנן וכמה אורחים, ואחזור אליכם עם הצעה.</span><span class="new">כתבו לי מה חוגגים וכמה מגיעים, ואני כבר אדע מה לשים על השולחן.</span></div>
+</div>
+</body>
+</html>
