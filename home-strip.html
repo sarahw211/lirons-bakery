@@ -467,6 +467,82 @@ a{color:inherit;text-decoration:none}
 .gift .in{padding-top:clamp(36px,4vw,56px)!important;padding-bottom:clamp(36px,4vw,56px)!important}
 .gift .fan{height:min(460px,36vw)}
 @media (max-width:900px){.gift .fan{height:84vw}}
+
+/* ===== סדנאות: שלוש תמונות ושורה (נבחרה 26.10) ===== */
+.wsx .in{padding-top:clamp(72px,8vw,110px)}
+.wsx .head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.cut{clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 14px,100% calc(100% - 14px),calc(100% - 14px) 100%,14px 100%,0 calc(100% - 14px),0 14px)}
+.wsx .tmp{position:absolute;z-index:5;font-size:11.5px;background:rgb(255 255 255 / .85);border-radius:99px;padding:2px 10px}
+.tile>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* ===== סבב 2: אותם פרטים לכל סדנה, באותו מקום ===== */
+.meta{display:grid;gap:2px}
+.meta b{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(19px,1.6vw,23px);line-height:1.2}
+.meta>span{display:flex;justify-content:space-between;align-items:baseline;gap:10px;color:var(--muted);font-size:14.5px;border-top:1px solid var(--line);padding-top:6px;margin-top:4px}
+.meta em{font-style:normal;font-family:"Nostela",sans-serif;color:var(--acc);white-space:nowrap;direction:rtl;unicode-bidi:isolate}
+.ov .meta{position:absolute;z-index:2;inset:auto 0 0 0;padding:18px 18px 16px;background:linear-gradient(transparent,rgb(36 20 14 / .78));color:#fff}
+.ov .meta>span{color:rgb(251 248 243 / .85);border-color:rgb(251 248 243 / .3)}.ov .meta em{color:#F1D9CF}
+/* הטופס: שם, טלפון, איזו סדנה וכפתור. בשורה כשיש רוחב, בטור בקובייה */
+.wf{display:grid;gap:8px}
+.wf.row{grid-template-columns:1fr 1fr 1.3fr auto}
+.wf.col{grid-template-columns:1fr}
+.wf input,.wf select{font:inherit;font-size:15px;min-width:0;padding:11px 12px;border:1px solid rgb(251 248 243 / .5);background:#fff;color:var(--ink);border-radius:2px}
+.wf button{font:inherit;font-family:"Nostela",sans-serif;font-size:15.5px;border:0;cursor:pointer;background:#FBF8F3;color:var(--acc);padding:11px 20px;white-space:nowrap}
+.joinrow{background:var(--acc);color:#fff;display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,40px);align-items:center;padding:clamp(20px,2.4vw,30px) clamp(20px,2.6vw,36px)}
+.joinrow b{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(21px,1.9vw,27px);line-height:1.15;display:block}
+.joinrow small{color:rgb(251 248 243 / .82);font-size:14.5px}
+
+
+/* ו. שלוש תמונות ושורה: הקייטנה כקוביית טקסט, והטופס רחב (שתי עמודות) כי הוא הפעולה הראשית */
+.gF2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:clamp(260px,24vw,320px) auto;gap:clamp(12px,1.4vw,18px);margin-top:clamp(28px,3vw,44px)}
+.gF2 .tile{position:relative;overflow:hidden}
+.gF2 .camp{background:#FBF8F3;display:grid;align-content:center;padding:clamp(20px,2.2vw,30px)}
+.gF2 .joinrow{grid-column:2/4;grid-template-columns:1fr;gap:14px}
+.gF2 .joinrow .wf.row{grid-template-columns:1fr 1fr}
+.gF2 .joinrow .wf.row select{grid-column:1/2}
+
+
+/* ===== שדרוג הנראות ===== */
+/* כל תמונה: מסגרת פנימית דקה בשמנת, כמו בתמונת האירועים, וזום איטי במעבר עכבר */
+.gC2 .ph,.gE2 .tile.ov,.gF2 .tile.ov{position:relative;overflow:hidden}
+.gC2 .ph::after,.gE2 .tile.ov::after,.gF2 .tile.ov::after{content:"";position:absolute;inset:9px;border:.8px solid rgb(251 248 243 / .85);pointer-events:none;z-index:3}
+.gC2 img,.gE2 .tile.ov img,.gF2 .tile.ov img{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.gC2 .col:hover img,.gE2 .tile.ov:hover img,.gF2 .tile.ov:hover img{transform:scale(1.05)}
+/* בתמונות עם פרטים עליהן: תווית שמנת עם פינות חתוכות, במקום פס כהה */
+.ov .meta{inset:auto 18px 18px 18px;padding:14px 16px 12px;background:rgb(251 248 243 / .9);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--ink);
+  clip-path:polygon(9px 0,calc(100% - 9px) 0,100% 9px,100% calc(100% - 9px),calc(100% - 9px) 100%,9px 100%,0 calc(100% - 9px),0 9px);z-index:4}
+.ov .meta>span{color:var(--muted);border-color:var(--line)}.ov .meta em{color:var(--acc)}
+/* במדרגות: קו כפול מתחת לשם, שמתמלא במעבר עכבר (כמו הקישורים באתר) */
+.gC2 .meta b::after{content:"";display:block;width:100%;height:4px;margin-top:6px;border-top:1px solid var(--acc);border-bottom:1px solid var(--acc);transform:scaleX(.18);transform-origin:right;transition:transform .5s cubic-bezier(.2,.7,.2,1);opacity:.7}
+.gC2 .col:hover .meta b::after{transform:scaleX(1)}
+.gC2 .meta b{flex-direction:column;align-items:flex-start;justify-content:flex-end}
+.gC2 .meta>span{border-top:0;padding-top:2px}
+/* קוביות הטקסט: נייר שמנת עם מסגרת פנימית */
+.gE2 .two,.gF2 .camp{position:relative}
+.gE2 .two::after,.gF2 .camp::after{content:"";position:absolute;inset:9px;border:.8px solid rgb(142 63 53 / .3);pointer-events:none}
+.gE2 .two .meta+.meta{padding-top:18px;border-top:3px double rgb(142 63 53 / .3)}
+/* הטופס: עיגול הדיו של לירון כסימן מים בפינה */
+.joinrow,.gE2 .join{position:relative;overflow:hidden}
+.joinrow::after,.gE2 .join::after{content:"";position:absolute;width:260px;aspect-ratio:1;left:-70px;bottom:-90px;background:rgb(251 248 243 / .14);transform:rotate(-12deg);-webkit-mask:url("img/old-site/ink-ring.png") center/contain no-repeat;mask:url("img/old-site/ink-ring.png") center/contain no-repeat;pointer-events:none}
+.joinrow>*,.gE2 .join>*{position:relative;z-index:1}
+.wf input,.wf select{border-color:transparent}
+.wf input:focus,.wf select:focus{outline:2px solid #F1D9CF;outline-offset:1px}
+.wf button{transition:background .3s}.wf button:hover{background:#fff}
+
+@media (max-width:900px){
+  .wf.row{grid-template-columns:1fr 1fr}.wf.row select,.wf.row button{grid-column:1/-1}
+  .joinrow{grid-template-columns:1fr}
+  .gF2{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gF2 .tile{min-height:240px}.gF2 .tile:nth-child(3){grid-column:1/-1}.gF2 .camp,.gF2 .joinrow{grid-column:1/-1}
+}
+/* מארזים: שורת המשנה בהירה על הבורדו */
+.gift .he-h .l2{color:rgb(251 248 243 / .85)}
+
+/* ===== מילות האווירה באנגלית: גדולות, שקופות ונייחות ===== */
+.he-h .enw{display:block;font-family:"BlackDelights",serif;font-weight:400;direction:ltr;text-align:right;white-space:nowrap;font-size:clamp(76px,8.5vw,140px);line-height:.8;color:rgb(142 63 53 / .16);margin:0 0 -.22em;pointer-events:none}
+.gift .he-h .enw{color:rgb(251 248 243 / .16)}
+.how2 .he-h .enw,.what .he-h .enw{text-align:center}
+.what .top{justify-content:center;text-align:center}
+.c1 .mq{--mqy:15vh;z-index:2}
+@media (max-width:700px){.he-h .enw{font-size:clamp(60px,18vw,96px)}}
 </style>
 <style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style></head>
 <body><a class="back" href="./">← כל האפשרויות</a>
@@ -525,7 +601,7 @@ a{color:inherit;text-decoration:none}
 <section class="sec what" id="what">
   <div class="in">
     <div class="top reveal">
-      <h2 class="he-h">מה אני <em>מכינה</em></h2>
+      <h2 class="he-h"><span class="enw" aria-hidden="true">menu</span>מה אני <em>מכינה</em></h2>
           </div>
     <div class="grid reveal">
       <a class="main"><img src="img/cutouts/art-stand-real.png" alt="מעמד עם מאפים לאירוח" loading="lazy"><small>הכי מבוקש לאירועים</small><b>קייטרינג ומגשי אירוח</b><p>שולחן חלבי ופרווה לברית, בר מצווה, שבע ברכות וקידוש. מזמינים עד יומיים לפני.</p><span class="btn p">לתכנון אירוע</span></a>
@@ -543,7 +619,7 @@ a{color:inherit;text-decoration:none}
   <div class="in">
     <div class="pic reveal" data-over><img src="img/cutouts/hero-spread.png" alt="שולחן מאפים של לירונ'ס לאירוח" loading="lazy"></div>
     <div class="txt reveal">
-      <h2 class="he-h">קייטרינג חלבי <em>לאירועים</em><span class="l2">מגשי אירוח, פינגר פוד וקינוחים</span></h2>
+      <h2 class="he-h"><span class="enw" aria-hidden="true">events</span>קייטרינג חלבי <em>לאירועים</em><span class="l2">מגשי אירוח, פינגר פוד וקינוחים</span></h2>
       <p class="lead2">ברית ובריתה, בר מצווה, שבע ברכות, יום הולדת או ארוחת בוקר בעבודה. שלחו לי תאריך ומספר אורחים, ואחזור אליכם עם תפריט ומחיר. חלבי ופרווה, מזמינים עד יומיים לפני.</p>
       <div class="ctas"><a class="btn p">לקבלת הצעה לאירוע</a></div>
     </div>
@@ -564,7 +640,7 @@ a{color:inherit;text-decoration:none}
 <!-- ============ איך מזמינים וכשרות ============ -->
 <section class="sec how2" id="how">
   <div class="in reveal">
-    <h2 class="he-h">איך <em>מזמינים</em></h2>
+    <h2 class="he-h"><span class="enw" aria-hidden="true">orders</span>איך <em>מזמינים</em></h2>
     <ol class="track">
       <li><span class="dot"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="1.5"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4.5"/></svg></span><b>בוחרים</b><span>מגשים ועוגות מהתפריט, או פרטי האירוע</span></li>
       <li><span class="dot"><svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.8 7l-4.2 1.3 1.3-4A8 8 0 1 1 20 11.5z"/></svg></span><b>שולחים בוואטסאפ</b><span>ההזמנה מגיעה אליי, ואני חוזרת אליכם</span></li>
@@ -579,8 +655,8 @@ a{color:inherit;text-decoration:none}
   <div class="panel">
     <div class="in">
       <div class="txt reveal">
-        <h2 class="he-h">מארזי חג <em>ומתנה</em><span class="l2">ארוזים כמו מתנה, עם המדבקה שלי על כל קופסה</span></h2>
-        <p class="lead2">מארזי חג ומתנה, עם המדבקה שלי על כל קופסה. אפשר לבחור מארז מוכן, או להרכיב אחד בעצמכם.</p>
+        <h2 class="he-h"><span class="enw" aria-hidden="true">gifts</span>מארזי חג <em>ומתנה</em><span class="l2">ארוזים כמו מתנה, עם המדבקה שלי על כל קופסה</span></h2>
+        <p class="lead2">אפשר לבחור מארז מוכן, או להרכיב אחד בעצמכם.</p>
         <ul class="kinds"><li><b>מארזים לחגים</b><span>ראש השנה, חנוכה ופורים</span></li><li><b>מארזים לעסקים</b><span>ללקוחות ולעובדים</span></li><li><b>הרכיבו מארז</b><span>בוחרים מה נכנס פנימה</span></li></ul>
         <div class="ctas"><a class="btn p">למארזים</a><a class="btn s">להרכיב מארז</a></div>
       </div>
@@ -597,7 +673,7 @@ a{color:inherit;text-decoration:none}
 <section class="sec week" id="week">
   <div class="in">
     <div class="top reveal">
-      <h2 class="he-h">השבוע <em>אצלי</em><span class="l2">עוגות ועוגיות מהתפריט, לשבת ולבית</span></h2>
+      <h2 class="he-h"><span class="enw" aria-hidden="true">this week</span>השבוע <em>אצלי</em><span class="l2">עוגות ועוגיות מהתפריט, לשבת ולבית</span></h2>
       <a class="dl">לכל התפריט<i></i></a>
     </div>
     <div class="grid reveal">
@@ -629,35 +705,27 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- ============ סדנאות ============ -->
-<section class="sec ws flat" id="workshops">
-  <div class="stick">
-    <div class="mq" data-word="workshops" data-dir="r" aria-hidden="true"></div>
+<section class="sec wsx" id="workshops">
+  <div class="in">
     <div class="head reveal">
-      <h2 class="he-h">סדנאות <em>אפייה</em><span class="l2">בקבוצות קטנות, לנשים, לנוער ולילדים</span></h2>
-      <p class="lead2">הסדנאות חוזרות בקרוב. בחרו מה מתאים לכם, והשאירו פרטים בסוף, ואעדכן אתכם ראשונים.</p>
+      <h2 class="he-h"><span class="enw" aria-hidden="true">workshops</span>סדנאות <em>אפייה</em><span class="l2">בקבוצות קטנות, לנשים, לנוער ולילדים</span></h2>
+      <p class="lead2">הסדנאות חוזרות בקרוב. בחרו מה מתאים לכם, והשאירו פרטים כדי שאעדכן אתכם ראשונים.</p>
     </div>
-    <div class="track" id="wstrack">
-      <figure class="wcard"><div class="ph" data-over><img src="img/cutouts/workshop-1.png" alt="סדנת אפייה לנשים: מגלגלים ופורסים עוגיות" loading="lazy"><span class="tmp">תמונות זמניות</span></div><figcaption><b>ערב אפייה לנשים</b><span>מגלגלים, קולעים ופורסים, ויוצאות עם קופסה מלאה.</span></figcaption></figure>
-      <figure class="wcard"><div class="ph" data-over><img src="img/cutouts/workshop-kids.png" alt="סדנת אפייה לנוער ולילדים" loading="lazy"></div><figcaption><b>נוער וילדים</b><span>חותכים צורות, מנפים סוכר ומקשטים.</span></figcaption></figure>
-      <figure class="wcard"><div class="ph" data-over><img src="img/cutouts/workshop-1.png" alt="סדנה פרטית לקבוצה" loading="lazy" style="object-position:85% 50%"></div><figcaption><b>סדנה פרטית לקבוצה</b><span>יום הולדת, צוות או חברות, בתיאום מראש.</span></figcaption></figure>
-      <figure class="wcard"><div class="ph" data-over><img src="img/cutouts/workshop-kids.png" alt="קייטנת אפייה בקיץ" loading="lazy" style="object-position:15% 50%"></div><figcaption><b>קייטנת אפייה בקיץ</b><span>כמה בקרים של אפייה בקבוצה קטנה.</span></figcaption></figure>
-      <div class="wcard join">
-        <b>רוצים לשמוע ראשונים?</b>
-        <span>השאירו שם וטלפון, ואעדכן כשנפתחת סדנה.</span>
-        <form class="wait" id="waitForm" novalidate>
-          <input id="wName" name="name" type="text" placeholder="שם" aria-label="שם" autocomplete="name">
-          <input id="wPhone" name="phone" type="tel" placeholder="טלפון" aria-label="טלפון" autocomplete="tel">
-          <button class="btn s" type="submit" style="border:0;cursor:pointer">לרשימת ההמתנה</button>
-          <p class="ok" id="waitOk" hidden>תודה! נעדכן אותך כשנפתחת סדנה.</p>
-        </form>
-      </div>
-    </div>
+  <!-- ו. שלוש ושורה, סבב 2 -->
+  <div class="gF2 reveal" id="gF2">
+    <div class="tile ov cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים" style="object-position:50% 50%"><span class="tmp" style="left:auto;right:10px;top:10px;bottom:auto">תמונות זמניות</span><div class="meta"><b>ערב אפייה לנשים</b><span><span>לנשים · 3 שעות</span><em><bdi dir="ltr">240 ₪</bdi></em></span></div></div>
+    <div class="tile ov cut"><img src="img/cutouts/workshop-kids.png" alt="אפייה לנוער ולילדים" style="object-position:50% 50%"><div class="meta"><b>אפייה לנוער ולילדים</b><span><span>לנוער ולילדים · 3 שעות</span><em><bdi dir="ltr">240 ₪</bdi></em></span></div></div>
+    <div class="tile ov cut"><img src="img/cutouts/workshop-1.png" alt="סדנה פרטית לקבוצה" style="object-position:85% 50%"><div class="meta"><b>סדנה פרטית לקבוצה</b><span><span>קבוצה משלכם</span><em>לפי הקבוצה</em></span></div></div>
+    <div class="camp cut"><div class="meta"><b>קייטנת אפייה בקיץ</b><span><span>לילדים, בקיץ</span><em><bdi dir="ltr">890 ₪</bdi></em></span></div><p style="margin:12px 0 0;color:var(--muted);font-size:14.5px">אפייה בכל בוקר, ובסוף כל אחד חוזר עם קופסה מלאה.</p></div>
+    <div class="joinrow cut"><div><b>רוצים לשמוע ראשונים?</b><small>הסדנאות חוזרות בקרוב. השאירו פרטים ואעדכן אתכם.</small></div><form class="wf row" onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם" autocomplete="name"><input placeholder="טלפון" aria-label="טלפון" type="tel" autocomplete="tel"><select aria-label="איזו סדנה מעניינת אתכם"><option>איזו סדנה מעניינת אתכם?</option><option>ערב אפייה לנשים</option><option>אפייה לנוער ולילדים</option><option>סדנה פרטית לקבוצה</option><option>קייטנת אפייה בקיץ</option></select><button>לרשימת ההמתנה</button></form></div>
+  </div>
   </div>
 </section>
 
 <!-- ============ סיום ============ -->
 <section class="sec c1" id="contact">
   <div class="stage">
+    <div class="mq" data-word="see you soon" aria-hidden="true"></div>
     <div class="ask" id="c1ask"><h2 class="he-h" style="font-size:clamp(40px,4.6vw,72px)">יש לכם <em>אירוע</em> בקרוב?</h2><p class="lead2">גללו, ותראו מה אפשר להכין לכם.</p></div>
     <div class="tbl" aria-hidden="true"></div>
     <div class="ring2" id="c1ring" aria-hidden="true"></div>
@@ -898,7 +966,7 @@ document.querySelectorAll('.reveal').forEach(el=>seenIO.observe(el));
 // עותקי החותמת (אני מאמינה, פוטר) מקבלים את אותה תמונה שנבנתה לפתיחה
 new MutationObserver(()=>{const s=$('stamp').src;if(s)document.querySelectorAll('[data-stampcopy]').forEach(i=>i.src=s)}).observe($('stamp'),{attributes:true,attributeFilter:['src']});
 // טופס רשימת ההמתנה: כרגע רק מאשר על המסך (בגרסה הסופית נשלח לוואטסאפ או לניהול)
-$('waitForm').addEventListener('submit',e=>{e.preventDefault();$('waitOk').hidden=false});
+$('waitForm')&&$('waitForm').addEventListener('submit',e=>{e.preventDefault();$('waitOk').hidden=false});
 
 // כותרות רצות: נבנות מהמילה, זזות עם הגלילה, ומעל כל תמונה מסומנת (data-over) יש עותק בהיר שחתוך בדיוק לתמונה
 const mqs=[...document.querySelectorAll('.mq')].map(m=>{
@@ -946,7 +1014,7 @@ function homeTick(){
      const n=Math.round(clamp(p/.55,0,1)*belW.length);belW.forEach((s,i)=>s.classList.toggle('on',i<n));
      $('belsig').style.setProperty('--sw',(100-ease(clamp((p-.55)/.25,0,1))*100).toFixed(1)+'%');
      $('belme').style.setProperty('--ms',(1.08-ease(clamp(p/.4,0,1))*.08).toFixed(3));$('belafter').style.setProperty('--ao',ease(clamp((p-.8)/.12,0,1)).toFixed(3))}}
-  if(!still&&!wsMQ.matches&&!wsS.classList.contains('flat')){const r=wsS.getBoundingClientRect();
+  if(wsT&&!still&&!wsMQ.matches&&!wsS.classList.contains('flat')){const r=wsS.getBoundingClientRect();
     if(r.bottom>0&&r.top<innerHeight){const p=clamp(-r.top/(wsS.offsetHeight-innerHeight),0,1),dist=Math.max(0,wsT.scrollWidth-wsS.clientWidth);
       const tf=`translateX(${(ease(p)*dist).toFixed(1)}px)`;if(tf!==homeTick.w){homeTick.w=tf;wsT.style.transform=tf}}}
   {const r=foot.getBoundingClientRect();
