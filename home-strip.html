@@ -63,7 +63,7 @@ a{color:inherit;text-decoration:none}
 .mini{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.7}
 
 /* ---------- הפתיחה ---------- */
-.x3{position:relative;height:470vh;max-width:1440px;margin:0 auto}
+.x3{position:relative;height:340vh;max-width:1440px;margin:0 auto}
 .pin{position:sticky;top:0;height:100vh;min-height:640px;overflow:hidden;background:#EFE6DA}
 .photo{position:absolute;inset:0;background:center/cover no-repeat;will-change:transform}
 .paper{position:absolute;inset:0;z-index:2;background:var(--paper),radial-gradient(80% 70% at 70% 30%,#FBF6EE 0%,#F3EADD 60%,#ECE0CF 100%);background-size:360px 360px,auto;
@@ -267,6 +267,7 @@ a{color:inherit;text-decoration:none}
 .foot .credit a{color:rgb(251 248 243 / .85);text-decoration:underline;text-underline-offset:3px}
 
 /* ===== גרסה ברורה: אזורים חדשים ===== */
+.what .in{padding-top:clamp(36px,4vw,56px)}
 /* מה אני מכינה: האירועים גדולים בצד אחד, ושלושת השירותים האחרים כשורות ברורות בצד השני */
 .what .in{display:grid;gap:clamp(28px,4vw,48px)}
 .what .top{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
@@ -403,6 +404,31 @@ a{color:inherit;text-decoration:none}
 .wa span{max-width:0;overflow:hidden;white-space:nowrap;transition:max-width .4s cubic-bezier(.2,.7,.2,1)}
 .wa:hover,.wa:focus-visible{gap:10px;padding:0 20px 0 18px}.wa:hover span,.wa:focus-visible span{max-width:200px}
 @media (max-width:700px){.wa{right:14px;bottom:14px;height:52px;padding:0 13px}}
+
+/* ===== כותרות עם צורה: שורה ראשית חזקה, ושורת משנה קטנה ודקה בשורה אחת ===== */
+.he-h{text-wrap:balance}
+.he-h .l2{display:block;font-weight:300;font-size:.46em;line-height:1.25;margin-top:.45em;color:var(--ink);white-space:nowrap;letter-spacing:.01em}
+.he-h .l2 em{color:inherit}
+/* כותרת האירועים בשורה אחת */
+.ev .he-h{font-size:clamp(32px,3.1vw,48px)}
+@media (min-width:901px){.ev .he-h{white-space:nowrap}}
+@media (max-width:700px){.he-h .l2{white-space:normal;font-size:.55em}}
+
+/* ===== איך מזמינים: שלושה צעדים על קו אחד ===== */
+.how2 .in{display:grid;justify-items:center;text-align:center;gap:clamp(30px,4vw,48px);padding-top:clamp(60px,7vw,100px);padding-bottom:clamp(60px,7vw,100px)}
+.how2 .track{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,48px);width:100%;max-width:1000px;position:relative}
+.how2 .track::before{content:"";position:absolute;top:34px;right:16.6%;left:16.6%;height:4px;border-top:1px solid rgb(142 63 53 / .45);border-bottom:1px solid rgb(142 63 53 / .45)}
+.how2 li{position:relative;display:grid;justify-items:center;gap:6px}
+.how2 .dot{position:relative;border-radius:50%;width:68px;height:68px;display:grid;place-items:center;background:#F3EADD;margin-bottom:8px}
+.how2 .dot::before{content:"";position:absolute;inset:0;background:var(--acc);-webkit-mask:url("img/old-site/ink-ring.png") center/contain no-repeat;mask:url("img/old-site/ink-ring.png") center/contain no-repeat}
+.how2 .dot svg{width:26px;height:26px;fill:none;stroke:var(--acc);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.how2 li b{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(20px,1.8vw,25px)}
+.how2 li>span:last-child{color:var(--muted);font-size:15.5px;max-width:26ch}
+.how2 li.key b{color:var(--acc)}
+.how2 li.key .dot{background:var(--acc)}.how2 li.key .dot svg{stroke:#FBF8F3}.how2 li.key .dot::before{background:#F3EADD;inset:-6px}
+.how2 .facts{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.how2 .facts span{font-size:14.5px;color:var(--ink);background:#FBF8F3;padding:8px 16px;box-shadow:inset 0 0 0 1px rgb(142 63 53 / .25);clip-path:polygon(7px 0,calc(100% - 7px) 0,100% 7px,100% calc(100% - 7px),calc(100% - 7px) 100%,7px 100%,0 calc(100% - 7px),0 7px)}
+@media (max-width:700px){.how2 .track{grid-template-columns:1fr;gap:26px}.how2 .track::before{display:none}}
 </style>
 <style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style></head>
 <body><a class="back" href="./">← כל האפשרויות</a>
@@ -432,7 +458,6 @@ a{color:inherit;text-decoration:none}
       <div class="belt" id="belt"><div class="run"><div style="background-image:url(img/cutouts/art-table-real.png)"></div><div style="background-image:url(img/old-site/p13.jpg)"></div><div style="background-image:url(img/old-site/gifts.png)"></div><div style="background-image:url(img/old-site/p07.jpg)"></div><div style="background-image:url(img/cutouts/workshop-1.png)"></div><div style="background-image:url(img/old-site/p18.jpg)"></div><div style="background-image:url(img/cutouts/art-stand-real.png)"></div><div style="background-image:url(img/old-site/p16.jpg)"></div><div style="background-image:url(img/old-site/p03.jpg)"></div><div style="background-image:url(img/old-site/p11.jpg)"></div><div style="background-image:url(img/cutouts/hero-spread.png)"></div><div style="background-image:url(img/old-site/p04.jpg)"></div><div style="background-image:url(img/cutouts/art-table-real.png)"></div><div style="background-image:url(img/old-site/p13.jpg)"></div><div style="background-image:url(img/old-site/gifts.png)"></div><div style="background-image:url(img/old-site/p07.jpg)"></div><div style="background-image:url(img/cutouts/workshop-1.png)"></div><div style="background-image:url(img/old-site/p18.jpg)"></div><div style="background-image:url(img/cutouts/art-stand-real.png)"></div><div style="background-image:url(img/old-site/p16.jpg)"></div><div style="background-image:url(img/old-site/p03.jpg)"></div><div style="background-image:url(img/old-site/p11.jpg)"></div><div style="background-image:url(img/cutouts/hero-spread.png)"></div><div style="background-image:url(img/old-site/p04.jpg)"></div></div></div>
       <div class="t0" id="t0"></div>
     </div>
-    <div class="stripcap" id="stripcap">עוגות, עוגיות ומגשי <span style="display:inline;font:inherit;color:var(--acc)">אירוח</span><span>לשבת, לחג, לאירוח, וסתם כי בא לכם</span></div>
     <div class="veil" id="veil"></div>
     <div class="paper" id="paper"></div>
     <img class="outline" id="outline" alt="" aria-hidden="true">
@@ -463,8 +488,7 @@ a{color:inherit;text-decoration:none}
   <div class="in">
     <div class="top reveal">
       <h2 class="he-h">מה אני <em>מכינה</em></h2>
-      <p class="lead2">הכול חלבי ופרווה, באיסוף מעפולה או במשלוח עד רמת ישי.</p>
-    </div>
+          </div>
     <div class="grid reveal">
       <a class="main"><img src="img/cutouts/art-stand-real.png" alt="מעמד עם מאפים לאירוח" loading="lazy"><small>הכי מבוקש לאירועים</small><b>קייטרינג ומגשי אירוח</b><p>שולחן חלבי ופרווה לברית, בר מצווה, שבע ברכות וקידוש. מזמינים עד יומיים לפני.</p><span class="btn p">לתכנון אירוע</span></a>
       <div class="rows">
@@ -500,19 +524,15 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- ============ איך מזמינים וכשרות ============ -->
-<section class="sec how" id="how">
-  <div class="panel reveal">
-    <h2 class="he-h" style="font-size:clamp(32px,3.2vw,50px)">איך <em>מזמינים</em></h2>
-    <div class="steps">
-      <div class="step"><b>בוחרים</b><span>מגשים ועוגות מהתפריט, או מספרים לי על האירוע.</span></div>
-      <div class="step"><b>שולחים בוואטסאפ</b><span>הסל או הפרטים נשלחים אליי, ואני חוזרת אליכם.</span></div>
-      <div class="step key"><b>משלמים רק אחרי אישור</b><span>אני מוודאת שהכול זמין, ורק אז משלמים. לא משלמים על משהו שלא בטוח שיהיה.</span></div>
-    </div>
-    <div class="kosher">
-      <div><small>כשרות</small><b>חלבי ופרווה</b><span>חומרי גלם בכשרות בד"צ העדה החרדית, לנדא ורובין</span></div>
-      <div><small>זמנים</small><b>יומיים מראש</b><span>מתאים גם לברית שנקבעת בהתראה קצרה</span></div>
-      <div><small>איסוף ומשלוח</small><b>עפולה עד רמת ישי</b><span>איסוף מקירשטיין 15ב', עפולה · משלוח בתיאום</span></div>
-    </div>
+<section class="sec how2" id="how">
+  <div class="in reveal">
+    <h2 class="he-h">איך <em>מזמינים</em></h2>
+    <ol class="track">
+      <li><span class="dot"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="1.5"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4.5"/></svg></span><b>בוחרים</b><span>מגשים ועוגות מהתפריט, או פרטי האירוע</span></li>
+      <li><span class="dot"><svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.8 7l-4.2 1.3 1.3-4A8 8 0 1 1 20 11.5z"/></svg></span><b>שולחים בוואטסאפ</b><span>ההזמנה מגיעה אליי, ואני חוזרת אליכם</span></li>
+      <li class="key"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5.5 12.5l4.2 4.2L18.5 8"/></svg></span><b>משלמים רק אחרי אישור</b><span>אני מוודאת שהכול זמין, ורק אז משלמים</span></li>
+    </ol>
+    <div class="facts"><span>חלבי ופרווה · בד"צ, לנדא, רובין</span><span>מזמינים עד יומיים לפני</span><span>איסוף מעפולה · משלוח עד רמת ישי</span></div>
   </div>
 </section>
 
@@ -521,7 +541,7 @@ a{color:inherit;text-decoration:none}
   <div class="panel">
     <div class="in">
       <div class="txt reveal">
-        <h2 class="he-h">מארזים שארוזים<span class="l2">כמו <em>מתנה</em></span></h2>
+        <h2 class="he-h">מארזי חג <em>ומתנה</em><span class="l2">ארוזים כמו מתנה, עם המדבקה שלי על כל קופסה</span></h2>
         <p class="lead2">מארזי חג ומתנה, עם המדבקה שלי על כל קופסה. אפשר לבחור מארז מוכן, או להרכיב אחד בעצמכם.</p>
         <ul class="kinds"><li><b>מארזים לחגים</b><span>ראש השנה, חנוכה ופורים</span></li><li><b>מארזים לעסקים</b><span>ללקוחות ולעובדים</span></li><li><b>הרכיבו מארז</b><span>בוחרים מה נכנס פנימה</span></li></ul>
         <div class="ctas"><a class="btn p">למארזים</a><a class="btn s">להרכיב מארז</a></div>
@@ -556,7 +576,7 @@ a{color:inherit;text-decoration:none}
   <div class="stick">
     <div class="mq" data-word="workshops" data-dir="r" aria-hidden="true"></div>
     <div class="head reveal">
-      <h2 class="he-h">סדנאות אפייה<span class="l2">בקבוצות <em>קטנות</em></span></h2>
+      <h2 class="he-h">סדנאות <em>אפייה</em><span class="l2">בקבוצות קטנות, לנשים, לנוער ולילדים</span></h2>
       <p class="lead2">הסדנאות חוזרות בקרוב. בחרו מה מתאים לכם, והשאירו פרטים בסוף, ואעדכן אתכם ראשונים.</p>
     </div>
     <div class="track" id="wstrack">
@@ -715,7 +735,7 @@ const cards=[...document.querySelectorAll('.svc')];
   let target=scrollY,cur=scrollY,running=false,mine=false,tween=null,lastWheel=0,swallowUntil=0;
   const max=()=>document.documentElement.scrollHeight-innerHeight;
   function stops(){const s=$('x3'),T=s.getBoundingClientRect().top+scrollY,total=s.offsetHeight-s.querySelector('.pin').offsetHeight;
-    return[T,T+total*.42,T+total*.85,T+s.offsetHeight]}
+    const E=T+s.offsetHeight-beltH();return[T,T+total*.42,E,E]}
   const io=q=>q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2;
   function go(y){running=false;tween={from:scrollY,y,t0:performance.now(),dur:850};requestAnimationFrame(tstep)}
   function tstep(now){if(!tween)return;const q=clamp((now-tween.t0)/tween.dur,0,1);
@@ -777,15 +797,15 @@ function applyScroll(p){
 }
 // הרצועה: התמונה המלאה מתכווצת לאריח אחד במרכז, ולצידה עולות עוד תמונות. בהמשך הגלילה הרצועה זזה הצידה
 // הפס: התמונה המלאה מתכווצת לגובה הפס, ובסוף ההתכווצות הפס הנע מופיע מאחוריה והיא נבלעת בו
+function beltH(){const pin=$('x3').querySelector('.pin');return Math.round(pin.clientHeight*(pin.clientWidth<700?.22:.28))}
 function strip(p){
   const pin=$('x3').querySelector('.pin'),W=pin.clientWidth,H=pin.clientHeight,mob=W<700;
-  const k=ease(clamp((p-.42)/.36,0,1)),bh=H*(mob?.24:.3),bt=H*(mob?.38:.42)-bh/2,tw=bh*.8;
+  const k=ease(clamp((p-.44)/.5,0,1)),bh=beltH(),bt=H-bh,tw=bh*.8;
   const t=$('t0'),b=$('belt');
   $('photo').style.opacity=k>0?0:1;
   t.style.left=((W/2-tw/2)*k).toFixed(1)+'px';t.style.top=(bt*k).toFixed(1)+'px';t.style.width=(W+(tw-W)*k).toFixed(1)+'px';t.style.height=(H+(bh-H)*k).toFixed(1)+'px';
   t.style.opacity=k<=0?0:(k<.92?1:clamp((1-k)/.08,0,1)).toFixed(3);
   b.style.top=bt+'px';b.style.height=bh+'px';b.classList.toggle('on',k>.85);
-  const c=$('stripcap');c.style.top=(bt+bh+24)+'px';c.style.opacity=clamp((k-.7)/.25,0,1).toFixed(3);
 }
 function stepSieve(now){
   if(!sweep&&!grains.length){if(stepSieve.dirty){sx.clearRect(0,0,SW,SH);stepSieve.dirty=false}return}
