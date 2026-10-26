@@ -543,6 +543,23 @@ a{color:inherit;text-decoration:none}
 .what .top{justify-content:center;text-align:center}
 .c1 .mq{--mqy:15vh;z-index:2}
 @media (max-width:700px){.he-h .enw{font-size:clamp(60px,18vw,96px)}}
+
+/* החתימה מצטיירת */
+.bel svg.sig{width:min(230px,58vw);height:auto;clip-path:none;overflow:visible}
+
+/* ===== פוטר קומפקטי ===== */
+.foot{--seal:clamp(110px,9vw,140px)}
+.foot .in{padding-top:calc(var(--seal) * .5 + 18px)!important;padding-bottom:16px!important;gap:0!important}
+.foot .fgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;justify-items:center;text-align:center}
+.foot .fpic,.foot .leaf{display:none!important}
+.foot .menu{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 0;border-top:3px double rgb(251 248 243 / .35);border-bottom:3px double rgb(251 248 243 / .35);padding:6px 0;width:100%}
+.foot .menu a{font-size:clamp(15px,1.3vw,19px)!important;padding:4px clamp(10px,1.3vw,20px)!important;border:0!important}
+.foot .menu a small{display:none}
+.foot .menu a+a{border-right:1px solid rgb(251 248 243 / .25)!important}
+.foot .menu a:hover,.foot .menu a.on{padding-right:clamp(10px,1.4vw,22px)!important}
+.foot .contact{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;font-size:14.5px}
+.foot .contact b{display:none}
+.foot .copy{margin-top:12px!important;padding-top:10px!important}
 </style>
 <style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style></head>
 <body><a class="back" href="./">← כל האפשרויות</a>
@@ -677,12 +694,12 @@ a{color:inherit;text-decoration:none}
       <a class="dl">לכל התפריט<i></i></a>
     </div>
     <div class="grid reveal">
-      <article class="prod"><div class="ph"><img src="img/old-site/p04.jpg" alt="עוגת שיש" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את עוגת שיש לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>עוגת שיש</b><em>מ-45 ₪</em></div><button class="add" type="button">+ לסל</button></article>
-      <article class="prod"><div class="ph"><img src="img/old-site/p07.jpg" alt="עוגת שמרים" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את עוגת שמרים לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>עוגת שמרים</b><em>מ-45 ₪</em></div><button class="add" type="button">+ לסל</button></article>
-      <article class="prod"><div class="ph"><img src="img/old-site/p05.jpg" alt="עוגה בחושה" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את עוגה בחושה לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>עוגה בחושה</b><em>מ-45 ₪</em></div><button class="add" type="button">+ לסל</button></article>
-      <article class="prod"><div class="ph"><img src="img/old-site/p13.jpg" alt="עוגיות מגולגלות" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את עוגיות מגולגלות לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>עוגיות מגולגלות</b><em>מ-35 ₪</em></div><button class="add" type="button">+ לסל</button></article>
-      <article class="prod"><div class="ph"><img src="img/old-site/p11.jpg" alt="אלפחורס" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את אלפחורס לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>אלפחורס</b><em>מ-35 ₪</em></div><button class="add" type="button">+ לסל</button></article>
-      <article class="prod"><div class="ph"><img src="img/old-site/p16.jpg" alt="ספינג'" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את ספינג' לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>ספינג'</b><em>מ-35 ₪</em></div><button class="add" type="button">+ לסל</button></article>
+      <article class="prod"><div class="ph"><img src="img/old-site/p04.jpg" alt="עוגת שיש" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את עוגת שיש לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>עוגת שיש</b><em>45 ₪</em></div><button class="add" type="button">+ להזמנה</button></article>
+      <article class="prod"><div class="ph"><img src="img/old-site/p07.jpg" alt="עוגת שמרים" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את עוגת שמרים לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>עוגת שמרים</b><em>50 ₪</em></div><button class="add" type="button">+ להזמנה</button></article>
+      <article class="prod"><div class="ph"><img src="img/old-site/p05.jpg" alt="עוגה בחושה" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את עוגה בחושה לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>עוגה בחושה</b><em>45 ₪</em></div><button class="add" type="button">+ להזמנה</button></article>
+      <article class="prod"><div class="ph"><img src="img/old-site/p13.jpg" alt="עוגיות מגולגלות" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את עוגיות מגולגלות לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>עוגיות מגולגלות</b><em>40 ₪</em></div><button class="add" type="button">+ להזמנה</button></article>
+      <article class="prod"><div class="ph"><img src="img/old-site/p11.jpg" alt="אלפחורס" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את אלפחורס לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>אלפחורס</b><em>45 ₪</em></div><button class="add" type="button">+ להזמנה</button></article>
+      <article class="prod"><div class="ph"><img src="img/old-site/p16.jpg" alt="ספינג'" loading="lazy"><button class="fav" type="button" aria-label="להוסיף את ספינג' לאהובים" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg></button></div><div class="row"><b>ספינג'</b><em>35 ₪</em></div><button class="add" type="button">+ להזמנה</button></article>
     </div>
     <p class="note reveal">משלוח בעפולה 15 ₪, וחינם בהזמנה מעל 150 ₪ · איסוף מקירשטיין 15ב', א'–ה' 9:00–18:00</p>
   </div>
@@ -694,7 +711,7 @@ a{color:inherit;text-decoration:none}
     <div class="bt">
     <img class="stampimg reveal" data-stampcopy alt="" aria-hidden="true">
     <q id="belq">אני לא מגישה לאורחים שלכם שום דבר שלא הייתי מגישה לאורחים שלי.</q>
-    <img class="sig" id="belsig" src="img/liron-signature.png" alt="החתימה של לירון">
+    <svg class="sig" id="belsig" viewBox="0 0 690 475" role="img" aria-label="החתימה של לירון"><defs><mask id="sigmask" maskUnits="userSpaceOnUse" x="0" y="0" width="690" height="475"><path id="sigpath" d="M662,120 C655,72 615,36 565,29 C525,24 500,41 486,82 C474,122 472,162 476,193 C486,234 512,268 522,314 C529,350 512,365 491,355 C455,340 425,304 410,264 C400,228 405,198 431,183 C461,168 492,194 497,230 C502,268 471,296 430,301 C395,306 365,296 350,270 C340,245 340,220 330,209 C345,245 335,280 305,305 C280,326 244,320 219,305 C193,285 188,249 203,218 C218,198 249,201 264,224 C279,249 269,285 244,305 C213,326 173,305 158,274 C148,249 143,229 130,219 C143,255 153,295 132,320 C112,336 71,325 46,300 C56,336 61,375 51,407 C43,427 36,443 29,453" fill="none" stroke="#fff" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/></mask></defs><image href="img/liron-signature.png" width="690" height="475" mask="url(#sigmask)"/></svg>
     <div class="after" id="belafter">
       <p>אני לירון. אופה מהבית בעפולה, לפי המתכון, כל פעם מחדש. המגולגלות, הספינג' והמארזים שאתם כבר מכירים, ועכשיו גם שולחנות לאירועים.</p>
       <a class="dl">לסיפור שלי<i></i></a>
@@ -1012,7 +1029,7 @@ function homeTick(){
    const p=still?1:clamp(-r.top/run,0,1),key=p.toFixed(3);
    if(key!==homeTick.b){homeTick.b=key;
      const n=Math.round(clamp(p/.55,0,1)*belW.length);belW.forEach((s,i)=>s.classList.toggle('on',i<n));
-     $('belsig').style.setProperty('--sw',(100-ease(clamp((p-.55)/.25,0,1))*100).toFixed(1)+'%');
+     {const sp=$('sigpath');if(sp){const L=sp.__L||(sp.__L=sp.getTotalLength());sp.style.strokeDasharray=L;sp.style.strokeDashoffset=(L*(1-clamp((p-.5)/.32,0,1))).toFixed(1)}}
      $('belme').style.setProperty('--ms',(1.08-ease(clamp(p/.4,0,1))*.08).toFixed(3));$('belafter').style.setProperty('--ao',ease(clamp((p-.8)/.12,0,1)).toFixed(3))}}
   if(wsT&&!still&&!wsMQ.matches&&!wsS.classList.contains('flat')){const r=wsS.getBoundingClientRect();
     if(r.bottom>0&&r.top<innerHeight){const p=clamp(-r.top/(wsS.offsetHeight-innerHeight),0,1),dist=Math.max(0,wsT.scrollWidth-wsS.clientWidth);
