@@ -547,6 +547,12 @@ a{color:inherit;text-decoration:none}
 .foot .contact{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;font-size:14.5px}
 .foot .contact b{display:none}
 .foot .copy{margin-top:12px!important;padding-top:10px!important}
+
+/* ===== גלילה קלה: בלי טשטוש רקע שמחושב בכל פריים ===== */
+.svc{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgb(251 248 243 / .88)!important}
+.svc.big{background:rgb(142 63 53 / .92)!important}
+.ov .meta{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgb(251 248 243 / .95)!important}
+.flour{will-change:auto}
 </style>
 <style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style><style>
 /* בורר הצבע (רק לתצוגה ללירון, לא חלק מהאתר) */
@@ -850,11 +856,11 @@ const cards=[...document.querySelectorAll('.svc')];
   const max=()=>document.documentElement.scrollHeight-innerHeight;
   function stops(){const s=$('x3'),T=s.getBoundingClientRect().top+scrollY,total=s.offsetHeight-s.querySelector('.pin').offsetHeight;
     return[T,T+total*.6,T+total*.92,T+s.offsetHeight]}
-  const io=q=>q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2;
-  function go(y){running=false;tween={from:scrollY,y,t0:performance.now(),dur:850};requestAnimationFrame(tstep)}
+  const io=q=>-(Math.cos(Math.PI*q)-1)/2;
+  function go(y){running=false;tween={from:scrollY,y,t0:performance.now(),dur:Math.min(1000,600+Math.abs(y-scrollY)*.25)};requestAnimationFrame(tstep)}
   function tstep(now){if(!tween)return;const q=clamp((now-tween.t0)/tween.dur,0,1);
     cur=target=tween.from+(tween.y-tween.from)*io(q);mine=true;scrollTo(0,cur);
-    if(q<1)requestAnimationFrame(tstep);else{tween=null;swallowUntil=performance.now()+450}}
+    if(q<1)requestAnimationFrame(tstep);else{tween=null;swallowUntil=performance.now()+280}}
   addEventListener('wheel',e=>{
     if(e.ctrlKey)return;
     const now=performance.now(),gap=now-lastWheel;lastWheel=now;
@@ -890,6 +896,7 @@ const cards=[...document.querySelectorAll('.svc')];
 function frame(now){
   requestAnimationFrame(frame);
   const s=$('x3'),pin=s.querySelector('.pin'),r=s.getBoundingClientRect(),total=s.offsetHeight-pin.offsetHeight;
+  heroVis=r.bottom>0&&r.top<innerHeight;
   const p=still?0:clamp(-r.top/total,0,1);
   // מעדכנים את השכבות רק כשהגלילה (או התמונה) השתנתה, כדי לא לצבוע מחדש כל פריים
   const key=p.toFixed(4)+flip;
@@ -906,7 +913,7 @@ function applyScroll(p){
   $('photo').style.transform=`scale(${(1.12-z*.1)*flip},${1.12-z*.1})`;
   $('veil').style.opacity=clamp((p-.4)/.15,0,1);
   // ארבעת השירותים עולים אחד אחרי השני, ממטושטש לחד
-  cards.forEach((c,i)=>{const k=ease(clamp((p-(.46+i*.1))/.12,0,1));c.style.opacity=k;c.style.transform=`translateY(${(1-k)*70}px) scale(${.96+k*.04})`;c.style.filter=k<1?`blur(${(1-k)*6}px)`:'none';c.classList.toggle('on',k>.5)});
+  cards.forEach((c,i)=>{const k=ease(clamp((p-(.46+i*.1))/.12,0,1));c.style.opacity=k;c.style.transform=`translateY(${(1-k)*70}px) scale(${.96+k*.04})`;c.classList.toggle('on',k>.5)});
 }
 function stepSieve(now){
   if(!sweep&&!grains.length){if(stepSieve.dirty){sx.clearRect(0,0,SW,SH);stepSieve.dirty=false}return}
@@ -927,7 +934,8 @@ function stepSieve(now){
 const fc=$('flour'),fx=fc.getContext('2d');let FW,FH,fl=[];
 function sizeFlour(){const r=fc.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);FW=r.width;FH=r.height;fc.width=FW*d;fc.height=FH*d;fx.setTransform(d,0,0,d,0,0)}
 function mk(top){return{x:Math.random()*FW,y:top?-6:Math.random()*FH,r:.25+Math.pow(Math.random(),2.2)*1.05,vy:.12+Math.random()*.38,ph:Math.random()*6.28,sp:.004+Math.random()*.012,a:.4+Math.random()*.5}}
-function flourTick(){requestAnimationFrame(flourTick);if(still)return;fx.clearRect(0,0,FW,FH);
+let heroVis=true;
+function flourTick(){requestAnimationFrame(flourTick);if(still)return;if(!heroVis){if(flourTick.on){fx.clearRect(0,0,FW,FH);flourTick.on=false}return}flourTick.on=true;fx.clearRect(0,0,FW,FH);
   for(const p of fl){p.ph+=p.sp;p.x+=Math.sin(p.ph)*.18;p.y+=p.vy;if(p.y>FH+8)Object.assign(p,mk(true));
     fx.beginPath();fx.arc(p.x,p.y,p.r,0,6.283);fx.fillStyle=`rgba(255,255,255,${p.a})`;fx.fill()}}
 
@@ -973,6 +981,7 @@ const belW=belq.textContent.split(' ').map(t=>{const s=document.createElement('s
 belq.textContent='';belW.forEach((s,i)=>{belq.append(s);if(i<belW.length-1)belq.append(' ')});
 function homeTick(){
   requestAnimationFrame(homeTick);
+  if(scrollY===homeTick.sy&&innerWidth===homeTick.iw)return;homeTick.sy=scrollY;homeTick.iw=innerWidth;
   for(const q of mqs){
     const r=q.sec.getBoundingClientRect();if(r.bottom<-50||r.top>innerHeight+50)continue;
     const p=still?.5:clamp((innerHeight-r.top)/(innerHeight+r.height),0,1);
