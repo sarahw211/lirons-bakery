@@ -540,6 +540,18 @@ a{color:inherit;text-decoration:none}
 .svc.big{background:rgb(156 90 85 / .92)!important}
 .ov .meta{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgb(251 248 243 / .95)!important}
 .flour{will-change:auto}
+
+/* ===== פוטר נמוך, באותו עיצוב ===== */
+.foot{--seal:clamp(104px,8.5vw,140px)}
+.foot .in{padding-top:calc(var(--seal) * .5 + 14px)!important;padding-bottom:14px!important;row-gap:10px!important}
+.foot .fgrid{gap:clamp(20px,3vw,48px)!important}
+.foot .menu a{font-size:clamp(18px,1.6vw,24px)!important;padding:3px 0!important}
+.foot .fpic{width:min(132px,100%)!important;padding:6px 6px 22px!important}
+.foot .fpic span{font-size:12px!important;bottom:5px!important}
+.foot .contact{gap:3px!important;font-size:14.5px!important}
+.foot .contact b{font-size:16px!important;margin-bottom:2px!important}
+.foot .fgrid+.leaf{margin-top:8px!important;height:16px!important}
+.foot .copy{margin-top:8px!important;padding-top:8px!important}
 </style>
 <style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style><style>
 /* בורר הצבע (רק לתצוגה ללירון, לא חלק מהאתר) */
