@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>לירונ'ס · ניסיון תפריט עליון</title>
+<style>
+/* שלוש אפשרויות לתפריט העליון, אחת מתחת לשנייה. כל אחת חיה: אפשר לעבור עם העכבר וללחוץ */
+@font-face{font-family:"BlackDelights";src:url("fonts/latin/L-Black-Delights-Regular.ttf") format("truetype")}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Light-Regular.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Bold.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Light.woff2") format("woff2");font-weight:300}
+:root{--ink:#3A2A22;--muted:#7A6A60;--acc:#8E3F35;--cream:#FBF8F3;--paper:#F3EADD;--line:rgb(58 42 34 / .14)}
+*{box-sizing:border-box}
+body{margin:0;background:#E9E5DF;color:var(--ink);font-family:"Plinko",system-ui,sans-serif;font-weight:300;font-size:16px}
+a{color:inherit;text-decoration:none;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:40px 16px 80px}
+h1{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,42px);margin:0 0 6px}
+.intro{color:var(--muted);margin:0 0 30px;max-width:66ch;line-height:1.6}
+.opt{margin:0 0 40px}
+.opt h2{font-family:"Nostela",sans-serif;font-weight:700;font-size:22px;margin:0 0 4px}.opt h2 span{color:var(--acc)}
+.opt p{margin:0 0 12px;color:var(--muted);max-width:70ch;line-height:1.6}
+.opt h2 .tag{color:#fff}
+.tag{display:inline-block;font-family:"Nostela",sans-serif;font-size:12.5px;background:var(--acc);color:#fff;border-radius:99px;padding:1px 10px;margin-inline-start:8px;vertical-align:middle}
+.stage{position:relative;height:420px;overflow:hidden;background:url("img/cutouts/art-table-real.png") center/cover}
+.stage::before{content:"";position:absolute;inset:0;background:linear-gradient(rgb(243 234 221 / .78),rgb(243 234 221 / .35) 45%,transparent)}
+.ico{display:inline-flex;align-items:center;gap:3px}
+.ico svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linejoin:round;stroke-linecap:round}
+.ico i{font-style:normal;font-size:11px;color:var(--muted)}
+.icons{display:flex;gap:16px;align-items:center;color:var(--ink)}
+.cut{clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px),0 8px)}
+
+/* ---- א. תווית תלויה: החותמת תלויה מלמעלה במרכז, והקישורים מתפצלים לשני צדדיה ---- */
+.hA{position:absolute;inset:0 0 auto 0;z-index:2;display:grid;grid-template-columns:1fr auto 1fr;align-items:start;padding:0 clamp(16px,3vw,44px)}
+.hA nav{display:flex;gap:clamp(14px,2.2vw,34px);padding-top:26px;font-family:"Nostela",sans-serif;font-size:16.5px}
+.hA nav.r{justify-content:flex-start}.hA nav.l{justify-content:flex-end;align-items:center}
+.hA nav a{position:relative;padding-bottom:6px}
+.hA nav a::after{content:"";position:absolute;right:0;left:0;bottom:0;height:4px;border-top:1px solid var(--acc);border-bottom:1px solid var(--acc);transform:scaleX(0);transform-origin:right;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.hA nav a:hover::after{transform:scaleX(1)}
+.hA .tab{width:118px;padding:16px 14px 18px;background:var(--cream);display:grid;justify-items:center;gap:4px;box-shadow:0 18px 30px -18px rgb(40 26 18 / .45);clip-path:polygon(0 0,100% 0,100% 82%,50% 100%,0 82%)}
+.hA .tab img{width:74px;height:74px;object-fit:contain}
+.hA .tab small{font-size:8.5px;letter-spacing:.14em;white-space:nowrap;color:var(--muted)}
+
+/* ---- ב. פס תפריט ישן: קישורים בין קווים כפולים עם נקודות, ובמעבר עכבר נפתחת תמונה קטנה ---- */
+.hB{position:absolute;inset:0 0 auto 0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px clamp(16px,3vw,44px)}
+.hB .logo{width:58px;height:58px;border-radius:50%;background:#fff;object-fit:contain}
+.hB nav{display:flex;align-items:center;border-top:3px double rgb(142 63 53 / .45);border-bottom:3px double rgb(142 63 53 / .45);padding:7px 4px;background:rgb(251 248 243 / .55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.hB nav a{position:relative;padding:0 clamp(10px,1.4vw,20px);font-family:"Nostela",sans-serif;font-size:16.5px;transition:color .3s}
+.hB nav a+a::before{content:"";position:absolute;right:-2.5px;top:50%;width:5px;height:5px;border:1px solid var(--acc);border-radius:50%;transform:translateY(-50%)}
+.hB nav a:hover{color:var(--acc)}
+.hB nav a .pv{position:absolute;top:calc(100% + 16px);left:50%;width:150px;transform:translate(-50%,8px);opacity:0;pointer-events:none;background:var(--cream);padding:6px 6px 26px;box-shadow:0 18px 30px -16px rgb(40 26 18 / .5);transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
+.hB nav a .pv img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.hB nav a .pv span{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-size:12.5px;color:var(--muted)}
+.hB nav a:hover .pv{opacity:1;transform:translate(-50%,0) rotate(-2deg)}
+
+/* ---- ג. תפריט שנפתח למסך מלא: למעלה רק לוגו, "תפריט" ואייקונים. הלחיצה פותחת כרטיס תפריט של קונדיטוריה ---- */
+.hC{position:absolute;inset:0 0 auto 0;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(16px,3vw,44px)}
+.hC .logo{width:58px;height:58px;border-radius:50%;background:#fff;object-fit:contain}
+.hC .mid{display:flex;align-items:center;gap:20px}
+.hC .open{font:inherit;font-family:"Nostela",sans-serif;font-size:16px;border:0;cursor:pointer;background:var(--cream);color:var(--acc);padding:10px 20px;box-shadow:inset 0 0 0 1px rgb(142 63 53 / .4)}
+.hC .order{font-family:"Nostela",sans-serif;font-size:15px;background:var(--acc);color:#fff;padding:10px 18px}
+.over{position:absolute;inset:0;z-index:4;background:var(--paper);display:grid;grid-template-columns:1.3fr 1fr;opacity:0;pointer-events:none;transition:opacity .45s}
+.over.on{opacity:1;pointer-events:auto}
+.over .list{display:grid;align-content:center;padding:30px clamp(20px,4vw,60px);border-left:1px solid var(--line)}
+.over .list a{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line);font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,36px);transition:color .3s,padding .4s}
+.over .list a small{font-family:"Plinko",sans-serif;font-weight:300;font-size:14px;color:var(--muted)}
+.over .list a:hover{color:var(--acc);padding-right:10px}
+.over .side{position:relative;display:grid;align-content:end;gap:6px;padding:30px;color:#fff;background:url("img/cutouts/hero-spread.png") center/cover}
+.over .side::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgb(40 20 14 / .7))}
+.over .side>*{position:relative}
+.over .side b{font-family:"Nostela",sans-serif;font-size:22px}
+.over .close{position:absolute;top:18px;left:clamp(16px,3vw,44px);z-index:5;font:inherit;font-family:"Nostela",sans-serif;border:0;background:var(--cream);color:var(--ink);padding:9px 16px;cursor:pointer}
+@media (max-width:820px){.hA nav.r{display:none}.hA{grid-template-columns:auto 1fr}.hB nav{display:none}.over{grid-template-columns:1fr}.over .side{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>תפריט עליון: שלוש אפשרויות</h1>
+  <p class="intro">כל אחת חיה: אפשר לעבור עם העכבר ולנסות. בכולן יש את אותם קישורים, ואת הלב והסל באותו גובה בקו דק. המטרה: תפריט שמרגיש חלק מהשפה של לירונ'ס, ולא שורת קישורים רגילה, ושעדיין ברור מיד.</p>
+
+  <section class="opt">
+    <h2><span>א.</span> תווית תלויה</h2>
+    <p>החותמת של לירון תלויה מלמעלה במרכז, כמו תווית שקושרים לקופסה. הקישורים מתפצלים לשני צדדיה. במעבר עכבר נמתח מתחת לקישור הקו הכפול של האתר. נותן למותג נוכחות כבר מהשנייה הראשונה.</p>
+    <div class="stage">
+      <header class="hA">
+        <nav class="r"><a>קייטרינג ואירועים</a><a>מגשי אירוח</a><a>מארזים</a></nav>
+        <div class="tab"><img src="img/old-site/logo.png" alt="Liron's Bakery"><small>HOMEMADE BAKERSHOP</small></div>
+        <nav class="l"><a>סדנאות</a><a>התפריט</a><a>הסיפור שלי</a><span class="icons" style="margin-right:10px"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg><i>2</i></span><span class="ico"><svg viewBox="0 0 24 24"><path d="M5.5 8.5h13l-1 11.5h-11z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg><i>1</i></span></span></nav>
+      </header>
+    </div>
+  </section>
+
+  <section class="opt">
+    <h2><span>ב.</span> פס תפריט ישן <span class="tag">ההמלצה שלי</span></h2>
+    <p>הקישורים יושבים בין שני קווים כפולים עם נקודות קטנות ביניהם, כמו שורת השירותים בפתיחה והתפריט בפוטר. במעבר עכבר על קישור נפתחת מתחתיו תמונה קטנה, כמו פולארויד, של מה שיש שם. ברור, מתכתב עם כל האתר, ומוכר בלי לצעוק.</p>
+    <div class="stage">
+      <header class="hB">
+        <img class="logo" src="img/old-site/logo.png" alt="Liron's Bakery">
+        <nav>
+          <a>קייטרינג ואירועים<span class="pv"><img src="img/cutouts/art-stand-real.png" alt=""><span>שולחן לאירוע</span></span></a>
+          <a>מגשי אירוח<span class="pv"><img src="img/old-site/p13.jpg" alt=""><span>20 יחידות במגש</span></span></a>
+          <a>מארזים<span class="pv"><img src="img/old-site/gifts.png" alt=""><span>לחג ולמתנה</span></span></a>
+          <a>סדנאות<span class="pv"><img src="img/cutouts/workshop-1.png" alt=""><span>חוזרות בקרוב</span></span></a>
+          <a>התפריט<span class="pv"><img src="img/old-site/p07.jpg" alt=""><span>השבוע אצלי</span></span></a>
+          <a>הסיפור שלי<span class="pv"><img src="img/liron-warm.jpg" alt=""><span>לירון</span></span></a>
+        </nav>
+        <span class="icons"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg><i>2</i></span><span class="ico"><svg viewBox="0 0 24 24"><path d="M5.5 8.5h13l-1 11.5h-11z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg><i>1</i></span></span>
+      </header>
+    </div>
+  </section>
+
+  <section class="opt">
+    <h2><span>ג.</span> תפריט שנפתח למסך מלא</h2>
+    <p>למעלה רק הלוגו, כפתור "תפריט", "להזמנה" והאייקונים. לחיצה על "תפריט" פותחת מסך שנראה כמו כרטיס תפריט של קונדיטוריה: השירותים גדולים בצד אחד, ותמונה עם פרטי קשר בצד השני. הכי נקי, ומצוין בטלפון. אבל בגלל שהשירותים מוסתרים מאחורי לחיצה, הוא פחות ממיר במחשב.</p>
+    <div class="stage" id="stC">
+      <header class="hC">
+        <img class="logo" src="img/old-site/logo.png" alt="Liron's Bakery">
+        <div class="mid"><button class="open" id="openC" type="button">תפריט ☰</button><a class="order cut">להזמנה</a></div>
+        <span class="icons"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg><i>2</i></span><span class="ico"><svg viewBox="0 0 24 24"><path d="M5.5 8.5h13l-1 11.5h-11z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg><i>1</i></span></span>
+      </header>
+      <div class="over" id="overC">
+        <button class="close" id="closeC" type="button">סגירה ✕</button>
+        <div class="list"><a>קייטרינג ואירועים <small>←</small></a><a>מגשי אירוח <small>←</small></a><a>מארזי חג ומתנה <small>←</small></a><a>סדנאות אפייה <small>←</small></a><a>התפריט <small>←</small></a><a>הסיפור שלי <small>←</small></a></div>
+        <div class="side"><b>052-893-1990</b><span>קירשטיין 15ב', עפולה · חלבי ופרווה</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+document.getElementById('openC').onclick=()=>document.getElementById('overC').classList.add('on');
+document.getElementById('closeC').onclick=()=>document.getElementById('overC').classList.remove('on');
+</script>
+</body>
+</html>
