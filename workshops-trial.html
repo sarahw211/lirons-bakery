@@ -71,7 +71,37 @@ a{color:inherit;text-decoration:none;cursor:pointer}
 .gC .col:nth-child(3) .ph{height:360px}.gC .col:nth-child(3){margin-top:30px}.gC .col:nth-child(4){margin-top:110px}.gC .col:nth-child(4) .ph{height:280px}
 .gC .join{margin-top:40px;min-height:380px}
 
+/* קוביות משותפות: תמונה עם תווית, קוביית טקסט על שמנת, וקוביית הטופס בבורדו */
+.tile{position:relative;overflow:hidden;min-height:0}
+.tile>img{position:absolute;inset:0}
+.chip{position:absolute;z-index:2;right:12px;bottom:12px;font-family:"Nostela",sans-serif;font-weight:700;font-size:15px;background:#FBF8F3;color:var(--ink);padding:5px 12px;clip-path:polygon(6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px),0 6px)}
+.ttile{background:#FBF8F3;display:grid;align-content:end;gap:6px;padding:clamp(18px,2vw,28px)}
+.ttile b{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(20px,1.8vw,26px);line-height:1.15}
+.ttile span{color:var(--muted);font-size:15px}
+.ttile i{font-style:normal;font-family:"Nostela",sans-serif;color:var(--acc);font-size:14.5px;margin-top:6px}
+.tile.join{align-content:center}
+
+/* ד. לוח שחמט: שש קוביות מרובעות, תמונה וטקסט לסירוגין, והטופס באמצע השורה התחתונה */
+.gD{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(230px,22vw,300px);gap:clamp(10px,1.2vw,16px);margin-top:clamp(28px,3vw,44px)}
+
+/* ה. פסיפס: תמונה גבוהה בצד, תמונה רחבה למעלה, וקוביות קטנות (טקסט וטופס) למטה */
+.gE{display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:clamp(220px,20vw,280px) clamp(220px,20vw,280px);gap:clamp(10px,1.2vw,16px);margin-top:clamp(28px,3vw,44px)}
+.gE .tall{grid-row:1/3}
+.gE .wide{grid-column:2/4}
+
+/* ו. שלוש תמונות ושורה מתחת: טקסט רחב וקוביית הטופס, עם החותמת של לירון בפינה */
+.gF{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:clamp(260px,24vw,320px) auto;gap:clamp(10px,1.2vw,16px);margin-top:clamp(28px,3vw,44px)}
+.gF .note{grid-column:1/3;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;background:#FBF8F3;padding:clamp(20px,2.4vw,32px)}
+.gF .note b{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(20px,1.8vw,26px)}
+.gF .note ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted)}
+.gF .join{position:relative}
+.gF .join::after{content:"";position:absolute;left:-26px;top:-26px;width:84px;aspect-ratio:1;background:#FBF8F3;transform:rotate(-10deg);-webkit-mask:url("img/old-site/ink-ring.png") center/contain no-repeat;mask:url("img/old-site/ink-ring.png") center/contain no-repeat}
+
 @media (max-width:900px){
+  .gD,.gF{grid-template-columns:1fr 1fr;grid-auto-rows:220px}
+  .gE{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gE .tall,.gE .wide{grid-row:auto;grid-column:1/-1;min-height:260px}.gE>*{min-height:200px}
+  .gF{grid-template-rows:auto}.gF .note{grid-column:1/-1}.gF .join{grid-column:1/-1}
+  .gD .join,.gE .join{grid-column:1/-1}
   .gA{grid-template-columns:1fr 1fr}.gA .big{grid-column:1/-1;grid-row:auto;min-height:360px}.gA .txt,.gA .join{grid-column:1/-1;grid-template-columns:1fr}
   .gB{grid-template-columns:minmax(0,1fr)}.gB .pics{height:80vw}
   .gC{grid-template-columns:1fr 1fr}.gC .col{margin-top:0!important}.gC .col .ph{height:220px!important}.gC .join{grid-column:1/-1;margin-top:0;min-height:0}
@@ -79,7 +109,7 @@ a{color:inherit;text-decoration:none;cursor:pointer}
 </style>
 </head>
 <body>
-<div class="picker"><span>סדנאות:</span><span class="seg" id="pick"><button data-v="gA" class="on">א. בנטו</button><button data-v="gB">ב. קולאז' ורשימה</button><button data-v="gC">ג. מדרגות</button></span></div>
+<div class="picker"><span>סדנאות:</span><span class="seg" id="pick"><button data-v="gA" class="on">א. בנטו</button><button data-v="gB">ב. קולאז' ורשימה</button><button data-v="gC">ג. מדרגות</button><button data-v="gD">ד. לוח שחמט</button><button data-v="gE">ה. פסיפס</button><button data-v="gF">ו. שלוש ושורה</button></span></div>
 
 <section class="wrap">
   <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
@@ -119,6 +149,33 @@ a{color:inherit;text-decoration:none;cursor:pointer}
     <a class="col"><div class="ph cut"><img src="img/cutouts/workshop-kids.png" alt="קייטנה" style="object-position:15% 50%"></div><div class="cap"><b>קייטנת קיץ</b><span>כמה בקרים בקבוצה קטנה.</span></div></a>
     <div class="join cut"><b>רוצים לשמוע ראשונים?</b><span>השאירו שם וטלפון.</span><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
   </div>
+
+  <!-- ד. לוח שחמט -->
+  <div class="gD hide" id="gD">
+    <div class="tile cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים"><span class="chip">ערב אפייה לנשים</span><span class="tmp">תמונות זמניות</span></div>
+    <div class="tile ttile cut"><b>נוער וילדים</b><span>חותכים צורות, מנפים סוכר ומקשטים. כל אחד חוזר הביתה עם קופסה.</span><i>גילאי 6–14</i></div>
+    <div class="tile cut"><img src="img/cutouts/workshop-kids.png" alt="נוער וילדים"></div>
+    <div class="tile ttile cut"><b>סדנה פרטית לקבוצה</b><span>יום הולדת, צוות עבודה או חברות, בתיאום מראש.</span><i>בתיאום</i></div>
+    <div class="tile join cut"><b>רוצים לשמוע ראשונים?</b><span>השאירו פרטים ואעדכן כשנפתחת סדנה.</span><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
+    <div class="tile cut"><img src="img/cutouts/workshop-kids.png" alt="קייטנת אפייה" style="object-position:15% 50%"><span class="chip">קייטנת אפייה בקיץ</span></div>
+  </div>
+
+  <!-- ה. פסיפס -->
+  <div class="gE hide" id="gE">
+    <div class="tile tall cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים"><span class="chip">ערב אפייה לנשים</span><span class="tmp">תמונות זמניות</span></div>
+    <div class="tile wide cut"><img src="img/cutouts/workshop-kids.png" alt="נוער וילדים"><span class="chip">נוער וילדים</span></div>
+    <div class="tile ttile cut"><b>סדנה פרטית או קייטנה</b><span>קבוצה משלכם בתיאום מראש, או כמה בקרים של אפייה בקיץ.</span><i>פרטים בהודעה</i></div>
+    <div class="tile join cut"><b>רוצים לשמוע ראשונים?</b><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
+  </div>
+
+  <!-- ו. שלוש ושורה -->
+  <div class="gF hide" id="gF">
+    <div class="tile cut"><img src="img/cutouts/workshop-1.png" alt="ערב אפייה לנשים"><span class="chip">ערב אפייה לנשים</span><span class="tmp">תמונות זמניות</span></div>
+    <div class="tile cut"><img src="img/cutouts/workshop-kids.png" alt="נוער וילדים"><span class="chip">נוער וילדים</span></div>
+    <div class="tile cut"><img src="img/cutouts/workshop-1.png" alt="סדנה פרטית" style="object-position:85% 50%"><span class="chip">סדנה פרטית</span></div>
+    <div class="note cut"><b>מה עושים בסדנה?</b><ul><li>מגלגלים ופורסים</li><li>קולעים שמרים</li><li>חותכים צורות</li><li>אורזים הביתה</li><li>וגם קייטנה בקיץ</li></ul></div>
+    <div class="join cut"><b>רוצים לשמוע ראשונים?</b><form onsubmit="event.preventDefault()"><input placeholder="שם" aria-label="שם"><input placeholder="טלפון" aria-label="טלפון" type="tel"><button>לרשימת ההמתנה</button></form></div>
+  </div>
 </section>
 
 <script>
@@ -128,7 +185,7 @@ a{color:inherit;text-decoration:none;cursor:pointer}
   for(let i=0;i<70;i++){const r=Math.random()<.85?.4+Math.random()*.9:1.2+Math.random()*1.4;x.beginPath();x.ellipse(Math.random()*S,Math.random()*S,r,r*(.5+Math.random()*.6),Math.random()*3,0,6.3);
     x.fillStyle=`rgba(${110+Math.random()*40|0},${78+Math.random()*30|0},${55+Math.random()*20|0},${.18+Math.random()*.32})`;x.fill()}
   document.documentElement.style.setProperty('--paper',`url(${c.toDataURL()})`)})();
-document.querySelectorAll('#pick button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#pick button').forEach(x=>x.classList.toggle('on',x===b));['gA','gB','gC'].forEach(k=>document.getElementById(k).classList.toggle('hide',k!==b.dataset.v))});
+document.querySelectorAll('#pick button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#pick button').forEach(x=>x.classList.toggle('on',x===b));['gA','gB','gC','gD','gE','gF'].forEach(k=>document.getElementById(k).classList.toggle('hide',k!==b.dataset.v))});
 </script>
 </body>
 </html>
