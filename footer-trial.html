@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>לירונ'ס · ניסיון סיום ופוטר</title>
+<style>
+/* =========================================================
+   ניסיון חי לסיום ולפוטר של דף הבית, לפני שנכנס לאתר.
+   למעלה בוחרים סיום (החותמת נפתחת לשולחן / קרע נייר) ופוטר (תפריט / קופסת קראפט / טלפון גדול),
+   וגוללים כדי להרגיש את התנועה.
+   ========================================================= */
+@font-face{font-family:"BlackDelights";src:url("fonts/latin/L-Black-Delights-Regular.ttf") format("truetype")}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Extra-light-Regular.woff2") format("woff2");font-weight:200}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Light-Regular.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Bold.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Light.woff2") format("woff2");font-weight:300}
+:root{--ink:#3A2A22;--muted:#7A6A60;--acc:#8E3F35;--cream:#FBF8F3;--line:rgb(58 42 34 / .14);--paper:none;--burg:#6F2F27;--kraft:#B88B5E;--seal:clamp(170px,17vw,250px)}
+*{box-sizing:border-box}
+body{margin:0;background:#F3EADD;color:var(--ink);font-family:"Plinko",system-ui,sans-serif;font-weight:300;font-size:16px;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none;cursor:pointer}
+.paper{background:var(--paper),#F3EADD;background-size:360px 360px,auto}
+.he-h{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(40px,4.6vw,72px);line-height:1.04;margin:0;text-wrap:balance}
+.he-h em{font-style:normal;color:var(--acc)}
+.lead2{margin:0;color:var(--muted);font-size:18px;line-height:1.65;max-width:40ch}
+.btn{--cut:9px;position:relative;display:inline-flex;align-items:center;padding:15px 32px;font-family:"Nostela",sans-serif;font-size:17px;white-space:nowrap;cursor:pointer;
+  clip-path:polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut));transition:background .35s}
+.btn::after{content:"";position:absolute;inset:4px;border:.8px solid currentColor;opacity:.5;clip-path:inherit;transition:inset .35s,opacity .35s}
+.btn:hover::after{inset:6px;opacity:.75}
+.btn.p{background:var(--acc);color:#fff}.btn.p:hover{background:#7A342B}
+.btn.s{background:rgb(232 218 199 / .5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--acc);box-shadow:inset 0 0 0 1px rgb(142 63 53 / .45)}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+
+/* בורר הגרסאות */
+.picker{position:fixed;z-index:50;top:12px;left:50%;transform:translateX(-50%);display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:center;background:rgb(255 255 255 / .92);border-radius:16px;padding:8px 12px;box-shadow:0 10px 30px -14px rgb(40 26 18 / .4);font-size:14px;max-width:calc(100vw - 24px)}
+.seg{display:inline-flex;background:#F3EADD;border-radius:99px;padding:3px}
+.seg button{font:inherit;font-size:13.5px;border:0;background:none;border-radius:99px;padding:5px 12px;cursor:pointer;color:var(--ink)}
+.seg button.on{background:var(--acc);color:#fff}
+
+/* מה שבא לפני: סוף הסדנאות, רק כדי שיהיה מאיפה לגלול */
+.before{min-height:90vh;display:grid;place-items:center;text-align:center;padding:120px 20px 60px;color:var(--muted)}
+.before b{display:block;font-family:"Nostela",sans-serif;font-size:28px;color:var(--ink)}
+
+/* ---------- סיום 1: החותמת נפתחת לשולחן ---------- */
+.c1{position:relative;height:260vh}
+.c1 .stage{position:sticky;top:0;height:100vh;overflow:hidden}
+.c1 .ask{position:absolute;inset:12vh 20px auto;display:grid;justify-items:center;text-align:center;gap:16px;z-index:3}
+.c1 .tbl{position:absolute;inset:0;z-index:2;background:url("img/cutouts/art-table-real.png") center/cover;clip-path:circle(var(--r,70px) at 50% 70%);will-change:clip-path}
+.c1 .ring{position:absolute;z-index:4;left:50%;top:70%;width:calc(var(--r,70px) * 2.9);aspect-ratio:1;transform:translate(-50%,-50%) rotate(-6deg);background:#8E3F35;
+  -webkit-mask:url("img/old-site/ink-ring.png") center/contain no-repeat;mask:url("img/old-site/ink-ring.png") center/contain no-repeat;opacity:var(--ro,1);pointer-events:none}
+.c1 .card{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,calc(-50% + (1 - var(--co,0)) * 30px));opacity:var(--co,0);display:grid;justify-items:center;gap:14px;text-align:center;
+  padding:clamp(28px,4vw,48px) clamp(24px,5vw,64px);background:rgb(251 248 243 / .66);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  clip-path:polygon(16px 0,calc(100% - 16px) 0,100% 16px,100% calc(100% - 16px),calc(100% - 16px) 100%,16px 100%,0 calc(100% - 16px),0 16px);width:min(640px,calc(100vw - 32px))}
+.c1 .card::before{content:"";position:absolute;inset:9px;border:.8px solid rgb(142 63 53 / .45);clip-path:inherit;pointer-events:none}
+
+/* ---------- סיום 3: קרע נייר ---------- */
+.c3 .top{display:grid;justify-items:center;text-align:center;gap:16px;padding:16vh 20px 9vh}
+.c3 .band{position:relative;height:72vh;min-height:420px;background:url("img/cutouts/art-table-real.png") center/cover;background-position:50% var(--by,40%)}
+.c3 .tear{position:absolute;z-index:2;left:0;right:0;top:-2px;height:46px;background:var(--paper),#F3EADD;background-size:360px 360px,auto;filter:drop-shadow(0 4px 3px rgb(40 26 18 / .25));transform:translateY(var(--ty,0))}
+.c3 .seal{top:16px}
+
+/* ---------- החותמת (בפוטר, ובקרע נייר על הקרע) ---------- */
+.seal{position:absolute;z-index:6;left:50%;top:0;width:var(--seal);aspect-ratio:1;transform:translate(-50%,-50%) rotate(var(--sr,-18deg)) scale(var(--ss,1.35))}
+.seal .win{position:absolute;inset:15%;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px var(--sbot,var(--burg)),0 18px 40px -16px rgb(20 10 6 / .7)}
+.seal .win i{position:absolute;inset:-20%;background:url("img/cutouts/art-table-real.png") 46% 55%/cover;transform:rotate(calc(var(--sr,-18deg) * -1))}
+.seal .ring{position:absolute;inset:0;background:linear-gradient(to bottom,var(--stop,#8E3F35) 50%,var(--sring,#F3EADD) 50%);
+  -webkit-mask:url("img/old-site/ink-ring.png") center/contain no-repeat;mask:url("img/old-site/ink-ring.png") center/contain no-repeat}
+
+/* ---------- הפוטרים ---------- */
+.foot{position:relative;color:rgb(251 248 243 / .88)}
+.foot .in{max-width:1240px;margin:0 auto;padding:calc(var(--seal) * .5 + 56px) clamp(20px,5vw,80px) 32px}
+.copy{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:13.5px;border-top:1px solid currentColor;padding-top:16px;margin:40px 0 0;opacity:.7}
+.copy a{text-decoration:underline;text-underline-offset:3px}
+.leaf{height:20px;background:currentColor;opacity:.55;-webkit-mask:url("img/old-site/leaf-sprig.png") center/contain no-repeat;mask:url("img/old-site/leaf-sprig.png") center/contain no-repeat;margin-top:36px}
+
+/* א: כמו תפריט של קונדיטוריה */
+.fA{background:var(--burg)}
+.fA .grid{display:grid;grid-template-columns:1.7fr .8fr 1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.fA .menu{display:grid;border-top:3px double rgb(251 248 243 / .4);border-bottom:3px double rgb(251 248 243 / .4)}
+.fA .menu a{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 0;font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(24px,2.5vw,38px);line-height:1.15;white-space:nowrap;color:#FBF8F3;transition:color .3s,padding .4s}
+.fA .menu a+a{border-top:1px solid rgb(251 248 243 / .14)}
+.fA .menu a small{font-family:"Plinko",sans-serif;font-weight:300;font-size:14px;color:rgb(251 248 243 / .6)}
+.fA .menu a:hover,.fA .menu a.on{color:#F1D9CF;padding-right:12px}
+.fA .pic{position:relative;justify-self:center;width:min(230px,100%);background:#FBF8F3;padding:9px 9px 34px;transform:rotate(-4deg);box-shadow:0 30px 50px -26px rgb(0 0 0 / .6)}
+.fA .pic img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:opacity .35s}
+.fA .pic span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:"Nostela",sans-serif;font-size:14px;color:var(--ink)}
+.fA .contact{display:grid;gap:6px;font-size:15.5px}
+.fA .contact b{font-family:"Nostela",sans-serif;font-size:18px;color:#fff;margin-bottom:4px}
+
+/* ד: קופסת קראפט עם המדבקה של לירון */
+.fD{background:var(--paper),var(--kraft);background-size:360px 360px,auto;color:var(--ink)}
+.fD .grid{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.fD .col{display:grid;gap:6px;font-size:15.5px}
+.fD .col b{font-family:"Nostela",sans-serif;font-size:18px;margin-bottom:4px}
+.fD .sticker{width:clamp(240px,24vw,300px);aspect-ratio:1;background:#fff;display:grid;align-content:center;justify-items:center;gap:6px;text-align:center;padding:24px;transform:rotate(2deg);
+  box-shadow:0 2px 0 rgb(0 0 0 / .05),0 24px 40px -22px rgb(40 26 18 / .55)}
+.fD .sticker img{width:96px}
+.fD .sticker small{letter-spacing:.18em;font-size:11px;color:var(--muted)}
+.fD .sticker b{font-family:"Nostela",sans-serif;font-size:20px}
+.fD .copy{color:var(--ink)}
+
+/* ה: הטלפון הוא הכותרת */
+.fE{background:var(--burg)}
+.fE .lbl{display:block;text-align:center;font-size:15px;letter-spacing:.06em;color:rgb(251 248 243 / .7)}
+.fE .phone{display:block;text-align:center;direction:ltr;font-family:"Nostela",sans-serif;font-weight:200;font-size:clamp(44px,8.4vw,140px);line-height:1;white-space:nowrap;color:#FBF8F3;margin:6px 0 34px;transition:color .3s}
+.fE .phone:hover{color:#F1D9CF}
+.fE .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;font-size:15.5px;border-top:3px double rgb(251 248 243 / .3);border-bottom:3px double rgb(251 248 243 / .3);padding:14px 0}
+
+.hide{display:none!important}
+@media (max-width:900px){
+  .fA .grid,.fD .grid{grid-template-columns:minmax(0,1fr)}
+  .fA .pic{display:none}
+  .fD .sticker{justify-self:center;order:-1}
+}
+</style>
+</head>
+<body>
+
+<div class="picker">
+  <span>סיום:</span><span class="seg" id="pickC"><button data-v="c1" class="on">החותמת נפתחת לשולחן</button><button data-v="c3">קרע נייר</button></span>
+  <span>פוטר:</span><span class="seg" id="pickF"><button data-v="fA" class="on">א. תפריט</button><button data-v="fD">ד. קופסת קראפט</button><button data-v="fE">ה. הטלפון גדול</button></span>
+</div>
+
+<div class="before paper"><div><b>כאן נגמרות הסדנאות</b>גללו למטה כדי לראות את הסיום והפוטר</div></div>
+
+<!-- סיום 1: החותמת נפתחת לשולחן -->
+<section class="c1" id="c1">
+  <div class="stage paper">
+    <div class="ask" id="c1ask">
+      <h2 class="he-h">יש לכם <em>אירוע</em> בקרוב?</h2>
+      <p class="lead2">גללו, ותראו מה אפשר להכין לכם.</p>
+    </div>
+    <div class="tbl" id="c1tbl" aria-hidden="true"></div>
+    <div class="ring" id="c1ring" aria-hidden="true"></div>
+    <div class="card" id="c1card">
+      <h2 class="he-h" style="font-size:clamp(34px,3.6vw,56px)">יש לכם <em>אירוע</em> בקרוב?</h2>
+      <p class="lead2">כתבו לי בוואטסאפ מה מתוכנן וכמה אורחים, ואחזור אליכם עם הצעה.</p>
+      <div class="ctas"><a class="btn p">לכתוב בוואטסאפ</a><a class="btn s">לתפריט ולהזמנה</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- סיום 3: קרע נייר -->
+<section class="c3 hide" id="c3">
+  <div class="top paper">
+    <h2 class="he-h">יש לכם <em>אירוע</em> בקרוב?</h2>
+    <p class="lead2">כתבו לי בוואטסאפ מה מתוכנן וכמה אורחים, ואחזור אליכם עם הצעה.</p>
+    <div class="ctas"><a class="btn p">לכתוב בוואטסאפ</a><a class="btn s">לתפריט ולהזמנה</a></div>
+  </div>
+  <div class="band" id="c3band">
+    <div class="tear" id="c3tear" aria-hidden="true"></div>
+    <div class="seal" style="--sr:-6deg;--ss:1;--stop:#F3EADD;--sring:#F3EADD;--sbot:#F3EADD" aria-hidden="true"><div class="win"><i></i></div><div class="ring"></div></div>
+  </div>
+</section>
+
+<!-- פוטר א: תפריט -->
+<footer class="foot fA" id="fA">
+  <div class="seal fseal" aria-hidden="true"><div class="win"><i></i></div><div class="ring"></div></div>
+  <div class="in">
+    <div class="grid">
+      <nav class="menu" id="fAmenu">
+        <a data-img="img/cutouts/art-stand-real.png" data-cap="קייטרינג לאירועים" class="on">קייטרינג לאירועים <small>←</small></a>
+        <a data-img="img/old-site/p13.jpg" data-cap="מגשי אירוח">מגשי אירוח <small>←</small></a>
+        <a data-img="img/old-site/gifts.png" data-cap="מארזי חג ומתנה">מארזי חג ומתנה <small>←</small></a>
+        <a data-img="img/cutouts/workshop-1.png" data-cap="סדנאות אפייה">סדנאות אפייה <small>←</small></a>
+        <a data-img="img/old-site/p07.jpg" data-cap="עוגות ועוגיות">עוגות ועוגיות <small>←</small></a>
+      </nav>
+      <figure class="pic" style="margin:0"><img id="fAimg" src="img/cutouts/art-stand-real.png" alt=""><span id="fAcap">קייטרינג לאירועים</span></figure>
+      <div class="contact">
+        <b>דברו איתי</b><span>וואטסאפ: 052-893-1990</span><span>קירשטיין 15ב', עפולה</span><span>משלוחים עד רמת ישי</span><span>חלבי ופרווה · בד"צ העדה החרדית · לנדא · רובין</span>
+      </div>
+    </div>
+    <div class="leaf" aria-hidden="true"></div>
+    <p class="copy"><span>© Liron's Bakery · עפולה</span><span>עיצוב ובניית האתר: <a>שרה וייצמן</a></span></p>
+  </div>
+</footer>
+
+<!-- פוטר ד: קופסת קראפט -->
+<footer class="foot fD hide" id="fD" style="--sbot:var(--kraft)">
+  <div class="seal fseal" style="--sring:#3A2A22" aria-hidden="true"><div class="win"><i></i></div><div class="ring"></div></div>
+  <div class="in">
+    <div class="grid">
+      <div class="col"><b>השירותים</b><a>קייטרינג לאירועים</a><a>מגשי אירוח</a><a>מארזי חג ומתנה</a><a>סדנאות אפייה</a><a>עוגות ועוגיות</a></div>
+      <div class="sticker"><img src="img/old-site/logo.png" alt="Liron's Bakery"><small>HOMEMADE BAKERSHOP</small><b>052-893-1990</b><span>קירשטיין 15ב', עפולה</span><span style="font-size:13px;color:var(--muted)">חלבי ופרווה</span></div>
+      <div class="col" style="text-align:left"><b>איסוף ומשלוח</b><span>איסוף בתיאום מראש</span><span>משלוחים עד רמת ישי</span><span>מזמינים עד יומיים לפני</span><span>בד"צ העדה החרדית · לנדא · רובין</span></div>
+    </div>
+    <p class="copy"><span>© Liron's Bakery · עפולה</span><span>עיצוב ובניית האתר: <a>שרה וייצמן</a></span></p>
+  </div>
+</footer>
+
+<!-- פוטר ה: הטלפון גדול -->
+<footer class="foot fE hide" id="fE">
+  <div class="seal fseal" aria-hidden="true"><div class="win"><i></i></div><div class="ring"></div></div>
+  <div class="in">
+    <span class="lbl">הכי מהר: וואטסאפ</span>
+    <a class="phone">052-893-1990</a>
+    <div class="row"><a>קייטרינג לאירועים</a><a>מגשי אירוח</a><a>מארזי חג ומתנה</a><a>סדנאות אפייה</a><a>עוגות ועוגיות</a></div>
+    <div class="row" style="border-top:0;font-size:14px;color:rgb(251 248 243 / .7)"><span>קירשטיין 15ב', עפולה</span><span>משלוחים עד רמת ישי</span><span>חלבי ופרווה</span></div>
+    <p class="copy"><span>© Liron's Bakery · עפולה</span><span>עיצוב ובניית האתר: <a>שרה וייצמן</a></span></p>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id),clamp=(v,a,b)=>Math.min(Math.max(v,a),b),ease=t=>1-Math.pow(1-t,3);
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+// נייר עבודת יד (אותו נייר כמו באתר)
+(function(){const S=360,c=document.createElement('canvas');c.width=c.height=S;const x=c.getContext('2d'),d=x.createImageData(S,S);
+  for(let i=0;i<d.data.length;i+=4){d.data[i]=90;d.data[i+1]=64;d.data[i+2]=44;d.data[i+3]=Math.random()<.5?Math.random()*16:0}x.putImageData(d,0,0);
+  for(let i=0;i<70;i++){const r=Math.random()<.85?.4+Math.random()*.9:1.2+Math.random()*1.4;x.beginPath();x.ellipse(Math.random()*S,Math.random()*S,r,r*(.5+Math.random()*.6),Math.random()*3,0,6.3);
+    x.fillStyle=`rgba(${110+Math.random()*40|0},${78+Math.random()*30|0},${55+Math.random()*20|0},${.18+Math.random()*.32})`;x.fill()}
+  document.documentElement.style.setProperty('--paper',`url(${c.toDataURL()})`)})();
+
+// הקרע: קו לא אחיד, כמו נייר שנקרע ביד (לא גלים)
+(function(){let p=['0 0','100% 0'],y=60;const pts=[];for(let x=100;x>=0;x-=1.2){y=clamp(y+(Math.random()-.5)*26,18,96);pts.push(`${x.toFixed(1)}% ${y.toFixed(0)}%`)}
+  $('c3tear').style.clipPath=`polygon(0 0,100% 0,${pts.join(',')})`})();
+
+// בוחרים גרסה
+function pick(id,cb){document.querySelectorAll(`#${id} button`).forEach(b=>b.onclick=()=>{document.querySelectorAll(`#${id} button`).forEach(x=>x.classList.toggle('on',x===b));cb(b.dataset.v)})}
+pick('pickC',v=>{['c1','c3'].forEach(k=>$(k).classList.toggle('hide',k!==v));document.querySelectorAll('.fseal').forEach(s=>s.classList.toggle('hide',v==='c3'))});
+pick('pickF',v=>['fA','fD','fE'].forEach(k=>$(k).classList.toggle('hide',k!==v)));
+
+// פוטר א: מעבר על שירות מחליף את התמונה בפולארויד (בלי שום דבר שעוקב אחרי העכבר)
+document.querySelectorAll('#fAmenu a').forEach(a=>a.addEventListener('mouseenter',()=>{
+  document.querySelectorAll('#fAmenu a').forEach(x=>x.classList.toggle('on',x===a));$('fAimg').src=a.dataset.img;$('fAcap').textContent=a.dataset.cap}));
+
+function tick(){
+  requestAnimationFrame(tick);
+  // סיום 1: החלון בחותמת גדל עד שהשולחן ממלא את המסך, ואז הכרטיס עולה
+  const s=$('c1');if(!s.classList.contains('hide')){const r=s.getBoundingClientRect(),p=still?1:clamp(-r.top/(s.offsetHeight-innerHeight),0,1);
+    const R0=Math.min(innerWidth,innerHeight)*.11,R1=Math.hypot(innerWidth,innerHeight),g=ease(clamp((p-.05)/.5,0,1));
+    s.style.setProperty('--r',(R0+(R1-R0)*g).toFixed(1)+'px');
+    $('c1ring').style.setProperty('--ro',(1-clamp(g/.35,0,1)).toFixed(3));
+    $('c1ask').style.opacity=(1-clamp(p/.15,0,1)).toFixed(3);
+    $('c1card').style.setProperty('--co',ease(clamp((p-.5)/.18,0,1)).toFixed(3))}
+  // סיום 3: הקרע נפתח קצת, והשולחן זז לאט מתחתיו
+  const c=$('c3');if(!c.classList.contains('hide')){const r=$('c3band').getBoundingClientRect(),p=clamp((innerHeight-r.top)/(innerHeight+r.height),0,1);
+    $('c3tear').style.setProperty('--ty',(-p*22).toFixed(1)+'px');$('c3band').style.setProperty('--by',(30+p*30).toFixed(1)+'%')}
+  // החותמת בפוטר נלחצת למקום כשהפוטר עולה
+  document.querySelectorAll('.foot:not(.hide) .fseal:not(.hide)').forEach(se=>{const r=se.parentNode.getBoundingClientRect(),k=still?1:clamp((innerHeight-r.top)/(innerHeight*.45),0,1),e=k*k*k;
+    se.style.setProperty('--ss',(1.35-.35*e).toFixed(3));se.style.setProperty('--sr',(-18+12*e).toFixed(1)+'deg')});
+}
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
