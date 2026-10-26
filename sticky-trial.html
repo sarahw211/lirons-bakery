@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>לירונ'ס · תפריט נדבק</title>
+<style>
+/* =========================================================
+   איך התפריט נראה כשגוללים והוא נדבק למעלה (סטיקי). שלוש צורות, כולן קטנות.
+   חלון האפשרויות במעבר עכבר: רשימה עם תמונות קטנות, לא תמונות גדולות.
+   ========================================================= */
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Light-Regular.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Nostela";src:url("fonts/Nostela-Fs-Bold.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Plinko";src:url("fonts/Plinko-FS-Light.woff2") format("woff2");font-weight:300}
+:root{--ink:#3A2A22;--muted:#7A6A60;--acc:#8E3F35;--cream:#FBF8F3;--paper:#F3EADD;--line:rgb(58 42 34 / .14)}
+*{box-sizing:border-box}
+body{margin:0;background:#E9E5DF;color:var(--ink);font-family:"Plinko",system-ui,sans-serif;font-weight:300;font-size:16px}
+a{color:inherit;text-decoration:none;cursor:pointer}
+.wrap{max-width:1300px;margin:0 auto;padding:36px 16px 80px}
+h1{font-family:"Nostela",sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,38px);margin:0 0 6px}
+.intro{color:var(--muted);margin:0 0 26px;max-width:72ch;line-height:1.6}
+.opt{margin:0 0 44px}
+.opt h2{font-family:"Nostela",sans-serif;font-weight:700;font-size:22px;margin:0 0 4px}
+.opt h2 em{font-style:normal;color:var(--acc)}
+.opt p{margin:0 0 12px;color:var(--muted);max-width:72ch;line-height:1.6}
+.tag{display:inline-block;font-family:"Nostela",sans-serif;font-size:12.5px;background:var(--acc);color:#fff;border-radius:99px;padding:1px 10px;margin-inline-start:8px;vertical-align:middle}
+/* "דף" מאחורי התפריט: אזור מהאתר, כדי לראות את התפריט במצב גלילה */
+.stage{position:relative;height:430px;overflow:hidden;background:#F3EADD}
+.stage .page{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:90px 60px 30px}
+.stage .page b{display:block;font-family:"Nostela",sans-serif;font-weight:700;font-size:40px;line-height:1.05}
+.stage .page b em{font-style:normal;color:var(--acc)}
+.stage .page span{color:var(--muted)}
+.stage .page img{width:100%;height:280px;object-fit:cover}
+.ico{display:inline-flex;align-items:center;gap:3px}
+.ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linejoin:round;stroke-linecap:round}
+.ico i{font-style:normal;font-size:11px;color:var(--muted)}
+.icons{display:flex;gap:14px;align-items:center}
+.cut{clip-path:polygon(7px 0,calc(100% - 7px) 0,100% 7px,100% calc(100% - 7px),calc(100% - 7px) 100%,7px 100%,0 calc(100% - 7px),0 7px)}
+.links{display:flex;align-items:center}
+.links .it{position:relative}
+.links .it>a{display:block;padding:6px clamp(9px,1.1vw,16px);font-family:"Nostela",sans-serif;font-size:15px;transition:color .3s}
+.links .it:hover>a{color:var(--acc)}
+.logo{width:38px;height:38px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 0 0 1px var(--line)}
+.order{font-family:"Nostela",sans-serif;font-size:14px;background:var(--acc);color:#fff;padding:7px 14px}
+
+/* חלון קטן: רשימה עם תמונה קטנה לכל אפשרות */
+.drop{position:absolute;top:calc(100% + 10px);right:0;width:300px;background:var(--cream);padding:8px;box-shadow:0 18px 40px -20px rgb(40 26 18 / .5);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s,transform .3s,visibility 0s .3s;z-index:9}
+.links .it:hover .drop,.links .it:focus-within .drop{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .3s}
+.drop::before{content:"";position:absolute;inset:5px;border:.8px solid rgb(142 63 53 / .25);pointer-events:none}
+.drop a{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;padding:7px;transition:background .25s}
+.drop a:hover{background:#F3EADD}
+.drop img{width:44px;height:44px;object-fit:cover}
+.drop b{display:block;font-family:"Nostela",sans-serif;font-weight:700;font-size:14.5px}
+.drop small{color:var(--muted);font-size:12.5px}
+.drop .all{display:block;grid-template-columns:none;text-align:center;font-family:"Nostela",sans-serif;font-size:13.5px;color:var(--acc);border-top:1px solid var(--line);margin-top:4px;padding-top:9px}
+
+/* א. פס שמנת דק לכל הרוחב, עם קו כפול בתחתית */
+.sA{position:absolute;inset:0 0 auto 0;z-index:5;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,3vw,40px);background:rgb(251 248 243 / .96);border-bottom:3px double rgb(142 63 53 / .3)}
+/* ב. גלולה צפה במרכז: לא נוגעת בקצוות, ונראית כמו תווית */
+.sB{position:absolute;z-index:5;top:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px 8px 6px 14px;background:rgb(251 248 243 / .97);box-shadow:0 12px 30px -16px rgb(40 26 18 / .5),inset 0 0 0 1px rgb(142 63 53 / .2);border-radius:99px;white-space:nowrap}
+.sB .sep{width:1px;height:22px;background:var(--line);margin:0 6px}
+.sB .order{border-radius:99px;clip-path:none}
+/* ג. הכי מינימלי: לוגו, "להזמנה" ואייקונים, והשירותים בחלון אחד שנפתח מ"מה אני מכינה" */
+.sC{position:absolute;inset:0 0 auto 0;z-index:5;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,3vw,40px);background:rgb(251 248 243 / .96);box-shadow:0 8px 24px -18px rgb(40 26 18 / .5)}
+.sC .mid{display:flex;align-items:center;gap:6px}
+.sC .drop.wide{width:420px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.sC .drop.wide .all{grid-column:1/-1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>התפריט כשהוא נדבק למעלה</h1>
+  <p class="intro">התפריט של האתר נשאר כמו עכשיו. כאן רואים איך הוא נראה כשגוללים והוא נדבק למעלה. שלוש צורות, כולן קטנות. מעבר עכבר על קישור פותח רשימה קצרה עם תמונה קטנה לכל אפשרות, בלי תמונות גדולות.</p>
+
+  <section class="opt">
+    <h2><em>א.</em> פס שמנת דק <span class="tag">ההמלצה שלי</span></h2>
+    <p>פס לכל הרוחב, בגובה 56 פיקסלים, עם קו כפול דק בתחתית כמו בכל האתר. לוגו קטן, הקישורים, הלב והסל. הכי ברור ושקט.</p>
+    <div class="stage">
+      <div class="sA">
+        <img class="logo" src="img/old-site/logo.png" alt="Liron's Bakery">
+        <nav class="links" data-menu></nav>
+        <span class="icons" data-icons></span>
+      </div>
+      <div class="page"><div><b>קייטרינג חלבי <em>לאירועים</em></b><span>האזור שגללתם אליו ממשיך כרגיל מתחת לפס.</span></div><img src="img/cutouts/art-stand-real.png" alt=""></div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <h2><em>ב.</em> גלולה צפה</h2>
+    <p>התפריט מתכווץ לגלולה במרכז, שלא נוגעת בקצוות. נראה עדין ומודרני, ופחות "פס". מתאים כשרוצים שהתוכן ייראה כמעט בלי הפרעה.</p>
+    <div class="stage">
+      <div class="sB">
+        <img class="logo" src="img/old-site/logo.png" alt="Liron's Bakery" style="width:32px;height:32px">
+        <span class="sep"></span>
+        <nav class="links" data-menu></nav>
+        <span class="sep"></span>
+        <span class="icons" data-icons></span>
+        <a class="order">להזמנה</a>
+      </div>
+      <div class="page"><div><b>קייטרינג חלבי <em>לאירועים</em></b><span>האזור שגללתם אליו ממשיך כרגיל מתחת לגלולה.</span></div><img src="img/cutouts/art-stand-real.png" alt=""></div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <h2><em>ג.</em> מינימלי</h2>
+    <p>בגלילה נשארים רק הלוגו, "מה אני מכינה", "להזמנה", הלב והסל. השירותים נפתחים כולם בחלון אחד. הכי נקי, אבל צריך לחיצה אחת יותר כדי להגיע לשירות.</p>
+    <div class="stage">
+      <div class="sC">
+        <img class="logo" src="img/old-site/logo.png" alt="Liron's Bakery">
+        <div class="mid">
+          <nav class="links"><div class="it"><a>מה אני מכינה ▾</a><div class="drop wide" data-all></div></div><div class="it"><a>הסיפור שלי</a></div></nav>
+          <a class="order cut">להזמנה</a>
+        </div>
+        <span class="icons" data-icons></span>
+      </div>
+      <div class="page"><div><b>קייטרינג חלבי <em>לאירועים</em></b><span>האזור שגללתם אליו ממשיך כרגיל מתחת לפס.</span></div><img src="img/cutouts/art-stand-real.png" alt=""></div>
+    </div>
+  </section>
+</div>
+<script>
+// התפריט: לכל קישור רשימה קצרה עם תמונה קטנה
+const M=[
+  ['אירוח ומגשים',[['img/cutouts/art-stand-real.png','קייטרינג לאירועים','ברית, בר מצווה, שבע ברכות'],['img/old-site/p13.jpg','מגשי אירוח','20 יחידות במגש']],'לכל האירועים'],
+  ['מארזים',[['img/old-site/gifts.png','מארזים לחגים','ראש השנה, חנוכה ופורים'],['img/old-site/p08.jpg','מארזים לעסקים','ללקוחות ולעובדים'],['img/old-site/p18.jpg','הרכיבו מארז','בוחרים מה נכנס פנימה']],'לכל המארזים'],
+  ['סדנאות',[['img/cutouts/workshop-1.png','ערב אפייה לנשים','240 ₪ · 3 שעות'],['img/cutouts/workshop-kids.png','נוער וילדים','240 ₪ · 3 שעות'],['img/cutouts/workshop-kids.png','קייטנת קיץ','890 ₪']],'לרשימת ההמתנה'],
+  ['התפריט',[['img/old-site/p04.jpg','עוגות','שיש, שמרים ובחושות'],['img/old-site/p16.jpg','עוגיות',"מגולגלות, ספינג' ועוד"]],'לכל התפריט'],
+  ['הסיפור שלי',null]
+];
+const drop=(items,all)=>`<div class="drop">${items.map(([i,t,s])=>`<a><img src="${i}" alt=""><span><b>${t}</b><small>${s}</small></span></a>`).join('')}<a class="all">${all} ←</a></div>`;
+document.querySelectorAll('[data-menu]').forEach(n=>n.innerHTML=M.map(([t,items,all])=>`<div class="it"><a>${t}${items?' ▾':''}</a>${items?drop(items,all):''}</div>`).join(''));
+document.querySelectorAll('[data-all]').forEach(n=>n.innerHTML=M.filter(m=>m[1]).map(([t,items])=>items[0]).map(([i,t,s])=>`<a><img src="${i}" alt=""><span><b>${t}</b><small>${s}</small></span></a>`).join('')+'<a class="all">לכל השירותים ←</a>');
+const ic='<span class="ico"><svg viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg><i>2</i></span><span class="ico"><svg viewBox="0 0 24 24"><path d="M5.5 8.5h13l-1 11.5h-11z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg><i>1</i></span>';
+document.querySelectorAll('[data-icons]').forEach(n=>n.innerHTML=ic);
+</script>
+</body>
+</html>
