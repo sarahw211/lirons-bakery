@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>לירונ'ס · דף הבית בסדר ברור</title>
+<link rel="icon" type="image/png" href="img/favicon-64.png">
+<link rel="apple-touch-icon" href="img/favicon-180.png">
 <style>
 /* =========================================================
    לירונ'ס · ה3 במקסימום
@@ -583,11 +585,20 @@ a{color:inherit;text-decoration:none}
 .stk .drop .all{display:block;text-align:center;font-family:"Nostela",sans-serif;font-size:13.5px;color:var(--acc);border-top:1px solid rgb(58 42 34 / .14);margin-top:4px;padding-top:9px}
 @media (max-width:900px){.stk .links{display:none}.stk{height:52px;padding:0 14px}}
 @media (prefers-reduced-motion:reduce){.stk{transition:none}}
+
+/* ===== סרגל אחד: לוגו גדול בפתיחה שמתכווץ לתוך המסגרת בגלילה ===== */
+.nav{display:none!important}
+.stamp{display:none!important}
+.stk{transform:translate(-50%,0)!important;filter:drop-shadow(0 10px 22px rgb(40 26 18 / calc(var(--k,0) * .16)))}
+.stk .shape{opacity:var(--k,0)}
+.stk .logo{width:44px;height:44px;background:none!important;box-shadow:none!important;border-radius:0;transform-origin:100% 0;
+  transform:translate(calc((1 - var(--k,0)) * -6px),calc((1 - var(--k,0)) * 18px)) scale(calc(1 + (1 - var(--k,0)) * 2.9));will-change:transform}
+@media (max-width:900px){.stk .logo{transform:translate(0,calc((1 - var(--k,0)) * 12px)) scale(calc(1 + (1 - var(--k,0)) * 1.6))}}
 </style>
 <style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style></head>
 <body><a class="back" href="./">← כל האפשרויות</a>
 <header class="stk" id="stk" aria-label="תפריט"><span class="shape" aria-hidden="true"></span>
-  <img class="logo" src="img/old-site/logo.png" alt="Liron's Bakery">
+  <img class="logo" src="img/logo-clear.png" alt="Liron's Bakery">
   <nav class="links" id="stkLinks"></nav>
   <span class="icons"><span class="ico" aria-label="האהובים שלי"><svg viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg><i>0</i></span><span class="ico" aria-label="ההזמנה שלי"><svg viewBox="0 0 24 24"><path d="M5.5 8.5h13l-1 11.5h-11z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg><i>0</i></span><a class="order">להזמנה</a></span>
 </header>
@@ -1057,7 +1068,7 @@ requestAnimationFrame(homeTick);
     ['הסיפור שלי',null]
   ];
   $('stkLinks').innerHTML=M.map(([t,items,all])=>'<div class="it"><a>'+t+(items?'<span class="car">▾</span>':'')+'</a>'+(items?'<div class="drop">'+items.map(([i,tt,s])=>'<a><img src="'+i+'" alt=""><span><b>'+tt+'</b><small>'+s+'</small></span></a>').join('')+'<a class="all">'+all+' ←</a></div>':'')+'</div>').join('');
-  const stk=$('stk');const upd=()=>stk.classList.toggle('on',scrollY>innerHeight*.35);
+  const stk=$('stk');const upd=()=>stk.style.setProperty('--k',clamp(scrollY/260,0,1).toFixed(3));
   addEventListener('scroll',upd,{passive:true});upd();
 })();
 </script>
