@@ -338,6 +338,9 @@ a{color:inherit;text-decoration:none}
 .foot .contact{display:grid;gap:6px;font-size:15.5px}
 .foot .contact b{font-family:"Nostela",sans-serif;font-size:18px;color:#fff;margin-bottom:4px}
 .foot .fgrid+.leaf{margin-top:36px}
+/* בפוטר הזה התפריט הוא הגריד, ולכן העטיפה היא עמודה אחת (אחרת התפריט נדחס לשליש) */
+.foot .in{grid-template-columns:minmax(0,1fr);text-align:right}
+.foot .contact span{white-space:normal}
 
 @media (max-width:900px){
   .what .grid,.trayz .list,.how .steps,.how .kosher,.foot .fgrid{grid-template-columns:minmax(0,1fr)}
