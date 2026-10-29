@@ -537,6 +537,22 @@ a{color:inherit;text-decoration:none}
 .bel svg.sig{width:min(230px,58vw);height:auto;clip-path:none;overflow:visible}
 
 
+
+/* תמונה קטנה באלכסון מעל כל כרטיס שירות, שגדלה במעבר עכבר (29.10).
+   הפינות החתוכות עברו לשכבת רקע, כדי שהתמונה תוכל לצאת מעל הכרטיס */
+.svc{clip-path:none!important;background:none!important;isolation:isolate}
+.svc::after{content:"";position:absolute;inset:0;z-index:-1;background:rgb(251 248 243 / .88);
+  clip-path:polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut))}
+.svc.big::after{background:rgb(142 63 53 / .92)}
+.svc::before{clip-path:polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut))}
+.svc .ph{position:absolute;z-index:2;top:0;right:16%;width:min(40%,150px);aspect-ratio:4/3;object-fit:cover;border:5px solid #FBF8F3;
+  box-shadow:0 12px 26px -12px rgb(40 26 18 / .55);transform:translateY(-72%) rotate(-5deg);transform-origin:50% 90%;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.svc:nth-child(odd) .ph{transform:translateY(-72%) rotate(4deg)}
+.svc.big .ph{right:22%;width:min(30%,170px)}
+.svc:hover .ph{transform:translateY(-82%) rotate(-2deg) scale(1.45);box-shadow:0 22px 40px -16px rgb(40 26 18 / .6)}
+.svc:nth-child(odd):hover .ph{transform:translateY(-82%) rotate(2deg) scale(1.45)}
+@media (max-width:900px){.svc .ph{display:none}}
+
 /* ===== גלילה קלה: בלי טשטוש רקע שמחושב בכל פריים ===== */
 .svc{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgb(251 248 243 / .88)!important}
 .svc.big{background:rgb(142 63 53 / .92)!important}
@@ -649,10 +665,10 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
     <div class="services" id="services">
-      <a class="svc big"><div class="en">events</div><h3>קייטרינג ומגשי אירוח</h3><span class="rule"></span><p>שולחן קינוחים ומגשי אירוח חלביים ופרווה לברית, לבר מצווה, לשבע ברכות ולקידוש. ספרו לי כמה אורחים מגיעים, ואני ארכיב לכם את השולחן.</p><span class="dl">לתכנון אירוע<i></i></span></a>
-      <a class="svc"><div class="en">gifts</div><h3>מארזי חג ומתנה</h3><span class="rule"></span><p>מארזים בעבודת יד לחגים, למשפחה ולעסקים, או מארז שמרכיבים בעצמכם.</p><span class="dl">למארזים<i></i></span></a>
-      <a class="svc"><div class="en">workshops</div><h3>סדנאות אפייה</h3><span class="rule"></span><p>בקבוצות קטנות, סדנה פרטית לקבוצה וקייטנת קיץ. כרגע ברשימת המתנה.</p><span class="dl">לרשימת ההמתנה<i></i></span></a>
-      <a class="svc"><div class="en">bakes</div><h3>עוגות ועוגיות</h3><span class="rule"></span><p>עוגות בחושות, עוגיות ומאפים לשבת ולבית. חלבי ופרווה, גם ללא גלוטן.</p><span class="dl">לתפריט<i></i></span></a>
+      <a class="svc big"><img class="ph" src="img/gen/g-event-spread.jpg" alt="שולחן אירוח" loading="lazy"><div class="en">events</div><h3>קייטרינג ומגשי אירוח</h3><span class="rule"></span><p>שולחן קינוחים ומגשי אירוח חלביים ופרווה לברית, לבר מצווה, לשבע ברכות ולקידוש. ספרו לי כמה אורחים מגיעים, ואני ארכיב לכם את השולחן.</p><span class="dl">לתכנון אירוע<i></i></span></a>
+      <a class="svc"><img class="ph" src="img/gen/g-shabbat-s.jpg" alt="מארז לשבת" loading="lazy"><div class="en">gifts</div><h3>מארזי חג ומתנה</h3><span class="rule"></span><p>מארזים בעבודת יד לחגים, למשפחה ולעסקים, או מארז שמרכיבים בעצמכם.</p><span class="dl">למארזים<i></i></span></a>
+      <a class="svc"><img class="ph" src="img/gen/g-ws3-kids.jpg" alt="סדנת אפייה" loading="lazy"><div class="en">workshops</div><h3>סדנאות אפייה</h3><span class="rule"></span><p>בקבוצות קטנות, סדנה פרטית לקבוצה וקייטנת קיץ. כרגע ברשימת המתנה.</p><span class="dl">לרשימת ההמתנה<i></i></span></a>
+      <a class="svc"><img class="ph" src="img/gen/g-marble-one.jpg" alt="עוגה בחושה" loading="lazy"><div class="en">bakes</div><h3>עוגות ועוגיות</h3><span class="rule"></span><p>עוגות בחושות, עוגיות ומאפים לשבת ולבית. חלבי ופרווה, גם ללא גלוטן.</p><span class="dl">לתפריט<i></i></span></a>
     </div>
     <canvas class="flour" id="flour"></canvas>
     <div class="hint mini" id="hint">scroll ↓</div>
