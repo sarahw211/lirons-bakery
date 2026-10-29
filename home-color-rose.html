@@ -551,6 +551,9 @@ a{color:inherit;text-decoration:none}
 .svc.big .ph{right:22%;width:min(30%,170px)}
 .svc:hover .ph{transform:translateY(-82%) rotate(-2deg) scale(1.45);box-shadow:0 22px 40px -16px rgb(40 26 18 / .6)}
 .svc:nth-child(odd):hover .ph{transform:translateY(-82%) rotate(2deg) scale(1.45)}
+/* השוואה: ?tilt=same מטה את כל התמונות לאותו כיוון */
+.tilt-same .svc .ph,.tilt-same .svc:nth-child(odd) .ph{transform:translateY(-72%) rotate(-4deg)}
+.tilt-same .svc:hover .ph,.tilt-same .svc:nth-child(odd):hover .ph{transform:translateY(-82%) rotate(-2deg) scale(1.45)}
 @media (max-width:900px){.svc .ph{display:none}}
 
 /* ===== גלילה קלה: בלי טשטוש רקע שמחושב בכל פריים ===== */
@@ -614,7 +617,7 @@ a{color:inherit;text-decoration:none}
 .foot .madeby img{height:13px;width:auto;opacity:.85;transition:opacity .3s}
 .foot .madeby:hover{color:#fff}.foot .madeby:hover img{opacity:1}
 </style>
-<style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style><style>
+<script>if(/tilt=same/.test(location.search))document.documentElement.classList.add("tilt-same")</script><style>.doc{display:none!important}.label{display:none!important}.back{position:fixed;z-index:99;left:16px;bottom:16px;background:#8E3F35;color:#fff;font:15px/1 system-ui,sans-serif;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(40,26,18,.5)}</style><style>
 /* בורר הצבע (רק לתצוגה ללירון, לא חלק מהאתר) */
 .pal{position:fixed;z-index:70;bottom:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:7px 14px;border-radius:99px;background:rgb(255 255 255 / .94);box-shadow:0 10px 26px -12px rgb(40 26 18 / .45);font:14px/1 system-ui,sans-serif;color:#3A2A22}
 .pal a{display:flex;align-items:center;gap:6px;padding:5px 9px;border-radius:99px;color:inherit;text-decoration:none}
